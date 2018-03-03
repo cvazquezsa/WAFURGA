@@ -8,8 +8,8 @@ CarpetaPrincipal=Ficha
 EsMovimiento=S
 TituloAuto=S
 MovModulo=COMS
-PosicionInicialIzquierda=0
-PosicionInicialArriba=0
+PosicionInicialIzquierda=11
+PosicionInicialArriba=51
 PosicionInicialAltura=549
 PosicionInicialAncho=1378
 BarraAyuda=S
@@ -1844,29 +1844,64 @@ TipoAccion=Expresion
 
 [Acciones.Otros6]
 Nombre=Otros6
-Menu=&Otros
+Menu=&Edición
 EnMenu=S
 TipoAccion=Expresion
 
+Boton=0
+NombreDesplegar=Asociar Pedimentos
+GuardarAntes=S
+Activo=S
+Antes=S
+DespuesGuardar=S
+Visible=S
+Expresion=FormaModal(ContSATPedimentos)
+AntesExpresiones=Asigna(Info.Id,Compra:Compra.Id)<BR>Asigna(Info.Modulo,<T>COMS<T>)<BR>Asigna(Info.MovId,Compra:Compra.MovId)<BR>Asigna(Info.Mov,Compra:Compra.Mov)
 [Acciones.Otros7]
 Nombre=Otros7
-Menu=&Otros
+Menu=&Edición
 EnMenu=S
 TipoAccion=Expresion
 
+Boton=0
+NombreDesplegar=Asociar Comprobantes
+GuardarAntes=S
+Activo=S
+Antes=S
+DespuesGuardar=S
+Visible=S
+Expresion=FormaModal(<T>CFDConcentrado<T>)
+AntesExpresiones=Asigna(Info.Modulo,<T>COMS<T>)<BR>Asigna(Info.ID,Compra:Compra.ID)<BR>Asigna(Info.Mov,Compra:Compra.Mov)<BR>Asigna(Info.MovID,Compra:Compra.MovID)<BR>Asigna(Info.Moneda,Compra:Compra.Moneda)<BR>Asigna(Info.TipoCambio,Compra:Compra.TipoCambio)<BR>Asigna(Info.Estatus,Compra:Compra.Estatus)
 [Acciones.Otros8]
 Nombre=Otros8
-Menu=&Otros
+Menu=&Edición
 EnMenu=S
 TipoAccion=Expresion
 
+Boton=0
+NombreDesplegar=Asociar Comprobantes CFD - CBB
+GuardarAntes=S
+Expresion=FormaModal(<T>ContSATCFDCBBModulo<T>)
+Activo=S
+Antes=S
+AntesExpresiones=Asigna(Info.Id,Compra:Compra.Id)<BR>Asigna(Info.Modulo,<T>COMS<T>)
+DespuesGuardar=S
+VisibleCondicion=SQL(<T>SELECT dbo.fnDesplegarAsociarCompOtros(:nIndicador,:tModulo,:tMov)<T>,1,<T>COMS<T>,Compra:Compra.Mov)
 [Acciones.Otros9]
 Nombre=Otros9
-Menu=&Otros
+Menu=&Edición
 EnMenu=S
 TipoAccion=Expresion
 Boton=0
 
+NombreDesplegar=Asociar Comprobantes Extranjeros
+GuardarAntes=S
+Activo=S
+Antes=S
+DespuesGuardar=S
+Expresion=FormaModal(<T>ContSATExtranjeroModulo<T>)
+AntesExpresiones=Asigna(Info.Id,Compra:Compra.Id)<BR>Asigna(Info.Modulo,<T>COMS<T>)
+VisibleCondicion=SQL(<T>SELECT dbo.fnDesplegarAsociarCompOtros(:nIndicador,:tModulo,:tMov)<T>,2,<T>COMS<T>,Compra:Compra.Mov)
 [Acciones.Anticipo]
 Nombre=Anticipo
 Boton=61
@@ -4372,21 +4407,6 @@ ActivoCondicion=Compra:Compra.Estatus en(EstatusPendiente, EstatusConcluido)
 AntesExpresiones=Asigna(Info.Modulo, <T>COMS<T>)<BR>Asigna(Info.ID, Compra:Compra.ID)
 VisibleCondicion=fnContParalela y(Usuario.CONTPModificarDatosMov)
 
-[Acciones.AsociarPedimentos]
-Nombre=AsociarPedimentos
-Boton=0
-Menu=&Edición
-NombreDesplegar=Asociar Pedimentos
-EnMenu=S
-TipoAccion=Expresion
-Expresion=FormaModal(<T>ContSATPedimentos<T>)
-Activo=S
-Antes=S
-AntesExpresiones=Asigna(Info.Id,Compra:Compra.Id)<BR>Asigna(Info.Modulo,<T>COMS<T>)<BR>Asigna(Info.MovId,Compra:Compra.MovId)<BR>Asigna(Info.Mov,Compra:Compra.Mov)
-Visible=S
-
-
-
 
 [Acciones.WFGAltaExpress]
 Nombre=WFGAltaExpress
@@ -4494,6 +4514,78 @@ ValidaNombre=S
 3D=S
 ColorFondo=Blanco
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 [Forma.ListaCarpetas]
 (Inicio)=Ficha
 Ficha=AC
@@ -4588,8 +4680,7 @@ CompraExtraccion=MovPos
 MovPos=ContParalelaMovDato
 ContParalelaMovDato=Navegador
 Navegador=Cerrar
-Cerrar=AsociarPedimentos
-AsociarPedimentos=WFGAltaExpress
+Cerrar=WFGAltaExpress
 WFGAltaExpress=WFGEtiquetas
 WFGEtiquetas=WFGPrecio
 WFGPrecio=Otros1
