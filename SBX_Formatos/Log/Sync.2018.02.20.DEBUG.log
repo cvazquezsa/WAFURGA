@@ -1,7 +1,0 @@
-[Thread: 16348] [DEBUG] [10:25:37.586] select scs.creationdate, scs.amount, scs.idCardused, scs.reference, tt.Name,sc.*   from StoreCreditUsed scs
-    inner join onaccountpayment oap on oap.id = scs.OnAccountPaymentID
-    JOIN TenderType tt ON scs.TenderTypeID=tt.ID
-    JOIN StoreCredito sc ON scs.StoreCreditUUID=sc.UUID
-
- where oap.uuid = '8F06B678-2799-4A88-A599-8233A457B3CE'
-
