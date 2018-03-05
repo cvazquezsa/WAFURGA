@@ -1,2 +1,0 @@
-[Thread: 1540] [ERROR] [09:52:41.655] All queries combined using a UNION, INTERSECT or EXCEPT operator must have an equal number of expressions in their target lists
-[Thread: 1540] [ERROR] [09:53:01.095] All queries combined using a UNION, INTERSECT or EXCEPT operator must have an equal number of expressions in their target lists
