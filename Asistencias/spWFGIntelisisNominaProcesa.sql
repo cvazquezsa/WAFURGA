@@ -91,6 +91,7 @@ AS BEGIN
     ---------------------
 	---- V A L I D A ----
 	---------------------		
+
     DECLARE CurJornadaDValida CURSOR FAST_FORWARD FOR   
     SELECT D.Fecha, D.Entrada, D.SalidaComer, D.EntradaComer, D.Salida	
       FROM #JornadaD D   
@@ -211,7 +212,7 @@ AS BEGIN
 
     --UPDATE #JornadaD SET Fecha= CONVERT(varchar(20),CONCAT(SubString(REPLACE(Fecha,' ',''),1,4),SubString(REPLACE(Fecha,' ',''),9,2),SubString(REPLACE(Fecha,' ',''),6,2)))
     --FROM #JornadaD 
-    --SELECT Fecha fROM #JornadaD 
+
   ---------------------------------
   ---- V A L I D A C I O N E S ----
   ---------------------------------  
@@ -235,22 +236,21 @@ AS BEGIN
 	--SELECT * FROM JornadaTiempo WHERE Jornada = @Jornada-- AND Fecha IN (SELECT CONVERT(datetime,JD.Fecha,103) FROM #JornadaD JD) ---- B O R R A M O S  F E C H A S  
 	DELETE FROM JornadaTiempo WHERE Jornada = @Jornada AND Fecha IN (SELECT CONVERT(datetime,JD.Fecha,103) FROM #JornadaD JD) ---- B O R R A M O S  F E C H A S  
 	 
+
 	DELETE FROM #JornadaD     WHERE Entrada = '00:00:00' AND SalidaComer = '00:00:00' AND EntradaComer = '00:00:00' AND Salida = '00:00:00'
 	DELETE FROM #JornadaD     WHERE Entrada = '00:00' AND SalidaComer = '00:00' AND EntradaComer = '00:00' AND Salida = '00:00'		
+
 	--SELECT * FROM #JornadaD
     UPDATE #JornadaD SET SalidaComer = NULL WHERE ISNULL(SalidaComer,'') = ''
 	UPDATE #JornadaD SET Salida      = NULL WHERE ISNULL(Salida,'') = ''
 	--SELECT 'P'
 	INSERT INTO  JornadaTiempo (Jornada,	Entrada,										Salida,															Fecha,								WFGTiempoComida)
+
 	SELECT						@Jornada,	CONVERT(datetime,Fecha +' '+ Entrada,103),		CONVERT(datetime,Fecha +' '+ ISNULL(Salida,''),103),	CONVERT(datetime,Fecha,103),		TiempoComida
+
 	  FROM #JornadaD
 	 WHERE ISNULL(Entrada,'') <> ''
 	 ORDER BY CONVERT(datetime,Fecha,103)
-
-
-
-
-
 
 	--INSERT INTO  JornadaTiempo (Jornada,	Entrada,										Salida,															Fecha,								WFGTiempoComida)
 	--SELECT						@Jornada,	CONVERT(datetime,Fecha +' '+ EntradaComer,103),	CONVERT(datetime,Fecha+' '+ ISNULL(Salida,''),103),				CONVERT(datetime,Fecha,103),		TiempoComida
@@ -304,6 +304,7 @@ GO
 --		 @ID			int	,
 --		 @OkRef			varchar(255)
 
+
 --SELECT @Usuario = 'INTELISIS', @Contrasena = '9e351e3b5e6c249b698063e4417a81d9', 
 --@Archivo = '<?xml version="1.0" encoding="Windows-1252"?>
 --				<Intelisis Sistema="Intelisis" Contenido="Solicitud" Referencia="Intelisis.Procesa.Nomina" SubReferencia="Generacion Jornadas" Version="1.0">
@@ -325,8 +326,9 @@ GO
 ----SELECT * FROM usuario WHERE Usuario='Intelisis'
 ------SELECT * FROM JornadaTiempo where jornada = 'p0002'
 ----SELECT @Ok, @OkRef
+
 --SELECT * FROM VERJornadaTiempo  where jornada = '00190' and mes =1 and dia in(8,9,10,11,12,13,14) aND ano=2018
 ----select len(Solicitud),Solicitud,* from IntelisisService where id > 1194
 --ROLLBACK transaction nomina
---<Intelisis Sistema="Intelisis" Contenido="Resultado" Referencia="Intelisis.Procesa.Nomina" SubReferencia="Generacion Jornadas" Version="1"><Resultado IntelisisServiceID="2545" Ok="" OkRef=""><_x0023_Movimiento Seccion="Afectar" Jornada="00190" Fecha="08/01/2018" Ok="80081" OKRef="Operaci髇 Afectada..Generacion Jornadas"/><_x0023_Movimiento Seccion="Afectar" Jornada="00190" Fecha="09/01/2018" Ok="80081" OKRef="Operaci髇 Afectada..Generacion Jornadas"/><_x0023_Movimiento Seccion="Afectar" Jornada="00190" Fecha="10/01/2018" Ok="80081" OKRef="Operaci髇 Afectada..Generacion Jornadas"/><_x0023_Movimiento Seccion="Afectar" Jornada="00190" Fecha="11/01/2018" Ok="80081" OKRef="Operaci髇 Afectada..Generacion Jornadas"/><_x0023_Movimiento Seccion="Afectar" Jornada="00190" Fecha="12/01/2018" Ok="80081" OKRef="Operaci髇 Afectada..Generacion Jornadas"/><_x0023_Movimiento Seccion="Afectar" Jornada="00190" Fecha="13/01/2018" Ok="80081" OKRef="Operaci髇 Afectada..Generacion Jornadas"/><_x0023_Movimiento Seccion="Afectar" Jornada="00190" Fecha="14/01/2018" Ok="80081" OKRef="Operaci髇 Afectada..Generacion Jornadas"/></Resultado></Intelisis>
+--<Intelisis Sistema="Intelisis" Contenido="Resultado" Referencia="Intelisis.Procesa.Nomina" SubReferencia="Generacion Jornadas" Version="1"><Resultado IntelisisServiceID="2545" Ok="" OkRef=""><_x0023_Movimiento Seccion="Afectar" Jornada="00190" Fecha="08/01/2018" Ok="80081" OKRef="Operaci贸n Afectada..Generacion Jornadas"/><_x0023_Movimiento Seccion="Afectar" Jornada="00190" Fecha="09/01/2018" Ok="80081" OKRef="Operaci贸n Afectada..Generacion Jornadas"/><_x0023_Movimiento Seccion="Afectar" Jornada="00190" Fecha="10/01/2018" Ok="80081" OKRef="Operaci贸n Afectada..Generacion Jornadas"/><_x0023_Movimiento Seccion="Afectar" Jornada="00190" Fecha="11/01/2018" Ok="80081" OKRef="Operaci贸n Afectada..Generacion Jornadas"/><_x0023_Movimiento Seccion="Afectar" Jornada="00190" Fecha="12/01/2018" Ok="80081" OKRef="Operaci贸n Afectada..Generacion Jornadas"/><_x0023_Movimiento Seccion="Afectar" Jornada="00190" Fecha="13/01/2018" Ok="80081" OKRef="Operaci贸n Afectada..Generacion Jornadas"/><_x0023_Movimiento Seccion="Afectar" Jornada="00190" Fecha="14/01/2018" Ok="80081" OKRef="Operaci贸n Afectada..Generacion Jornadas"/></Resultado></Intelisis>
 
