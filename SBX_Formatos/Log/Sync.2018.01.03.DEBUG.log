@@ -1,0 +1,60 @@
+[Thread: 1540] [DEBUG] [09:52:41.653] SELECT 
+  TT.Name as FormaPago,
+  SDP.Amount,
+  SDP.ActualAmount, 
+  SDP.AmountReceived,
+  SDP.ActualAmountReceived, 
+  SDP.ExchangeRate, 
+  SDP.StoreExchangeRate,
+  SDP.CreationDate,
+  SDP.Rounded,
+  sd.LayawayDocumentUUID
+FROM SaleDocumentPayment SDP
+INNER JOIN SaleDocument SD ON SD.UUID = SDP.SaleDocumentUUID
+INNER JOIN TenderType TT ON TT.ID = SDP.TenderTypeID
+WHERE SD.UUID = '6A7E20A6-DA25-414E-AB26-5E25AEF2F24A'
+UNION ALL
+SELECT 
+	TT.Name as FormaPago, 
+	sdu.Amount,
+        sdu.CreationDate,
+	sdu.Amount AS ActualAmount, 
+	sdu.Amount AS AmountReceived, 
+	sdu.Amount AS ActualAmountReceived, 
+	1 AS ExchangeRate, 
+	1 AS StoreExchangeRate, 
+	0 AS Rounded
+FROM StoreCreditUsed sdu
+INNER JOIN TenderType TT on TT.ID = sdu.TenderTypeID
+WHERE TargetSaleDocumentUUID = '6A7E20A6-DA25-414E-AB26-5E25AEF2F24A'
+
+[Thread: 1540] [DEBUG] [09:53:01.094] SELECT 
+  TT.Name as FormaPago,
+  SDP.Amount,
+  SDP.ActualAmount, 
+  SDP.AmountReceived,
+  SDP.ActualAmountReceived, 
+  SDP.ExchangeRate, 
+  SDP.StoreExchangeRate,
+  SDP.CreationDate,
+  SDP.Rounded,
+  SD.LayawayDocumentUUID
+FROM SaleDocumentPayment SDP
+INNER JOIN SaleDocument SD ON SD.UUID = SDP.SaleDocumentUUID
+INNER JOIN TenderType TT ON TT.ID = SDP.TenderTypeID
+WHERE SD.UUID = '6A7E20A6-DA25-414E-AB26-5E25AEF2F24A'
+UNION ALL
+SELECT 
+	TT.Name as FormaPago, 
+	sdu.Amount,
+        sdu.CreationDate,
+	sdu.Amount AS ActualAmount, 
+	sdu.Amount AS AmountReceived, 
+	sdu.Amount AS ActualAmountReceived, 
+	1 AS ExchangeRate, 
+	1 AS StoreExchangeRate, 
+	0 AS Rounded
+FROM StoreCreditUsed sdu
+INNER JOIN TenderType TT on TT.ID = sdu.TenderTypeID
+WHERE TargetSaleDocumentUUID = '6A7E20A6-DA25-414E-AB26-5E25AEF2F24A'
+

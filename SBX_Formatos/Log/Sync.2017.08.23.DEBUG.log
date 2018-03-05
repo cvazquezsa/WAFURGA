@@ -1,0 +1,31 @@
+[Thread: 9100] [DEBUG] [11:37:23.459] SELECT 
+  CASE WHEN SDP.ExchangeRate<>1 THEN CONCAT(TT.Name,' (T.C. ',CONVERT(decimal(4,2),SDP.ExchangeRate),')') ELSE TT.Name END as FormaPago,
+  SDP.Amount,
+  SDP.ActualAmount, 
+  SDP.AmountReceived,
+  SDP.ActualAmountReceived, 
+  SDP.ExchangeRate, 
+  SDP.StoreExchangeRate,v
+  SDP.CreationDate,
+  SDP.Rounded
+FROM SaleDocumentPayment SDP
+INNER JOIN SaleDocument SD ON SD.UUID = SDP.SaleDocumentUUID
+INNER JOIN TenderType TT ON TT.ID = SDP.TenderTypeID
+WHERE SD.UUID = '42059061-2DCC-4F13-B68F-B1026D1AE61E'
+UNION ALL
+SELECT 
+	TT.Name as FormaPago, 
+	sdu.Amount,
+        sdu.CreationDate,
+	sdu.Amount AS ActualAmount, 
+	sdu.Amount AS AmountReceived, 
+	sdu.Amount AS ActualAmountReceived, 
+	1 AS ExchangeRate, 
+	1 AS StoreExchangeRate, 
+	0 AS Rounded
+FROM StoreCreditUsed sdu
+INNER JOIN TenderType TT on TT.ID = sdu.TenderTypeID
+WHERE TargetSaleDocumentUUID = '42059061-2DCC-4F13-B68F-B1026D1AE61E'
+
+[Thread: 11016] [DEBUG] [12:47:03.542] select * from storecreditused where idcard is not null
+
