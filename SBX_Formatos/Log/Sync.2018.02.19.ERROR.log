@@ -1,0 +1,6 @@
+[Thread: 12080] [ERROR] [20:57:39.644] All queries combined using a UNION, INTERSECT or EXCEPT operator must have an equal number of expressions in their target lists
+[Thread: 12080] [ERROR] [21:06:09.131] The multi-part identifier "oap.uuid" could not be bound
+[Thread: 16348] [ERROR] [21:37:09.037] Invalid object name 'tt.Name'
+[Thread: 16348] [ERROR] [21:37:31.625] Invalid object name 'tt.Name'
+[Thread: 16348] [ERROR] [21:37:42.210] Incorrect syntax near '*'
+[Thread: 16348] [ERROR] [21:37:56.608] Invalid column name 'TenderTypeID'

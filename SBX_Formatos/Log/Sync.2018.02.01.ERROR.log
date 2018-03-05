@@ -1,0 +1,14 @@
+[Thread: 36460] [ERROR] [01:14:09.818] Invalid column name 'FormaPago'
+[Thread: 36460] [ERROR] [09:24:03.349] Incorrect syntax near 'sdp'.
+Incorrect syntax near 'RelacionApartado'.
+'INSULL' is not a recognized built-in function name
+[Thread: 36460] [ERROR] [09:24:17.188] Incorrect syntax near 'sdp'.
+Incorrect syntax near 'sdp'
+[Thread: 67780] [ERROR] [12:26:56.018] Ambiguous column name 'UUID'
+[Thread: 67780] [ERROR] [12:27:38.908] TCP Provider: Timeout error [258]
+[Thread: 67780] [ERROR] [16:25:53.512] Incorrect syntax near the keyword 'ON'
+[Thread: 67780] [ERROR] [16:30:21.952] Invalid column name 'Phone1'
+[Thread: 67780] [ERROR] [16:30:26.650] Invalid column name 'Phone'
+[Thread: 67780] [ERROR] [16:36:09.043] Invalid object name 'Adress'
+[Thread: 67780] [ERROR] [16:37:04.376] Invalid column name 'Phone'
+[Thread: 67780] [ERROR] [16:42:55.194] Invalid column name 'Phone'

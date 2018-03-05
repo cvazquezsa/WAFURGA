@@ -1,0 +1,25 @@
+[Thread: 42964] [DEBUG] [21:55:47.637] SELECT 
+oap.creationdate,
+c.externalid numerocliente,
+c.name cliente,
+oap.[folio],
+oap.amount,
+dt.name documento,
+oap.documenttypeid,
+dc.name concepto,
+sdp.reference as "FolioPago",
+sdp.tendertypename as "FormaPago",
+u.login usuario,
+s.name tienda, 
+s.number
+FROM OnAccountPayment oap
+LEFT JOIN customer c ON c.UUID = oap.customeruuid
+LEFT JOIN documentconcept dc ON dc.id = oap.documentconceptid
+inner join (SELECT OnAccountPaymentUUID,TenderTypeName,SUM(Amount) Amount
+	FROM SaleDocumentPayment
+	GROUP BY OnAccountPaymentUUID,TenderTypeName) sdp on sdp.onaccountpaymentUUID = oap.UUID
+LEFT JOIN documenttype dt ON dt.id = oap.documenttypeid
+LEFT JOIN [user] u on u.id = oap.creationuserid
+LEFT JOIN store s on s.id = oap.storeid
+WHERE oap.uuid = '1FC1E17F-D936-45B4-A329-9D64E8671712'
+

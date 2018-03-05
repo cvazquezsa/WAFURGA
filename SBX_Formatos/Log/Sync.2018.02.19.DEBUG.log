@@ -1,0 +1,82 @@
+[Thread: 12080] [DEBUG] [20:57:39.641] SELECT 
+oap.creationdate,
+c.externalid numerocliente,
+c.name cliente,
+oap.[folio],
+oap.amount,
+dt.name documento,
+oap.documenttypeid,
+dc.name concepto,
+sdp.tendertypename as "FormaPago",
+u.login usuario,
+s.name tienda, 
+s.number
+FROM OnAccountPayment oap
+LEFT JOIN customer c ON c.UUID = oap.customeruuid
+LEFT JOIN documentconcept dc ON dc.id = oap.documentconceptid
+inner join (SELECT OnAccountPaymentUUID,TenderTypeName,SUM(Amount) Amount
+	FROM SaleDocumentPayment
+	GROUP BY OnAccountPaymentUUID,TenderTypeName) sdp on sdp.onaccountpaymentUUID = oap.UUID
+LEFT JOIN documenttype dt ON dt.id = oap.documenttypeid
+LEFT JOIN [user] u on u.id = oap.creationuserid
+LEFT JOIN store s on s.id = oap.storeid
+WHERE oap.uuid = '8F06B678-2799-4A88-A599-8233A457B3CE'
+
+UNION ALL
+SELECT 
+oap.creationdate,
+c.externalid numerocliente,
+c.name cliente,
+oap.[folio],
+oap.amount,
+dt.name documento,
+oap.documenttypeid,
+dc.name concepto,
+scu.reference as "FolioPago",
+tt.name as "FormaPago",
+u.login usuario,
+s.name tienda, 
+s.number
+FROM OnAccountPayment oap
+LEFT JOIN customer c ON c.UUID = oap.customeruuid
+LEFT JOIN documentconcept dc ON dc.id = oap.documentconceptid
+inner join StoreCreditUsed scu on scu.onaccountpaymentUUID = oap.UUID
+LEFT JOIN documenttype dt ON dt.id = oap.documenttypeid
+LEFT JOIN [user] u on u.id = oap.creationuserid
+LEFT JOIN store s on s.id = oap.storeid
+LEFT JOIN TenderType tt ON tt.ID=scu.TenderTypeID
+WHERE oap.uuid = '8F06B678-2799-4A88-A599-8233A457B3CE'
+
+[Thread: 12080] [DEBUG] [21:06:09.130] SELECT  
+  SCU.*,
+  CASE 
+    WHEN COALESCE(SC.IDCard, '') = '' THEN SC.Folio
+    ELSE SC.IDCard END AS IDCARD,
+  sc.Balance,
+  tt.Name,
+  sc.ExpirationDate
+FROM StoreCreditUsed SCU
+INNER JOIN StoreCredit SC ON SC.UUID=SCU.StoreCreditUUID
+JOIN TenderType tt ON scu.TenderTypeID=tt.ID
+where oap.uuid = '8F06B678-2799-4A88-A599-8233A457B3CE' AND TenderTypeID in (7,9,10)
+
+[Thread: 16348] [DEBUG] [21:37:09.021] select scs.creationdate, scs.amount, scs.idCardused, scs.reference from StoreCreditUsed scs, tt.Name
+inner join onaccountpayment oap on oap.id = scs.OnAccountPaymentID
+JOIN TenderType tt ON oap.TenderTypeID=tt.ID
+ where oap.uuid = '8F06B678-2799-4A88-A599-8233A457B3CE'
+
+[Thread: 16348] [DEBUG] [21:37:31.625] select scs.creationdate, scs.amount, scs.idCardused, scs.reference from StoreCreditUsed scs, tt.Name
+inner join onaccountpayment oap on oap.id = scs.OnAccountPaymentID
+JOIN TenderType tt ON oap.TenderTypeID=tt.ID
+ where oap.uuid = '8F06B678-2799-4A88-A599-8233A457B3CE'
+
+[Thread: 16348] [DEBUG] [21:37:42.210] select scs.creationdate, scs.amount, scs.idCardused, scs.reference from StoreCreditUsed scs, *
+inner join onaccountpayment oap on oap.id = scs.OnAccountPaymentID
+JOIN TenderType tt ON oap.TenderTypeID=tt.ID
+ where oap.uuid = '8F06B678-2799-4A88-A599-8233A457B3CE'
+
+[Thread: 16348] [DEBUG] [21:37:56.603] select scs.creationdate, scs.amount, scs.idCardused, scs.reference, tt.Name from StoreCreditUsed scs
+inner join onaccountpayment oap on oap.id = scs.OnAccountPaymentID
+JOIN TenderType tt ON oap.TenderTypeID=tt.ID
+ where oap.uuid = '8F06B678-2799-4A88-A599-8233A457B3CE'
+
