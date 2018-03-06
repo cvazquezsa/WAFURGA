@@ -17,6 +17,6 @@ Este sp se desarrollo para Wafurga, forma parte de la interfaz con el *Sistema R
 ### Modificaciones
 1. 06/03/2018 - Se agregaron lineas para llamar el **spWfgHorasExtras** cuando el movimiento Corte del módulo de asistencias pase a estatus concluido
 ## 4. spWfgHorasExtras
-###Descripción
+### Descripción
 Este sp calcula el total de minutos laborados y los compara contra las horas por semana indicadas en la Jornada del Empleado, cuando las horas laboradas superan a las horas de la jornada, inserta movimientos de horas extras por día distribuyendo 3 horas por empleado en los dias 1, 2 y 3 y el restante en el cuarto dia.
 Por ejemplo: si un empleado tu 10 horas extras, aplica, 3 horas el dia 1, 3 horas el dia 2, 3 horas el dia 3 y 1 hora el día 4.
