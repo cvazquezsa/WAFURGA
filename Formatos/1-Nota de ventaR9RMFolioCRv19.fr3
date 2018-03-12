@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="no"?>
-<TfrxReport Version="5.3.14" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="PRP-950" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="41357.5684321875" ReportOptions.Description.Text="" ReportOptions.LastChange="41357.5684321875" ScriptLanguage="PascalScript" ScriptText.Text="procedure Page2OnBeforePrint (Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;       IF &#60;GenerarCopia.&#34;GenerarCopia&#34;&#62; = 1  then&#13;&#10;               begin&#13;&#10;                       Page2.Visible := True;                                                                                                &#13;&#10;               end;                         &#13;&#10;end;          &#13;&#10;&#13;&#10;procedure ChildCustomerOnBeforePrint(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  //ChildCustomer.Visible := VarToStr( &#60;SaleDocument.&#34;customer&#34;&#62; ) &#60;&#62; '';                                                &#13;&#10;end;&#13;&#10;  //Oculta el folio de apartado cuando la nota no procede de un apartado                                                                                                                                                                       &#13;&#10;Procedure ChildInformacionNotaOnBeforePrint(Sender: TfrxComponent);&#13;&#10;Begin   &#13;&#10;       Memo45.Visible:= VarToStr(&#60;LayawayDocument.&#34;Folio&#34;&#62;)&#60;&#62;'';&#13;&#10;       Memo46.Visible:= VarToStr(&#60;LayawayDocument.&#34;Folio&#34;&#62;)&#60;&#62;'';&#13;&#10;       Memo45p2.Visible:= VarToStr(&#60;LayawayDocument.&#34;Folio&#34;&#62;)&#60;&#62;'';&#13;&#10;       Memo46p2.Visible:= VarToStr(&#60;LayawayDocument.&#34;Folio&#34;&#62;)&#60;&#62;'';           &#13;&#10;end;    &#13;&#10;&#13;&#10;procedure ChildVirtualWalletOnBeforePrint(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  MasterDataMonedero.Visible := VarToStr(&#60;VirtualWallet.&#34;IdCard&#34;&#62;) &#60;&#62; '';&#13;&#10;  MasterDataMonedero2.Visible := VarToStr(&#60;VirtualWallet.&#34;IdCard&#34;&#62;) &#60;&#62; '';&#13;&#10; //ChildVirtualWallet.Visible := True;     &#13;&#10;end;    &#13;&#10;&#13;&#10;procedure FooterFormaPagoOnBeforePrint(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;&#13;&#10;end;&#13;&#10;&#13;&#10;procedure Child2OnBeforePrint(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  ChildObservaciones.visible :=  VarToStr(&#60;SaleDocument.&#34;observation&#34;&#62;) &#60;&#62; '';&#13;&#10;  ChildObservaciones2.visible :=  VarToStr(&#60;SaleDocument.&#34;observation&#34;&#62;) &#60;&#62; '';      &#13;&#10;end;&#13;&#10;  &#13;&#10;begin&#13;&#10;&#13;&#10;  IF &#60;SaleDocument.&#34;documentstatusid&#34;&#62; = 2 then&#13;&#10;                       begin&#13;&#10;                       SaleDocumenttype.Text := 'Cancelacion de Nota';&#13;&#10;                       SaleDocumenttype2.Text := 'Cancelacion de Nota';                           &#13;&#10;                       end;&#13;&#10;   &#13;&#10;                                  &#13;&#10;//Aqui empieza el jale para poner invisible el campo SerieAsignada cuando no es venta de CR&#13;&#10;       &#13;&#10;   //begin&#13;&#10;    &#13;&#10;                       //begin&#13;&#10;                       //Memo2.Visible:= VarToStr(&#60;PruebaFolio.&#34;SerieAsignada&#34;&#62;) &#60;&#62; '';  &#13;&#10;                       //end;  &#13;&#10;                                  &#13;&#10;&#13;&#10;//Aqui empieza el jale para poner visible el campo SaleDocumentPaymentExchangeRate cuando pagas con Efectivo Dollar                                                             &#13;&#10;       &#13;&#10;   begin&#13;&#10;    &#13;&#10;                       begin&#13;&#10;                       SaleDocumentPaymentExchangeRate.Visible:= VarToStr(&#60;SaleDocumentPayment.&#34;FormaPago&#34;&#62;) = 'Efectivo Dollar';&#13;&#10;                       SaleDocumentPaymentExchangeRate2.Visible:= VarToStr(&#60;SaleDocumentPayment.&#34;FormaPago&#34;&#62;) = 'Efectivo Dollar';                                &#13;&#10;                       end;&#13;&#10;&#13;&#10;//Aqui empieza el jale para poner visible el campo SaleDocumentPaymentActualAmountReceived cuando pagas con Efectivo Dollar                                                             &#13;&#10;       &#13;&#10;   begin             &#13;&#10;                       begin&#13;&#10;                     SaleDocumentPaymentActualAmountReceived.Visible:= VarToStr (&#60;SaleDocumentPayment.&#34;FormaPago&#34;&#62;) = 'Efectivo Dollar';  &#13;&#10;                     SaleDocumentPaymentActualAmountReceived2.Visible:= VarToStr (&#60;SaleDocumentPayment.&#34;FormaPago&#34;&#62;) = 'Efectivo Dollar';     &#13;&#10;                     //Memo91.Visible:= VarToStr (&#60;SaleDocumentPayment.&#34;FormaPago&#34;&#62;) = 'Efectivo Dollar';&#13;&#10;                       end;&#13;&#10;                               &#13;&#10;end&#13;&#10;end&#13;&#10;  //end                     &#13;&#10;end.&#13;&#10;          &#13;&#10;            ">
+<TfrxReport Version="5.3.14" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="PRP-950" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="41357.5684321875" ReportOptions.Description.Text="" ReportOptions.LastChange="41357.5684321875" ScriptLanguage="PascalScript" ScriptText.Text="procedure Page2OnBeforePrint (Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;       IF (&#60;GenerarCopia.&#34;GenerarCopia&#34;&#62; = 1) OR (&#60;SaleDocument.&#34;TipoCredito&#34;&#62; = 'A Cuenta') OR (&#60;VirtualWallet.&#34;Used&#34;&#62; &#62; 0) AND (&#60;SaleDocumentPayment.&#34;FormaPago&#34;&#62; &#60;&#62; 'Apartado') then&#13;&#10;               begin&#13;&#10;                       Page2.Visible := True;                                                                                                &#13;&#10;               end;                         &#13;&#10;end;          &#13;&#10;&#13;&#10;procedure ChildCustomerOnBeforePrint(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  //ChildCustomer.Visible := VarToStr( &#60;SaleDocument.&#34;customer&#34;&#62; ) &#60;&#62; '';                                                &#13;&#10;end;&#13;&#10;  //Oculta el folio de apartado cuando la nota no procede de un apartado                                                                                                                                                                       &#13;&#10;Procedure ChildInformacionNotaOnBeforePrint(Sender: TfrxComponent);&#13;&#10;Begin   &#13;&#10;       Memo45.Visible:= VarToStr(&#60;LayawayDocument.&#34;Folio&#34;&#62;)&#60;&#62;'';&#13;&#10;       Memo46.Visible:= VarToStr(&#60;LayawayDocument.&#34;Folio&#34;&#62;)&#60;&#62;'';&#13;&#10;       Memo45p2.Visible:= VarToStr(&#60;LayawayDocument.&#34;Folio&#34;&#62;)&#60;&#62;'';&#13;&#10;       Memo46p2.Visible:= VarToStr(&#60;LayawayDocument.&#34;Folio&#34;&#62;)&#60;&#62;'';           &#13;&#10;end;    &#13;&#10;&#13;&#10;procedure ChildVirtualWalletOnBeforePrint(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  MasterDataMonedero.Visible := VarToStr(&#60;VirtualWallet.&#34;IdCard&#34;&#62;) &#60;&#62; '';&#13;&#10;  MasterDataMonedero2.Visible := VarToStr(&#60;VirtualWallet.&#34;IdCard&#34;&#62;) &#60;&#62; '';&#13;&#10; //ChildVirtualWallet.Visible := True;     &#13;&#10;end;    &#13;&#10;&#13;&#10;procedure FooterFormaPagoOnBeforePrint(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;&#13;&#10;end;&#13;&#10;&#13;&#10;procedure Child2OnBeforePrint(Sender: TfrxComponent);&#13;&#10;begin&#13;&#10;  ChildObservaciones.visible :=  VarToStr(&#60;SaleDocument.&#34;observation&#34;&#62;) &#60;&#62; '';&#13;&#10;  ChildObservaciones2.visible :=  VarToStr(&#60;SaleDocument.&#34;observation&#34;&#62;) &#60;&#62; '';      &#13;&#10;end;&#13;&#10;  &#13;&#10;begin&#13;&#10;&#13;&#10;  IF &#60;SaleDocument.&#34;documentstatusid&#34;&#62; = 2 then&#13;&#10;                       begin&#13;&#10;                       SaleDocumenttype.Text := 'Cancelacion de Nota';&#13;&#10;                       SaleDocumenttype2.Text := 'Cancelacion de Nota';                           &#13;&#10;                       end;&#13;&#10;   &#13;&#10;                                  &#13;&#10;//Aqui empieza el jale para poner invisible el campo SerieAsignada cuando no es venta de CR&#13;&#10;       &#13;&#10;   //begin&#13;&#10;    &#13;&#10;                       //begin&#13;&#10;                       //Memo2.Visible:= VarToStr(&#60;PruebaFolio.&#34;SerieAsignada&#34;&#62;) &#60;&#62; '';  &#13;&#10;                       //end;  &#13;&#10;                                  &#13;&#10;&#13;&#10;//Aqui empieza el jale para poner visible el campo SaleDocumentPaymentExchangeRate cuando pagas con Efectivo Dollar                                                             &#13;&#10;       &#13;&#10;   begin&#13;&#10;    &#13;&#10;                       begin&#13;&#10;                       SaleDocumentPaymentExchangeRate.Visible:= VarToStr(&#60;SaleDocumentPayment.&#34;FormaPago&#34;&#62;) = 'Efectivo Dollar';&#13;&#10;                       SaleDocumentPaymentExchangeRate2.Visible:= VarToStr(&#60;SaleDocumentPayment.&#34;FormaPago&#34;&#62;) = 'Efectivo Dollar';                                &#13;&#10;                       end;&#13;&#10;&#13;&#10;//Aqui empieza el jale para poner visible el campo SaleDocumentPaymentActualAmountReceived cuando pagas con Efectivo Dollar                                                             &#13;&#10;       &#13;&#10;   begin             &#13;&#10;                       begin&#13;&#10;                     SaleDocumentPaymentActualAmountReceived.Visible:= VarToStr (&#60;SaleDocumentPayment.&#34;FormaPago&#34;&#62;) = 'Efectivo Dollar';  &#13;&#10;                     SaleDocumentPaymentActualAmountReceived2.Visible:= VarToStr (&#60;SaleDocumentPayment.&#34;FormaPago&#34;&#62;) = 'Efectivo Dollar';     &#13;&#10;                     //Memo91.Visible:= VarToStr (&#60;SaleDocumentPayment.&#34;FormaPago&#34;&#62;) = 'Efectivo Dollar';&#13;&#10;                       end;&#13;&#10;                               &#13;&#10;end&#13;&#10;end&#13;&#10;  //end                     &#13;&#10;end.&#13;&#10;          &#13;&#10;            ">
 	<Datasets>
 		<item DataSet="FRX_Change" DataSetName="Change"/>
 		<item DataSet="FRX_ConfiguracionTienda" DataSetName="ConfiguracionTienda"/>
@@ -209,10 +209,10 @@
 		<TfrxHeader Name="HeaderFormaPago2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="21.02677667" Left="0" Top="861.73284" Width="275.90569">
 			<TfrxMemoView Name="Memo66" Left="3.77953" Top="2.44619667" Width="268.56308" Height="15.11811024" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="lucida Console" Font.Style="0" Frame.Typ="12" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Forma(s) de pago:"/>
 		</TfrxHeader>
-		<TfrxReportSummary Name="ReportSummary2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="31.67718" Left="0" Top="1697.00897" Width="275.90569" Child="ChildBarcode2" Stretched="True">
+		<TfrxReportSummary Name="ReportSummary2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="31.67718" Left="0" Top="1765.04051" Width="275.90569" Child="ChildBarcode2" Stretched="True">
 			<TfrxMemoView Name="Memo67" Align="baWidth" Left="0" Top="1" Width="275.90569" Height="28.89765" StretchMode="smActualHeight" DataSet="FRX_MensajePieNota" DataSetName="MensajePieNota" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" Text="[MensajePieNota.&#34;Val&#34;]"/>
 		</TfrxReportSummary>
-		<TfrxChild Name="ChildBarcode2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="60.47248" Left="0" Top="1749.92239" Width="275.90569" Child="Child1p2" Stretched="True">
+		<TfrxChild Name="ChildBarcode2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="60.47248" Left="0" Top="1817.95393" Width="275.90569" Child="Child1p2" Stretched="True">
 			<TfrxBarCodeView Name="BarCode2" Align="baCenter" Left="98.452845" Top="4.77953" Width="79" Height="52.91342" BarType="bcCode128" CalcCheckSum="True" Expression="&#60;SaleDocument.&#34;Folio&#34;&#62;" Rotation="0" Text="12345678" WideBarRatio="2" Zoom="1" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0"/>
 		</TfrxChild>
 		<TfrxChild Name="ChildEncabezadoNota2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="146" Left="0" Top="136.06308" Width="275.90569" Child="ChildInformacionNota2" Stretched="True">
@@ -258,7 +258,7 @@
 		<TfrxHeader Name="Header1p2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="16.34384667" Left="0" Top="948.66203" Width="275.90569">
 			<TfrxMemoView Name="Memo95" Left="11.67192333" Top="0.77953" Width="252.94496" Height="15.11811024" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="lucida Console" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Cambio al Cliente:"/>
 		</TfrxHeader>
-		<TfrxChild Name="Child1p2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="37.7953" Left="0" Top="1833.07205" Width="275.90569"/>
+		<TfrxChild Name="Child1p2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="37.7953" Left="0" Top="1901.10359" Width="275.90569"/>
 		<TfrxChild Name="ChildObservaciones2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="48.85436" Left="0" Top="668.97681" Width="275.90569" OnBeforePrint="Child2OnBeforePrint" Stretched="True">
 			<TfrxMemoView Name="Memo96" Left="3.77953" Top="22.67718" Width="257.00804" Height="22.67718" StretchMode="smActualHeight" DataField="observation" DataSet="FRX_SaleDocument" DataSetName="SaleDocument" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" HAlign="haBlock" ParentFont="False" Text="[SaleDocument.&#34;observation&#34;]"/>
 			<TfrxMemoView Name="Memo97" Left="3.77953" Top="3.77953" Width="94.48825" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" Text="OBSERVACIONES:"/>
@@ -279,7 +279,7 @@
 			<TfrxLineView Name="Line13" Align="baWidth" Left="0" Top="0" Width="275.90569" Height="0" Color="0" Frame.Typ="4"/>
 		</TfrxFooter>
 		<TfrxHeader Name="Header3p2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="0" Left="0" Top="1409.76469" Width="275.90569"/>
-		<TfrxMasterData Name="MasterData3p2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="83.1496063" Left="0" Top="1432.44187" Width="275.90569" Child="FirmaCliente" ColumnWidth="0" ColumnGap="0" DataSet="FRX_StoreCreditUsed" DataSetName="StoreCreditUsed" Filter="(&#60;SaleDocument.&#34;RelacionApartado&#34;&#62;=0) and (&#60;StoreCreditUsed.&#34;Balance&#34;&#62;&#62;0)" RowCount="0">
+		<TfrxMasterData Name="MasterData3p2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="83.1496063" Left="0" Top="1432.44187" Width="275.90569" ColumnWidth="0" ColumnGap="0" DataSet="FRX_StoreCreditUsed" DataSetName="StoreCreditUsed" Filter="(&#60;SaleDocument.&#34;RelacionApartado&#34;&#62;=0) and (&#60;StoreCreditUsed.&#34;Balance&#34;&#62;&#62;0)" RowCount="0">
 			<TfrxMemoView Name="Memo106" Left="7.55906" Top="22.6771653543307" Width="49.67718" Height="16.39765" OnBeforePrint="Child2OnBeforePrint" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Folio:"/>
 			<TfrxMemoView Name="Memo107" Left="90.70872" Top="22.6771653543307" Width="133.00804" Height="16.39765" DataField="IDCARD" DataSet="FRX_StoreCreditUsed" DataSetName="StoreCreditUsed" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[StoreCreditUsed.&#34;IDCARD&#34;]"/>
 			<TfrxMemoView Name="Memo108" Left="7.55906" Top="41.5748031496063" Width="49.67718" Height="16.39765" OnBeforePrint="Child2OnBeforePrint" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Saldo:"/>
@@ -288,7 +288,7 @@
 			<TfrxMemoView Name="Memo112" Left="90.70872" Top="60.4724409448819" Width="148.12616" Height="16.39765" DataSet="FRX_StoreCreditUsed" DataSetName="StoreCreditUsed" DisplayFormat.DecimalSeparator="." DisplayFormat.FormatStr="dd/mm/yyyy" DisplayFormat.Kind="fkDateTime" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[StoreCreditUsed.&#34;ExpirationDate&#34;]"/>
 			<TfrxMemoView Name="Memo37" Left="3.77953" Top="0" Width="268.34663" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="*** Saldo [StoreCreditUsed.&#34;Name&#34;] ***"/>
 		</TfrxMasterData>
-		<TfrxFooter Name="Footer2p2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="3.77953" Left="0" Top="1632.75696" Width="275.90569">
+		<TfrxFooter Name="Footer2p2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="3.77953" Left="0" Top="1538.26871" Width="275.90569">
 			<TfrxLineView Name="Line15" Align="baWidth" Left="0" Top="0" Width="275.90569" Height="0" Color="0" Frame.Typ="4"/>
 		</TfrxFooter>
 		<TfrxHeader Name="Header4p2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="22.67718" Left="0" Top="442.20501" Width="275.90569">
@@ -317,10 +317,13 @@
 		<TfrxFooter Name="FooterMonedero2" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="11.33859" Left="0" Top="1213.22913" Width="275.90569" OnBeforePrint="ChildVirtualWalletOnBeforePrint">
 			<TfrxLineView Name="Line16" Align="baWidth" Left="0" Top="3.55906" Width="275.90569" Height="0" Color="0" Frame.Typ="4"/>
 		</TfrxFooter>
-		<TfrxChild Name="FirmaCliente" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="71.81107" Left="0" Top="1538.26871" Width="275.90569">
+		<TfrxChild Name="FirmaCliente" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="71.81107" Left="0" Top="1587.4026" Width="275.90569">
 			<TfrxMemoView Name="Memo53" Left="3.77953" Top="45.35436" Width="268.34663" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" Text="Firma del cliente"/>
 			<TfrxLineView Name="Line17" Left="49.13389" Top="41.57483" Width="185.19697" Height="0" Color="0" Diagonal="True"/>
 		</TfrxChild>
+		<TfrxHeader Name="Header5" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="0" Left="0" Top="1564.72542" Width="275.90569" Child="FirmaCliente"/>
+		<TfrxFooter Name="Footer4" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="0" Left="0" Top="1704.56803" Width="275.90569"/>
+		<TfrxMasterData Name="MasterData5" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="0" Left="0" Top="1681.89085" Width="275.90569" ColumnWidth="0" ColumnGap="0" DataSet="FRX_SaleDocument" DataSetName="SaleDocument" RowCount="0"/>
 	</TfrxReportPage>
 	<SBX-Section>
 		<SBX-Report-Id/>
@@ -602,7 +605,7 @@ where sd.UUID = '@SaleDocument.UUID']]></SBX-SQL>
 			</SBX-Dataset>
 			<SBX-Dataset name="SaleDocumentPayment">
 				<SBX-SQL><![CDATA[SELECT 
-  TT.Name as FormaPago,
+  SDP.TenderTypeName as FormaPago,
   SDP.Amount,
   SDP.ActualAmount, 
   SDP.AmountReceived,
@@ -617,7 +620,8 @@ INNER JOIN TenderType TT ON TT.ID = SDP.TenderTypeID
 WHERE SD.UUID = '@SaleDocument.UUID'
 UNION ALL
 SELECT 
-	CASE WHEN ISNULL(sd.LayawayDocumentUUID,'')<>'' THEN 'Apartado' ELSE TT.Name END as FormaPago, 
+	CONCAT (CASE WHEN ISNULL(sd.LayawayDocumentUUID,'')<>'' THEN 'Apartado' ELSE TT.Name END, ' ', 
+        CASE WHEN (sc.IdCard <> '') AND ISNULL(sd.LayawayDocumentUUID,'') = '' THEN sc.IdCard ELSE sc.Folio END) AS FormaPago, 
 	sdu.Amount,
         sdu.CreationDate,
 	sdu.Amount AS ActualAmount, 
@@ -628,6 +632,7 @@ SELECT
 	0 AS Rounded
     
 FROM StoreCreditUsed sdu
+  JOIN StoreCredit sc ON sc.UUID = sdu.StoreCreditUUID
 INNER JOIN TenderType TT on TT.ID = sdu.TenderTypeID
 JOIN SaleDocument sd ON sd.UUID=sdu.TargetSaleDocumentUUID
 WHERE TargetSaleDocumentUUID = '@SaleDocument.UUID'
@@ -636,7 +641,7 @@ WHERE TargetSaleDocumentUUID = '@SaleDocument.UUID'
 					<DATAPACKET Version="2.0">
 						<METADATA>
 							<FIELDS>
-								<FIELD attrname="FormaPago" fieldtype="string" WIDTH="50">
+								<FIELD attrname="FormaPago" fieldtype="string" WIDTH="101">
 									<PARAM Name="ORIGIN" Value=".FormaPago" Roundtrip="True"/>
 								</FIELD>
 								<FIELD attrname="Amount" fieldtype="r8">
@@ -769,44 +774,63 @@ and cso.StoreID in (select StoreID from SaleDocument where UUID = '@SaleDocument
 				</SBX-Definition>
 			</SBX-Dataset>
 			<SBX-Dataset name="VirtualWallet">
-				<SBX-SQL><![CDATA[SELECT
-  VW.IDCard as IdCard,
-  VW.Balance,
-  SDD.Earned,
-  SDP.Used
-FROM SaleDocument SD
-INNER JOIN VirtualWallet VW ON VW.ID=SD.VirtualWalletID
-LEFT JOIN (
-  SELECT 
-    SaleDocumentUUID, SUM(VirtualWalletEarned) AS Earned
-  FROM SaleDocumentDetail
-  WHERE SaleDocumentUUID='@SaleDocument.UUID'
-  GROUP BY SaleDocumentUUID
-) AS SDD ON SDD.SaleDocumentUUID=SD.UUID
-LEFT JOIN (
-  SELECT 
-    SDP1.SaleDocumentUUID, SDP1.Reference, SUM(SDP1.Amount) AS Used
-  FROM SaleDocumentPayment SDP1
-  INNER JOIN TenderType TT ON TT.ID=SDP1.TenderTypeID AND TT.Code='VW'
-  WHERE SDP1.SaleDocumentUUID='@SaleDocument.UUID'
-  GROUP BY SDP1.SaleDocumentUUID, SDP1.Reference
-) AS SDP ON SDP.SaleDocumentUUID=SD.UUID AND SDP.Reference=VW.IdCard
-WHERE SD.UUID='@SaleDocument.UUID']]></SBX-SQL>
+				<SBX-SQL><![CDATA[DECLARE
+	@SaleDocumentUUID uniqueidentifier = '@SaleDocument.UUID'
+DECLARE @InfoMon TABLE (
+	IdCard varchar(50),
+	Balance money,
+	Earned money,
+	Used money
+	)
+DECLARE
+	@IdCard varchar(50),
+	@Balance money,
+	@Earned money,
+	@Amount money
+
+SELECT @IdCard = vw.IdCard
+	FROM SaleDocument sd
+		JOIN VirtualWallet vw ON sd.VirtualWalletID=vw.ID 
+	WHERE sd.UUID=@SaleDocumentUUID
+
+IF ISNULL(@IdCard,'')=''
+	SELECT @IdCard = sdp.Reference
+		FROM SaleDocumentPayment sdp 
+			JOIN TenderType tt ON sdp.TenderTypeID=tt.ID AND tt.Code='VW'
+		WHERE SaleDocumentUUID=@SaleDocumentUUID
+		GROUP BY sdp.Reference
+
+SELECT @Amount=SUM(sdp.Amount) 
+	FROM SaleDocumentPayment sdp 
+		JOIN TenderType tt ON sdp.TenderTypeID=tt.ID AND tt.Code='VW'
+	WHERE SaleDocumentUUID=@SaleDocumentUUID AND sdp.Reference=@IdCard
+	GROUP BY sdp.Reference
+
+SELECT @Balance=Balance FROM VirtualWallet WHERE IDCard=@IdCard
+
+SELECT @Earned=SUM(sdd.VirtualWalletEarned)
+	FROM SaleDocumentDetail sdd
+	WHERE sdd.SaleDocumentUUID=@SaleDocumentUUID
+
+INSERT INTO @InfoMon
+	SELECT @IdCard, @Balance, @Earned, @Amount
+
+SELECT * FROM @InfoMon]]></SBX-SQL>
 				<SBX-Definition>
 					<DATAPACKET Version="2.0">
 						<METADATA>
 							<FIELDS>
-								<FIELD attrname="IdCard" fieldtype="string" required="true" WIDTH="25">
-									<PARAM Name="ORIGIN" Value="VirtualWallet.IdCard" Roundtrip="True"/>
+								<FIELD attrname="IdCard" fieldtype="string" WIDTH="50">
+									<PARAM Name="ORIGIN" Value="[@InfoMon].IdCard" Roundtrip="True"/>
 								</FIELD>
-								<FIELD attrname="Balance" fieldtype="r8">
-									<PARAM Name="ORIGIN" Value="VirtualWallet.Balance" Roundtrip="True"/>
+								<FIELD attrname="Balance" fieldtype="r8" SUBTYPE="Money">
+									<PARAM Name="ORIGIN" Value="[@InfoMon].Balance" Roundtrip="True"/>
 								</FIELD>
-								<FIELD attrname="Earned" fieldtype="r8">
-									<PARAM Name="ORIGIN" Value=".Earned" Roundtrip="True"/>
+								<FIELD attrname="Earned" fieldtype="r8" SUBTYPE="Money">
+									<PARAM Name="ORIGIN" Value="[@InfoMon].Earned" Roundtrip="True"/>
 								</FIELD>
-								<FIELD attrname="Used" fieldtype="r8">
-									<PARAM Name="ORIGIN" Value=".Used" Roundtrip="True"/>
+								<FIELD attrname="Used" fieldtype="r8" SUBTYPE="Money">
+									<PARAM Name="ORIGIN" Value="[@InfoMon].Used" Roundtrip="True"/>
 								</FIELD>
 							</FIELDS>
 							<PARAMS/>
@@ -1219,7 +1243,7 @@ where sd.uuid = '@SaleDocument.UUID']]></SBX-SQL>
 				</SBX-Definition>
 			</SBX-Dataset>
 			<SBX-Dataset name="GenerarCopia">
-				<SBX-SQL><![CDATA[SELECT CASE WHEN ISNULL(sc.Balance,0)=0 THEN 0 ELSE 1 END GenerarCopia
+				<SBX-SQL><![CDATA[SELECT 1 GenerarCopia
 	FROM StoreCreditUsed scu
 		JOIN StoreCredit sc ON scu.StoreCreditUUID=sc.UUID
 	WHERE TargetSaleDocumentUUID='@SaleDocument.UUID']]></SBX-SQL>
