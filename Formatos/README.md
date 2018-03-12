@@ -5,6 +5,7 @@ Esta Carpeta contiene formatos de SBX que han sido modificados en el proyecto WA
 1. 47.apartadoWafurgav1.6
 2. Nota de ventaR9RMFolioCRv19
 3. 54.Abono_de_credidoWaf_v2.0.0
+4. 15.RecTrasp
 ## 47.apartadoWafurgav1.6 ##
 + 11/03/2018 - Se elimino la sección "su crédito en tienda es..."
 + Se duplico página la cual solo se muestra cuanel el ultimo abono fue con NC, CR o ME.
@@ -18,3 +19,6 @@ Esta Carpeta contiene formatos de SBX que han sido modificados en el proyecto WA
 + Cuando la nota provenga de una liquidación de apartado, el ticket se imprimirá una sola vez.
 
 ## 54.Abono_de_credidoWaf_v2.0.0 ##
+
+## 15.RecTrasp ##
+Se corrigio sintaxis de consultas
