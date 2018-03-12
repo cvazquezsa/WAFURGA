@@ -95,7 +95,7 @@
 			<TfrxMemoView Name="Memo33" Left="15" Top="58.58750667" Width="170" Height="27.56431666" Visible="False" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" Text="Penalización por cancelación ($):"/>
 			<TfrxMemoView Name="PruebapenalPenalty" Left="187" Top="60.25417334" Width="76.03679667" Height="23.56431667" Visible="False" DataSet="FRX_Pruebapenal" DataSetName="Pruebapenal" DisplayFormat.DecimalSeparator="." DisplayFormat.FormatStr="%2.2m" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" Text="[Pruebapenal.&#34;Penalty&#34;]"/>
 		</TfrxFooter>
-		<TfrxReportSummary Name="ReportSummary1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="285.01051331" Left="0" Top="1247.2449" Width="270.236395">
+		<TfrxReportSummary Name="ReportSummary1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="285.01051331" Left="0" Top="1213.22913" Width="270.236395">
 			<TfrxMemoView Name="MensajePieNotaValText" Left="2.33333332" Top="3.26190333" Width="260.37013" Height="96.96320333" StretchMode="smActualHeight" DataSet="FRX_MensajePieNota" DataSetName="MensajePieNota" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="lucida Console" Font.Style="0" Frame.Typ="4" HAlign="haCenter" HideZeros="True" ParentFont="False" VAlign="vaCenter" Text="[MensajePieNota.&#34;ValText&#34;]"/>
 			<TfrxBarCodeView Name="BarCode1" Left="68.03154" Top="134.78416667" Width="129" Height="66.89765" BarType="bcCode39" Expression="&#60;LayawayDocument.&#34;Folio&#34;&#62;" HAlign="haCenter" Rotation="0" Text="12345678" WideBarRatio="2" Zoom="1" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0"/>
 		</TfrxReportSummary>
@@ -112,23 +112,20 @@
 			<TfrxMemoView Name="Memo41" Left="218.68321" Top="19.39765" Width="62.25201" Height="15.11812" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" Frame.Typ="15" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="IMPORTE"/>
 			<TfrxMemoView Name="Memo42" Left="6.02953" Top="0" Width="152.92919" Height="15.11812" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="PRODUCTOS ENTREGADOS:"/>
 		</TfrxHeader>
-		<TfrxFooter Name="Footer3" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="72.68243667" Left="0" Top="907.0872" Width="270.236395">
-			<TfrxMemoView Name="Memo16" Left="34.33333333" Top="33.38527999" Width="160.15491667" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" Text="Su crédito en tienda es: "/>
-			<TfrxMemoView Name="SucreditoentiendaesBALANCE" Left="196.66666666" Top="33.71861333" Width="79.37013" Height="18.89765" DataSet="FRX_Sucreditoentiendaes" DataSetName="Sucreditoentiendaes" DisplayFormat.DecimalSeparator="." DisplayFormat.FormatStr="%2.2m" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[Sucreditoentiendaes.&#34;BALANCE&#34;]"/>
+		<TfrxFooter Name="Footer3" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="38.66666667" Left="0" Top="907.0872" Width="270.236395">
 			<TfrxMemoView Name="Memo47" Left="56.69295" Top="0" Width="139.84261" Height="15.11812" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="Artículos entregados:"/>
 			<TfrxMemoView Name="Memo48" Left="56.69295" Top="15.11812" Width="139.84261" Height="14.78478667" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="Total:"/>
 			<TfrxSysMemoView Name="SysMemo4" Left="196.53556" Top="15.11812" Width="79.37013" Height="15.11812" DisplayFormat.FormatStr="%2.2m" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[SUM(&#60;LayawayDocumentDetail.&#34;Total&#34;&#62;,MasterData3)]"/>
 			<TfrxSysMemoView Name="SysMemo5" Left="196.53556" Top="0" Width="79.37013" Height="15.11812" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[SUM(&#60;LayawayDocumentDetail.&#34;QuantityShipped&#34;&#62;,MasterData3)]"/>
-			<TfrxMemoView Name="SucreditoentiendaesFOLIO" Left="196.66666668" Top="53.81045001" Width="79.96351334" Height="16.89765" DataField="FOLIO" DataSet="FRX_Sucreditoentiendaes" DataSetName="Sucreditoentiendaes" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[Sucreditoentiendaes.&#34;FOLIO&#34;]"/>
 		</TfrxFooter>
-		<TfrxHeader Name="Header4" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="22.67718" Left="0" Top="1001.57545" Width="270.236395">
+		<TfrxHeader Name="Header4" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="22.67718" Left="0" Top="967.55968" Width="270.236395">
 			<TfrxMemoView Name="Memo50" Left="37.7953" Top="3.77953" Width="200.31509" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Arial" Font.Style="0" HAlign="haCenter" ParentFont="False" Text="*** NOTA DE CRÉDITO GENERADA ***"/>
 			<TfrxLineView Name="Line7" Align="baWidth" Left="0" Top="0" Width="270.236395" Height="0" Color="0" Diagonal="True"/>
 		</TfrxHeader>
-		<TfrxFooter Name="Footer4" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="68.03154" Left="0" Top="1118.74088" Width="270.236395">
+		<TfrxFooter Name="Footer4" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="68.03154" Left="0" Top="1084.72511" Width="270.236395">
 			<TfrxBarCodeView Name="BarCode2" Left="68.03154" Top="3.77953" Width="129" Height="60.47248" BarType="bcCode39" Expression="&#60;Sucreditoentiendaes.&#34;FOLIO&#34;&#62;" HAlign="haCenter" Rotation="0" Text="12345678" WideBarRatio="2" Zoom="1" Font.Charset="1" Font.Color="0" Font.Height="-12" Font.Name="Arial" Font.Style="0"/>
 		</TfrxFooter>
-		<TfrxMasterData Name="MasterData4" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="49.13389" Left="0" Top="1046.92981" Width="270.236395" ColumnWidth="0" ColumnGap="0" DataSet="FRX_Sucreditoentiendaes" DataSetName="Sucreditoentiendaes" Filter="&#60;LayawayDocument.&#34;DocumentStatusID&#34;&#62;=2" RowCount="0">
+		<TfrxMasterData Name="MasterData4" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="49.13389" Left="0" Top="1012.91404" Width="270.236395" ColumnWidth="0" ColumnGap="0" DataSet="FRX_Sucreditoentiendaes" DataSetName="Sucreditoentiendaes" Filter="&#60;LayawayDocument.&#34;DocumentStatusID&#34;&#62;=2" RowCount="0">
 			<TfrxMemoView Name="Memo54" Left="192.75603" Top="0" Width="75.5906" Height="15.11812" DataField="FOLIO" DataSet="FRX_Sucreditoentiendaes" DataSetName="Sucreditoentiendaes" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" Text="[Sucreditoentiendaes.&#34;FOLIO&#34;]"/>
 			<TfrxMemoView Name="Memo49" Left="68.03154" Top="0" Width="120.15491667" Height="15.11811024" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" Text="Folio NC Generada: "/>
 			<TfrxMemoView Name="Memo55" Left="68.03154" Top="15.11812" Width="120.15491667" Height="15.11811024" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" Text="Saldo:"/>
@@ -1096,23 +1093,34 @@ order by SCP.ID desc
 			</SBX-Dataset>
 			<SBX-Dataset name="GenerarCopia">
 				<SBX-SQL><![CDATA[DECLARE 
-	@LayawayDocumentUUID uniqueidentifier = 'FEBE6192-84C7-4F8D-BA70-BF61609081AD'
+	@LayawayDocumentUUID uniqueidentifier = '@LayawayDocument.UUID'
 
 DECLARE
 	@FechaUltima datetime,
 	@GenerarCopia bit = 0
 
-SELECT @FechaUltima=Max(scp.CreationDate) 
+SELECT  @FechaUltima=Max(scp.CreationDate) 
 	FROM StoreCreditPayment scp
 		JOIN StoreCredit sc ON scp.StoreCreditUUID=sc.UUID 
 	WHERE sc.LayawayDocumentUUID=@LayawayDocumentUUID
 
 
-SELECT @GenerarCopia=1 
+SELECT  @GenerarCopia=1 
 	FROM StoreCreditPayment scp
 		JOIN  TenderType tt ON scp.TenderTypeID=tt.ID AND tt.Code IN ('CN','GC', 'VW')
 		JOIN StoreCredit sc ON scp.StoreCreditUUID=sc.UUID 
 	WHERE sc.LayawayDocumentUUID=@LayawayDocumentUUID AND scp.CreationDate=@FechaUltima
+
+
+SELECT
+@GenerarCopia=1 
+FROM LayawayDocument LD
+INNER JOIN StoreCredit SC ON SC.LayawayDocumentUUID=LD.UUID
+INNER JOIN StoreCreditUsed SCU ON SCU.TargetStoreCreditUUID = SC.UUID
+INNER JOIN TenderType TT ON TT.ID = SCU.TenderTypeID
+WHERE
+  LD.UUID='@LayawayDocument.UUID' AND scu.CreationDate=@FechaUltima
+
 
 SELECT @GenerarCopia as GenerarCopia]]></SBX-SQL>
 				<SBX-Definition>
