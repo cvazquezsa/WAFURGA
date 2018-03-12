@@ -17,6 +17,7 @@ Esta Carpeta contiene formatos de SBX que han sido modificados en el proyecto WA
 + 11/03/2018 - Se modificó Forma de pago para que cuando la forma de pago sea CR, NC se concatene el nombre de la forma de pago con el Folio o IdCard segun corresponda.
 + 11/03/2018 - Se modificó DateSet **SaleDocumentPayment** para que considere transacciones que aumentan puntos a monedero y transacciones que utilizan el saldo del monedero, en el ultimo caso el ticket debe imprimirse 2 veces
 + Cuando la nota provenga de una liquidación de apartado, el ticket se imprimirá una sola vez.
++ Se cambio de posicion **ChildObervaciones** a fin de que no se repita por cada renglon.
 
 ## 54.Abono_de_credidoWaf_v2.0.0 ##
 
