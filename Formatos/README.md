@@ -7,6 +7,8 @@ Esta Carpeta contiene formatos de SBX que han sido modificados en el proyecto WA
 3. 54.Abono_de_credidoWaf_v2.0.0
 ## 47.apartadoWafurgav1.6 ##
 + 11/03/2018 - Se elimino la sección "su crédito en tienda es..."
++ Se duplico página la cual solo se muestra cuanel el ultimo abono fue con NC, CR o ME.
++ se elimino Campo Cambio y Campo recibido.
 
 ## 1.Nota de ventaR9RMFolioCRv19 ##
 + 11/03/2018 - se agrego sección **Nota de crédito genederada** la cual solo debe poderse visualizar cuando la nota de devolución haya generado una nota de crédito
