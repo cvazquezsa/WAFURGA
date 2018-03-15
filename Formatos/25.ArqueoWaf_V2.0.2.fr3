@@ -35,7 +35,7 @@
 			<SBX-Dataset name="RegisterCloseOutDetail">
 				<SBX-SQL><![CDATA[DECLARE 
 	@RegisterCloseOutUUID uniqueidentifier='@RegisterCloseOut.UUID',
-	@RegisterUUID uniqueidentifier,
+	@RegisterUUID varchar(36),
 	@TenderTypeID int,
 	@Captured money,
 	@RCOCreationDate datetime,
@@ -65,8 +65,8 @@ SELECT d.TenderTypeID,CASE WHEN ExchangeRate<>1 THEN CONCAT(tt.Name,' (',Exchang
   SELECT TenderTypeID,ExchangeRate,Amount,ActualAmount 
 	FROM SaleDocumentPayment WHERE RegisterUUID=@RegisterUUID AND CreationDate < @RCOCreationDate 
   UNION ALL
-  SELECT TenderTypeID,ExchangeRate,Amount,ActualAmount 
-	FROM StoreCreditPayment WHERE RegisterUUID=@RegisterUUID AND CreationDate < @RCOCreationDate
+  SELECT TenderTypeID, 1, Amount, Amount 
+	FROM StoreCreditUsed WHERE RegisterUUID=@RegisterUUID AND CreationDate < @RCOCreationDate
 ) d JOIN TenderType tt ON d.TenderTypeID=tt.ID
 Group BY d.TenderTypeID,tt.Name,d.ExchangeRate
 
@@ -119,4 +119,3 @@ SELECT * FROM @Arqueo
 		</SBX-Datasets>
 	</SBX-Section>
 </TfrxReport>
-No se pudo descargar el archivo. Error: Thread was being aborted.
