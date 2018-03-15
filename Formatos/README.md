@@ -32,6 +32,7 @@ Se corrigio sintaxis de consultas
 
 ## 5.cfdi3.3 ##
 **Formato de ticket de Factura**
+Se ajustaron margenes.
 
 ## 22.CFDI3.3 ##
 **Formato carta de Factura**

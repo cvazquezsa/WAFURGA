@@ -16,7 +16,7 @@
 		<item Name="Tax" Value="&#60;CFDiParseXMLDetail.&#34;I_Impuesto1&#34;&#62;+','+&#60;CFDiParseXMLDetail.&#34;I_Impuesto2&#34;&#62;"/>
 	</Variables>
 	<TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
-	<TfrxReportPage Name="Page1" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" PaperWidth="80" PaperHeight="3003" PaperSize="256" LeftMargin="4" RightMargin="3" TopMargin="5" BottomMargin="5" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+	<TfrxReportPage Name="Page1" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" PaperWidth="79.5" PaperHeight="3003" PaperSize="256" LeftMargin="4" RightMargin="4" TopMargin="5" BottomMargin="5" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
 		<TfrxPageHeader Name="PageHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="226.7718" Left="0" Top="109.60637" Width="264.5671" Stretched="True">
 			<TfrxMemoView Name="Memo2" Align="baWidth" Left="0" Top="4.11812" Width="264.5671" Height="34.01577" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" Frame.Typ="8" ParentFont="False" VAlign="vaCenter" Text="Folio Fiscal:&#13;&#10; [CFDiParseXMLHeader.&#34;UUID&#34;]"/>
 			<TfrxMemoView Name="Memo3" Align="baWidth" Left="0" Top="45.69295" Width="264.5671" Height="34.01577" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" Frame.Typ="8" ParentFont="False" VAlign="vaCenter" Text="No de Serie del Certificado del CSD:&#13;&#10; [CFDiParseXMLHeader.&#34;C_NoCertificado&#34;]"/>
