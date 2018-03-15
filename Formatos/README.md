@@ -7,6 +7,8 @@ Esta Carpeta contiene formatos de SBX que han sido modificados en el proyecto WA
 3. 54.Abono_de_credidoWaf_v2.0.0
 4. 15.RecTrasp
 5. 25.ArqueoCaja
+6. 5.cfdi3.3
+7. 22.CFDI3.3
 ## 47.apartadoWafurgav1.6 ##
 + 11/03/2018 - Se elimino la sección "su crédito en tienda es..."
 + Se duplico página la cual solo se muestra cuanel el ultimo abono fue con NC, CR o ME.
@@ -27,3 +29,9 @@ Se corrigio sintaxis de consultas
 
 ## 25.ArqueoCaja ##
 * Se modificó formato para que muestre las formas de pago especiales. https://cvazquez.freshdesk.com/helpdesk/tickets/47
+
+## 5.cfdi3.3 ##
+**Formato de ticket de Factura**
+
+## 22.CFDI3.3 ##
+**Formato carta de Factura**
