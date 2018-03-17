@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="ASCII" ?>
+<IntelisisAddOn Nombre="ContXDTBL.XML">
+<Configuracion>
+<![CDATA[
+[AddOn]
+Nombre=Wafurga
+Version=1.1
+Llave=alksjdklajsdlkjalksdjalksjdklajsl
+Compilacion=2921
+AceptaESPs=N
+
+
+]]>
+</Configuracion>
+<ContXD.tbl>
+<![CDATA[
+[Tabla]
+Icono=0
+Clave=ContXD
+Archivo=ContXD
+Modulos=(Todos)
+TipoTabla=Configuracion
+ListaCampos=(Lista)
+Nombre=Conexión Contable
+Singular=Conexión Contable
+LlavePrimaria=(Lista)
+CampoID=ID
+CampoSubCuenta=SubCuenta
+CampoCuenta=Cuenta
+
+SQL=(Lista)
+[ID]
+Clave=ID
+Nombre=ID
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+
+[Renglon]
+Clave=Renglon
+Nombre=Renglon
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=NumFlotante
+
+[Cuenta]
+Clave=Cuenta
+Nombre=Cuenta
+AyudaEnCaptura=Editor Expresiones
+TamanoValidacion=255
+Tamano=255
+AyudaExpresionesVista=Si<BR>  ContX:ContX.Modulo=<T>DIN<T><BR>Entonces<BR>  <T>DineroTCont<T><BR>Sino<BR>  Modulo.VistaGeneral(ContX:ContX.Modulo)<BR>Fin
+TipoDatos=Texto
+
+[SubCuenta]
+Clave=SubCuenta
+Nombre=Centro Costos
+AyudaEnCaptura=Editor Expresiones
+TamanoValidacion=255
+Tamano=255
+AyudaExpresionesVista=Si<BR>  ContX:ContX.Modulo=<T>DIN<T><BR>Entonces<BR>  <T>DineroTCont<T><BR>Sino<BR>  Modulo.VistaGeneral(ContX:ContX.Modulo)<BR>Fin
+TipoDatos=Texto
+
+[Concepto]
+Clave=Concepto
+Nombre=Concepto
+AyudaEnCaptura=Editor Expresiones
+TamanoValidacion=255
+Tamano=255
+AyudaExpresionesVista=Si<BR>  ContX:ContX.Modulo=<T>DIN<T><BR>Entonces<BR>  <T>DineroTCont<T><BR>Sino<BR>  Modulo.VistaGeneral(ContX:ContX.Modulo)<BR>Fin
+
+TipoDatos=Texto
+[Debe]
+Clave=Debe
+Nombre=Debe
+AyudaEnCaptura=Editor Expresiones
+TamanoValidacion=255
+Tamano=255
+AyudaExpresionesVista=Si<BR>  ContX:ContX.Modulo=<T>DIN<T><BR>Entonces<BR>  <T>DineroTCont<T><BR>Sino<BR>  Modulo.VistaGeneral(ContX:ContX.Modulo)<BR>Fin
+TipoDatos=Texto
+
+[Haber]
+Clave=Haber
+Nombre=Haber
+AyudaEnCaptura=Editor Expresiones
+TamanoValidacion=255
+Tamano=255
+AyudaExpresionesVista=Si<BR>  ContX:ContX.Modulo=<T>DIN<T><BR>Entonces<BR>  <T>DineroTCont<T><BR>Sino<BR>  Modulo.VistaGeneral(ContX:ContX.Modulo)<BR>Fin
+TipoDatos=Texto
+
+[Condicion]
+Clave=Condicion
+Nombre=Condición
+AyudaEnCaptura=Editor Expresiones
+TamanoValidacion=255
+Tamano=255
+AyudaExpresionesVista=Si<BR>  ContX:ContX.Modulo=<T>DIN<T><BR>Entonces<BR>  <T>DineroTCont<T><BR>Sino<BR>  Modulo.VistaGeneral(ContX:ContX.Modulo)<BR>Fin
+TipoDatos=Texto
+
+[Orden]
+Clave=Orden
+Nombre=Orden
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=10
+TipoDatos=Numérico
+
+[Comentarios]
+Clave=Comentarios
+Nombre=Comentarios
+TamanoValidacion=100
+Tamano=255
+TipoDatos=Texto
+VerificarOrtografia=S
+
+[UnaVez]
+Clave=UnaVez
+Nombre=una vez
+Visible=S
+OpcionesColumnas=1
+OpcionesRenglones=8
+TamanoValidacion=2
+Tamano=2
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+ListaOpciones=(Lista)
+OpcionesPredefinidas=Ninguna
+TipoDatos=Texto
+
+[Presupuesto]
+Clave=Presupuesto
+Nombre=Afectar Presupuesto
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Si - No
+OpcionesRenglones=8
+CondicionDespliege=Config.ContMovPresupuesto
+
+[SucursalContable]
+Clave=SucursalContable
+Nombre=Sucursal
+Visible=S
+TamanoValidacion=255
+Tamano=255
+CondicionDespliege=Config.ContMultiSucursal
+AyudaEnCaptura=Editor Expresiones
+AyudaExpresionesVista=Si<BR>  ContX:ContX.Modulo=<T>DIN<T><BR>Entonces<BR>  <T>DineroTCont<T><BR>Sino<BR>  Modulo.VistaGeneral(ContX:ContX.Modulo)<BR>Fin
+TipoDatos=Texto
+
+[Debe2]
+Clave=Debe2
+Nombre=Debe (Dólares)
+Visible=S
+TamanoValidacion=255
+Tamano=255
+AyudaEnCaptura=Editor Expresiones
+AyudaExpresionesVista=Si<BR>  ContX:ContX.Modulo=<T>DIN<T><BR>Entonces<BR>  <T>DineroTCont<T><BR>Sino<BR>  Modulo.VistaGeneral(ContX:ContX.Modulo)<BR>Fin
+CondicionDespliege=(Config.ContMoneda2<><T>(No)<T>) y (no Config.ContMoneda2Auto)
+TipoDatos=Texto
+
+[Haber2]
+Clave=Haber2
+Nombre=Haber (Dólares)
+Visible=S
+TamanoValidacion=255
+Tamano=255
+AyudaEnCaptura=Editor Expresiones
+AyudaExpresionesVista=Si<BR>  ContX:ContX.Modulo=<T>DIN<T><BR>Entonces<BR>  <T>DineroTCont<T><BR>Sino<BR>  Modulo.VistaGeneral(ContX:ContX.Modulo)<BR>Fin
+CondicionDespliege=(Config.ContMoneda2<><T>(No)<T>) y (no Config.ContMoneda2Auto)
+TipoDatos=Texto
+
+[Articulo]
+Clave=Articulo
+Nombre=Artículo
+Visible=S
+TamanoValidacion=255
+Tamano=255
+CondicionDespliege=Config.ContArticulo
+AyudaEnCaptura=Editor Expresiones
+AyudaExpresionesVista=Si<BR>  ContX:ContX.Modulo=<T>DIN<T><BR>Entonces<BR>  <T>DineroTCont<T><BR>Sino<BR>  Modulo.VistaGeneral(ContX:ContX.Modulo)<BR>Fin
+
+
+TipoDatos=Texto
+[UnaVez.ListaOpciones]
+(Inicio)=Si
+Si=No
+No=(Fin)
+
+
+
+
+
+
+[ContactoEspecifico]
+Clave=ContactoEspecifico
+Nombre=Contacto Especifico
+Visible=S
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+AyudaExpresionesVista=Si<BR>  ContX:ContX.Modulo=<T>DIN<T><BR>Entonces<BR>  <T>DineroTCont<T><BR>Sino<BR>  Modulo.VistaGeneral(ContX:ContX.Modulo)<BR>Fin
+AyudaEnCaptura=Editor Expresiones
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[SubCuenta2]
+Clave=SubCuenta2
+Nombre=Centro Costos 2
+Visible=S
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+
+AyudaExpresionesVista=Si<BR>  ContX:ContX.Modulo=<T>DIN<T><BR>Entonces<BR>  <T>DineroTCont<T><BR>Sino<BR>  Modulo.VistaGeneral(ContX:ContX.Modulo)<BR>Fin
+AyudaEnCaptura=Editor Expresiones
+[SubCuenta3]
+Clave=SubCuenta3
+Nombre=Centro Costos 3
+Visible=S
+TamanoValidacion=255
+TipoDatos=Texto
+Tamano=255
+AyudaExpresionesVista=Si<BR>  ContX:ContX.Modulo=<T>DIN<T><BR>Entonces<BR>  <T>DineroTCont<T><BR>Sino<BR>  Modulo.VistaGeneral(ContX:ContX.Modulo)<BR>Fin
+AyudaEnCaptura=Editor Expresiones
+
+
+
+
+
+
+
+[Tabla.ListaCampos]
+(Inicio)=ID
+ID=Renglon
+Renglon=Orden
+Orden=Cuenta
+Cuenta=SubCuenta
+SubCuenta=Concepto
+Concepto=Articulo
+Articulo=Debe
+Debe=Debe2
+Debe2=Haber
+Haber=Haber2
+Haber2=Condicion
+Condicion=Comentarios
+Comentarios=UnaVez
+UnaVez=SucursalContable
+SucursalContable=ContactoEspecifico
+ContactoEspecifico=Presupuesto
+Presupuesto=SubCuenta2
+SubCuenta2=SubCuenta3
+SubCuenta3=(Fin)
+
+[Tabla.SQL]
+(Inicio)=SELECT
+SELECT=ID,
+ID,=Renglon,
+Renglon,=Orden,
+Orden,=UnaVez,
+UnaVez,=Cuenta,
+Cuenta,=SubCuenta,
+SubCuenta,=Concepto,
+Concepto,=Debe,
+Debe,=Haber,
+Haber,=Condicion,
+Condicion,=Comentarios,
+Comentarios,=Presupuesto,
+Presupuesto,=SucursalContable,
+SucursalContable,=Debe2,
+Debe2,=Haber2,
+Haber2,=Articulo,
+Articulo,=ContactoEspecifico,
+ContactoEspecifico,=SubCuenta2,
+SubCuenta2,=SubCuenta3
+SubCuenta3=FROM ContXD
+FROM ContXD=(Fin)
+
+[Tabla.LlavePrimaria]
+(Inicio)=ID
+ID=Renglon
+Renglon=(Fin)
+]]>
+</ContXD.tbl>
+<Indice>
+ContXD.tbl
+
+</Indice>
+</IntelisisAddOn>
