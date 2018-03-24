@@ -51,7 +51,7 @@ AS BEGIN
        FOR SELECT NULLIF(RTRIM(p.Personal), ''), NULLIF(RTRIM(p.Jornada), ''), p.FechaAlta
              FROM Personal p, Jornada j
             WHERE p.Jornada = j.Jornada
---            AND p.Estatus = 'ALTA'
+            AND p.Estatus = 'ALTA'--REvisar con Chuco
 			  AND p.Empresa = @Empresa
               AND UPPER(j.Tipo) = 'CONTROL ASISTENCIA'
 
@@ -62,12 +62,17 @@ AS BEGIN
       IF @@FETCH_STATUS <> -2 AND @Ok IS NULL
       BEGIN
         EXEC spGenerarAsiste @Empresa, @Personal, @FechaInicial, @FechaFinal, @Ok OUTPUT, @OkRef OUTPUT
-        IF @Ok IS NULL
+			  
+				IF @Ok IS NULL
           EXEC spGenerarAsisteAusencia @Empresa, @CfgToleraEntrada, @CfgToleraSalida, @Personal, @Jornada, @FechaAlta, @FechaInicial, @FechaFinal, @Ok OUTPUT, @OkRef OUTPUT
 
         IF @Ok IS NULL
           EXEC spGenerarAsisteExtra @Empresa, @Personal, @Jornada, @FechaInicial, @FechaFinal, @Ok OUTPUT, @OkRef OUTPUT
 
+				/* INICIA: WAFURGA considerar prima dominial */
+				IF @Ok IS NULL
+          EXEC spWfgGenerarAsisteDomingo @Empresa, @Personal, @Jornada, @FechaInicial, @FechaFinal, @Ok OUTPUT, @OkRef OUTPUT
+				/* TERMINA: WAFURGA considerar prima dominial */
         IF @Ok IS NOT NULL AND @OkRef IS NULL 
           SELECT @OkRef = 'Persona: '+RTRIM(@Personal)
       END

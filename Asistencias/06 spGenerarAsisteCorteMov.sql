@@ -57,6 +57,7 @@ AS BEGIN
       FROM EmpresaCfg
       WHERE Empresa = @Empresa
   -- Dias
+	--SELECT * FROM PersonalAsisteDifDia
   DECLARE crDifDia CURSOR
      FOR SELECT Personal, Fecha, SUM(Ausencia), SUM(Extra), SUM(Minutos)
            FROM PersonalAsisteDifDia
@@ -78,8 +79,7 @@ AS BEGIN
       SELECT @Martes    = Martes    FROM Jornada WHERE Jornada = @Jornada
       SELECT @Miercoles = Miercoles FROM Jornada WHERE Jornada = @Jornada
       SELECT @Jueves    = Jueves    FROM Jornada WHERE Jornada = @Jornada
-      SELECT @Viernes   = Viernes   FROM Jornada WHERE Jornada = @Jornada      
-
+      SELECT @Viernes   = Viernes   FROM Jornada WHERE Jornada = @Jornada     
       SELECT @Concepto = NULL
       IF @Ausencia > 0
       BEGIN
@@ -91,7 +91,7 @@ AS BEGIN
                           VALUES (@Empresa, @Personal, @Fecha, 1,        'Dias Ausencia', @Concepto)
       END ELSE
       IF @Extra > 0 
-      BEGIN
+      BEGIN--Extra
 
         SELECT @DiaSemanaAsist =  DATEPART (DW, @Fecha)  
         SELECT @Concepto = PermisoConcepto
@@ -105,11 +105,12 @@ AS BEGIN
                 INSERT PersonalAsisteDif (Empresa,  Personal,  Fecha,  Cantidad, Tipo,             Concepto) 
                                   VALUES (@Empresa, @Personal, @Fecha, 1, 'Día Festivo laborado', @Concepto)
             END
-            ELSE IF @DiaSemanaAsist = 7 AND @AsistDomingoLaborado = 1
-            BEGIN
-                INSERT PersonalAsisteDif (Empresa,  Personal,  Fecha,  Cantidad, Tipo,             Concepto) 
-                                  VALUES (@Empresa, @Personal, @Fecha, 1, 'Domingo Laborado', @Concepto)
-            END
+            /* las siguientes lineas se comentaron a fin de la prima dominical entre independientemente de ser dia festivo o descanso laborado*/
+						--ELSE IF @DiaSemanaAsist = 7 AND @AsistDomingoLaborado = 1
+            --BEGIN
+            --    INSERT PersonalAsisteDif (Empresa,  Personal,  Fecha,  Cantidad, Tipo,             Concepto) 
+            --                      VALUES (@Empresa, @Personal, @Fecha, 1, 'Domingo Laborado', @Concepto)
+            --END
             ELSE IF (@Domingo = 1 AND @DiaSemanaAsist = 7) AND @AsistDescansolaborado = 1
             BEGIN
                 INSERT PersonalAsisteDif (Empresa,  Personal,  Fecha,  Cantidad, Tipo,             Concepto) 
@@ -159,11 +160,12 @@ AS BEGIN
                 INSERT PersonalAsisteDif (Empresa,  Personal,  Fecha,  Cantidad, Tipo,             Concepto) 
                                   VALUES (@Empresa, @Personal, @Fecha, 1, 'Día Festivo laborado', @Concepto)
             END
-            ELSE IF @DiaSemanaAsist = 1 AND @AsistDomingoLaborado = 1
-            BEGIN
-                INSERT PersonalAsisteDif (Empresa,  Personal,  Fecha,  Cantidad, Tipo,             Concepto) 
-                                  VALUES (@Empresa, @Personal, @Fecha, 1, 'Domingo Laborado', @Concepto)
-            END
+						/* las siguientes lineas se comentaron a fin de la prima dominical entre independientemente de ser dia festivo o descanso laborado*/
+            --ELSE IF @DiaSemanaAsist = 1 AND @AsistDomingoLaborado = 1
+            --BEGIN
+            --    INSERT PersonalAsisteDif (Empresa,  Personal,  Fecha,  Cantidad, Tipo,             Concepto) 
+            --                      VALUES (@Empresa, @Personal, @Fecha, 1, 'Domingo Laborado', @Concepto)
+            --END
             ELSE IF (@Domingo = 1 AND @DiaSemanaAsist = 1) AND @AsistDescansolaborado = 1
             BEGIN
                 INSERT PersonalAsisteDif (Empresa,  Personal,  Fecha,  Cantidad, Tipo,             Concepto) 
@@ -207,13 +209,27 @@ AS BEGIN
         END
 
 
-      END
+      END--Extra
+			/* INICIA: WAFURGA considerar prima dominial */
+			IF 1=1
+			BEGIN
+				SELECT @DiaSemanaAsist =  DATEPART (DW, @Fecha)  
+			--SELECT @@DATEFIRST,@DiaSemanaAsist,@AsistDomingoLaborado
+				IF @@DATEFIRST = 1 AND @DiaSemanaAsist = 7 AND @AsistDomingoLaborado = 1
+					INSERT PersonalAsisteDif (Empresa,  Personal,  Fecha,  Cantidad, Tipo,             Concepto) 
+														VALUES (@Empresa, @Personal, @Fecha, 1, 'Domingo Laborado', @Concepto)
+				
+				IF @@DATEFIRST = 7 AND @DiaSemanaAsist = 1 AND @AsistDomingoLaborado = 1
+							INSERT PersonalAsisteDif (Empresa,  Personal,  Fecha,  Cantidad, Tipo,             Concepto) 
+																VALUES (@Empresa, @Personal, @Fecha, 1, 'Domingo Laborado', @Concepto)
+			END
+			/* TERMINA: WAFURGA considerar prima dominial */
     END
     FETCH NEXT FROM crDifDia INTO @Personal, @Fecha, @Ausencia, @Extra, @Minutos
   END  -- While
   CLOSE crDifDia
   DEALLOCATE crDifDia
-
+	--SELECT '1',* FROM PersonalAsisteDif
   -- Minutos
   DECLARE crDifMin CURSOR
      FOR SELECT Personal, Fecha, Registro, FechaHoraD, FechaHoraA, Ausencia, Extra
@@ -304,3 +320,7 @@ AS BEGIN
   RETURN
 END
 GO
+exec spGenerarAsisteCorte 0, 'E003', 'INTELISIS', '20180212', '20180218'
+
+
+		   
