@@ -5,7 +5,7 @@
 3. spWfgGenerarAsisteDomingo
 4. spGenerarAsisteCorte
 5. spGenerarAsisteCorteMov
-## 03 spGenerarAsisteAusencia
+## 03 spGenerarAsisteAusencia ##
 Este sp se utiliza en el proceso de corte de asistencias es el responsable de generar los movimientos de faltas y retardos.
 Procesa el tiempo de comida independientemente de la hora de salida y entrada de comida
 ### Importante
