@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="5.4.6" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="41357.5684321875" ReportOptions.Description.Text="" ReportOptions.LastChange="41357.5684321875" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;end.          ">
+	<Datasets>
+		<item DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail"/>
+		<item DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader"/>
+		<item DataSet="FRX_Store" DataSetName="Store"/>
+	</Datasets>
+	<Variables>
+		<item Name=" Header"/>
+		<item Name="Emisor" Value="&#60;CFDiParseXMLHeader.&#34;E_Nombre&#34;&#62; + ' RFC:' + &#60;CFDiParseXMLHeader.&#34;E_RFC&#34;&#62; + ' Regimen Fiscal:' + &#60;CFDiParseXMLHeader.&#34;E_RegimenFiscal&#34;&#62;"/>
+		<item Name="CantidadConLetra" Value="AmountToText( &#60;CFDiParseXMLHeader.&#34;C_Total&#34;&#62; )"/>
+		<item Name="DireccionEmisor" Value="&#60;Store.&#34;M_Calle&#34;&#62; + ', Col. ' + &#60;Store.&#34;M_Colonia&#34;&#62; + ', ' + &#60;Store.&#34;M_Ciudad&#34;&#62; + ', ' + &#60;Store.&#34;M_Estado&#34;&#62; + ', ' + &#60;Store.&#34;M_Pais&#34;&#62; + ', C.P. ' + &#60;Store.&#34;M_CodigoPostal&#34;&#62;"/>
+		<item Name="UUID" Value="'UUID: ' + &#60;CFDiParseXMLDetail.&#34;UUID&#34;&#62;"/>
+		<item Name=" Detail"/>
+		<item Name="Code" Value="IIF((&#60;CFDiParseXMLDetail.&#34;I_Impuesto1&#34;&#62; = '' and &#60;CFDiParseXMLDetail.&#34;I_Impuesto2&#34;&#62; &#60;&#62; ''),&#60;CFDiParseXMLDetail.&#34;I_Impuesto2&#34;&#62;, IIF((&#60;CFDiParseXMLDetail.&#34;I_Impuesto1&#34;&#62; &#60;&#62; '' and &#60;CFDiParseXMLDetail.&#34;I_Impuesto2&#34;&#62; = ''),&#60;CFDiParseXMLDetail.&#34;I_Impuesto1&#34;&#62;,IIF((&#60;CFDiParseXMLDetail.&#34;I_Impuesto1&#34;&#62; &#60;&#62; '' and &#60;CFDiParseXMLDetail.&#34;I_Impuesto2&#34;&#62; &#60;&#62; ''),&#60;Tax&#62;,'003 ISR')))"/>
+		<item Name="Tax" Value="&#60;CFDiParseXMLDetail.&#34;I_Impuesto1&#34;&#62;+','+&#60;CFDiParseXMLDetail.&#34;I_Impuesto2&#34;&#62;"/>
+	</Variables>
+	<TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+	<TfrxReportPage Name="Page1" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" PaperWidth="215.9" PaperHeight="279.4" PaperSize="1" LeftMargin="1" RightMargin="1" TopMargin="1" BottomMargin="1" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+		<TfrxPageHeader Name="PageHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" Height="247.44898" Left="0" ParentFont="False" Top="68.03154" Width="808.441467" Stretched="True">
+			<TfrxShapeView Name="Shape2" Left="18.89765" Top="122.72449" Width="370.39394" Height="124.72449"/>
+			<TfrxMemoView Name="Memo5" Left="170.07885" Top="205.7718" Width="211.65368" Height="17.00787402" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_Fecha&#34;]">
+				<Formats>
+					<item/>
+					<item/>
+				</Formats>
+			</TfrxMemoView>
+			<TfrxMemoView Name="Memo34" Left="22.67718" Top="145.96073" Width="79.36993472" Height="17.00787402" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Folio fiscal:"/>
+			<TfrxMemoView Name="CFDiParseXMLHeaderUUID" Left="105.82684" Top="145.96073" Width="275.90549472" Height="17.00787402" DataField="UUID" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;UUID&#34;]"/>
+			<TfrxMemoView Name="Memo2" Left="22.67718" Top="165.63791" Width="215.43301472" Height="17.00787402" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="No de Serie del Certificado del CSD:"/>
+			<TfrxMemoView Name="CFDiParseXMLHeaderC_NoCertificado" Left="241.88992" Top="165.85838" Width="139.84261" Height="17.00787402" DataField="C_NoCertificado" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_NoCertificado&#34;]"/>
+			<TfrxMemoView Name="Memo41" Left="22.67718" Top="187.09462" Width="120.94476472" Height="17.00787402" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Lugar de Expedicion:"/>
+			<TfrxMemoView Name="CFDiParseXMLHeaderC_LugarExpedicion" Left="147.40167" Top="187.31509" Width="234.33066472" Height="17.00787402" DataField="C_LugarExpedicion" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_LugarExpedicion&#34;]"/>
+			<TfrxMemoView Name="Memo3" Left="415.7483" Top="4.77953" Width="370.39374472" Height="20.78740402" Font.Charset="1" Font.Color="-16777211" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" Frame.Typ="15" Fill.BackColor="8947848" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Datos del Emisor"/>
+			<TfrxMemoView Name="Memo37" Left="22.67718" Top="205.99227" Width="143.62194472" Height="17.00787402" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Fecha y hora de Emision:"/>
+			<TfrxShapeView Name="Shape1" Left="415.7483" Top="26.45671" Width="370.39394" Height="68.03154"/>
+			<TfrxMemoView Name="Memo4" Left="419.52783" Top="30.23624" Width="105.82664472" Height="17.00787402" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Razon Social:"/>
+			<TfrxMemoView Name="Memo35" Left="419.52783" Top="49.13389" Width="105.82664472" Height="17.00787402" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="RFC:"/>
+			<TfrxMemoView Name="Memo36" Left="419.52783" Top="68.03154" Width="105.82664472" Height="17.00787402" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Regimen Fiscal:"/>
+			<TfrxMemoView Name="CFDiParseXMLHeaderE_Nombre" Left="525.35467" Top="30.23624" Width="249.44898" Height="17.00787402" DataField="E_Nombre" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;E_Nombre&#34;]"/>
+			<TfrxMemoView Name="CFDiParseXMLHeaderE_RFC" Left="525.35467" Top="49.13389" Width="249.44898" Height="17.00787402" DataField="E_RFC" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;E_RFC&#34;]"/>
+			<TfrxMemoView Name="CFDiParseXMLHeaderE_RegimenFiscal" Left="525.35467" Top="68.03154" Width="249.44898" Height="17.00787402" DataField="E_RegimenFiscal" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;E_RegimenFiscal&#34;]"/>
+			<TfrxMemoView Name="Memo6" Left="18.89765" Top="102.26778" Width="370.39374472" Height="20.78740402" Font.Charset="1" Font.Color="-16777211" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" Frame.Typ="15" Fill.BackColor="8947848" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Factura"/>
+			<TfrxMemoView Name="Memo39" Left="22.67718" Top="126.50402" Width="90.70852472" Height="17.00787402" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Serie y Folio :"/>
+			<TfrxMemoView Name="Memo40" Left="117.16543" Top="126.50402" Width="264.56690472" Height="17.00787402" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[&#60;CFDiParseXMLHeader.&#34;C_Serie&#34;&#62;+&#60;CFDiParseXMLHeader.&#34;C_Folio&#34;&#62;]"/>
+			<TfrxMemoView Name="CFDiParseXMLHeaderC_TipoDeComprobante" Left="147.40167" Top="224.7718" Width="234.33086" Height="17.00787402" DataField="C_TipoDeComprobante" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_TipoDeComprobante&#34;]"/>
+			<TfrxMemoView Name="Memo42" Left="22.67718" Top="224.7718" Width="120.94476472" Height="17.00787402" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Tipo de Comprobante:"/>
+			<TfrxMemoView Name="Memo38" Left="415.7483" Top="101.48825" Width="370.39374472" Height="20.78740402" Font.Charset="1" Font.Color="-16777211" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" Frame.Typ="15" Fill.BackColor="8947848" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Datos del Receptor"/>
+			<TfrxShapeView Name="Shape3" Left="415.7483" Top="122.16543" Width="370.39394" Height="71.81107"/>
+			<TfrxMemoView Name="Memo43" Left="419.52783" Top="145.1812" Width="56.69275472" Height="17.00787402" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Cliente:"/>
+			<TfrxMemoView Name="Memo44" Left="419.52783" Top="164.85838" Width="56.69275472" Height="17.00787402" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Uso CFDI:"/>
+			<TfrxMemoView Name="Memo45" Left="419.52783" Top="126.72449" Width="56.69275472" Height="17.00787402" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="RFC:"/>
+			<TfrxMemoView Name="CFDiParseXMLHeaderR_RFC" Left="480.00031" Top="126.50402" Width="294.80334" Height="17.00787402" DataField="R_RFC" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;R_RFC&#34;]"/>
+			<TfrxMemoView Name="CFDiParseXMLHeaderR_Nombre" Left="480.00031" Top="145.40167" Width="294.80334" Height="17.00787402" DataField="R_Nombre" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;R_Nombre&#34;]"/>
+			<TfrxMemoView Name="CFDiParseXMLHeaderR_UsoCFDI" Left="480.00031" Top="164.29932" Width="294.80334" Height="17.00787402" DataField="R_UsoCFDI" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;R_UsoCFDI&#34;]"/>
+		</TfrxPageHeader>
+		<TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="37.7953" Left="0" Top="434.64595" Width="808.441467" ColumnWidth="0" ColumnGap="0" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" RowCount="0" Stretched="True">
+			<TfrxMemoView Name="DetailCantidad" Left="7.55906" Top="3.77953" Width="60.47248" Height="18.89765" StretchMode="smActualHeight" DataField="C_Cantidad" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLDetail.&#34;C_Cantidad&#34;]"/>
+			<TfrxMemoView Name="DetailDescripcion" Left="264.5671" Top="3.77953" Width="188.9765" Height="18.89765" StretchMode="smActualHeight" DataField="C_Descripcion" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLDetail.&#34;C_Descripcion&#34;]"/>
+			<TfrxMemoView Name="DetailValorUnitario" Left="510.23655" Top="3.77953" Width="68.03154" Height="18.89765" StretchMode="smActualHeight" DataField="C_ValorUnitario" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLDetail.&#34;C_ValorUnitario&#34;]"/>
+			<TfrxMemoView Name="DetailImporte" Left="702.99258" Top="3.77953" Width="83.14966" Height="18.89765" StretchMode="smActualHeight" DataField="C_Importe" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLDetail.&#34;C_Importe&#34;]"/>
+			<TfrxMemoView Name="Memo32" Left="68.03154" Top="3.77953" Width="83.14966" Height="18.89765" StretchMode="smActualHeight" DataField="C_ClaveProdServ" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLDetail.&#34;C_ClaveProdServ&#34;]"/>
+			<TfrxMemoView Name="Memo33" Left="453.5436" Top="3.77953" Width="56.69295" Height="18.89765" StretchMode="smActualHeight" DataField="C_ClaveUnidad" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLDetail.&#34;C_ClaveUnidad&#34;]"/>
+			<TfrxMemoView Name="CFDiParseXMLDetailI_Impuesto2" Left="642.5201" Top="3.77953" Width="60.47248" Height="18.89765" DataField="I_Importe1" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLDetail.&#34;I_Importe1&#34;]"/>
+			<TfrxMemoView Name="CFDiParseXMLDetailC_NoIdentificacion" Left="151.1812" Top="3.77953" Width="113.3859" Height="18.89765" DataField="C_NoIdentificacion" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" Text="[CFDiParseXMLDetail.&#34;C_NoIdentificacion&#34;]"/>
+			<TfrxMemoView Name="CFDiParseXMLDetailC_Descuento" Left="578.26809" Top="3.77953" Width="64.25201" Height="18.89765" DataField="C_Descuento" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLDetail.&#34;C_Descuento&#34;]"/>
+		</TfrxMasterData>
+		<TfrxHeader Name="Header1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="34.01577" Left="0" Top="377.953" Width="808.441467">
+			<TfrxShapeView Name="Shape4" Left="3.77953" Top="3.77953" Width="786.14224" Height="26.45671" Fill.BackColor="8947848"/>
+			<TfrxMemoView Name="Memo8" Left="7.55906" Top="7.55906" Width="60.47248" Height="18.89765" Font.Charset="1" Font.Color="16777215" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaBottom" Text="Cantidad"/>
+			<TfrxMemoView Name="Memo10" Left="151.1812" Top="7.55906" Width="113.3859" Height="18.89765" Font.Charset="1" Font.Color="16777215" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaBottom" Text=" Articulo"/>
+			<TfrxMemoView Name="Memo7" Left="68.03154" Top="7.55906" Width="83.14966" Height="18.89765" Font.Charset="1" Font.Color="16777215" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaBottom" Text=" Codigo CFD"/>
+			<TfrxMemoView Name="Memo46" Left="264.5671" Top="7.55906" Width="192.75603" Height="18.89765" Font.Charset="1" Font.Color="16777215" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaBottom" Text=" Descripción"/>
+			<TfrxMemoView Name="Memo47" Left="702.99258" Top="7.55906" Width="83.14966" Height="18.89765" Font.Charset="1" Font.Color="16777215" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" HAlign="haRight" ParentFont="False" VAlign="vaBottom" Text="Importe"/>
+			<TfrxMemoView Name="Memo11" Left="510.23655" Top="7.55906" Width="68.03154" Height="18.89765" Font.Charset="1" Font.Color="16777215" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaBottom" Text="P.U"/>
+			<TfrxMemoView Name="Memo48" Left="578.26809" Top="7.55906" Width="64.25201" Height="18.89765" Font.Charset="1" Font.Color="16777215" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" HAlign="haRight" ParentFont="False" VAlign="vaBottom" Text="Descuento"/>
+			<TfrxMemoView Name="Memo49" Left="642.5201" Top="7.55906" Width="60.47248" Height="18.89765" Font.Charset="1" Font.Color="16777215" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" HAlign="haRight" ParentFont="False" VAlign="vaBottom" Text="Impuesto"/>
+			<TfrxMemoView Name="Memo9" Left="457.32313" Top="7.55906" Width="52.91342" Height="18.89765" Font.Charset="1" Font.Color="16777215" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaBottom" Text="Unidad"/>
+		</TfrxHeader>
+		<TfrxFooter Name="Footer1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" Height="362.83488" Left="0" ParentFont="False" Top="495.11843" Width="808.441467" Child="Child1" Stretched="True">
+			<TfrxMemoView Name="Memo12" Left="608.50433" Top="7.55906" Width="86.92919" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="Subtotal:"/>
+			<TfrxMemoView Name="Memo13" Left="608.50433" Top="83.14966" Width="86.92919" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="TOTAL:"/>
+			<TfrxMemoView Name="IVA_Leyenda" Left="608.50433" Top="64.25201" Width="86.92919" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="001 IEPS:"/>
+			<TfrxMemoView Name="HeaderSubTotal" Left="695.43352" Top="7.55906" Width="90.70872" Height="18.89765" DataField="C_SubTotal" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_SubTotal&#34;]"/>
+			<TfrxMemoView Name="HeaderIVA" Left="695.43352" Top="64.25201" Width="90.70872" Height="18.89765" DataField="C_IEPS" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_IEPS&#34;]"/>
+			<TfrxMemoView Name="HeaderTotal" Left="695.43352" Top="83.14966" Width="90.70872" Height="18.89765" DataField="C_Total" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_Total&#34;]"/>
+			<TfrxLineView Name="Line1" Align="baWidth" Left="0" Top="0" Width="808.441467" Height="0" Color="0" Frame.Typ="4"/>
+			<TfrxMemoView Name="Memo14" Left="491.3389" Top="105.82684" Width="113.3859" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Total con letra: "/>
+			<TfrxMemoView Name="CantidadConLetra" Left="604.7248" Top="105.82684" Width="181.41744" Height="45.35436" StretchMode="smActualHeight" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CantidadConLetra]"/>
+			<TfrxMemoView Name="Memo28" Left="608.50433" Top="26.45671" Width="86.92919" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="Descuento:"/>
+			<TfrxMemoView Name="Memo29" Left="695.43352" Top="26.45671" Width="90.70872" Height="18.89765" DataField="C_Descuento" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_Descuento&#34;]"/>
+			<TfrxMemoView Name="Memo30" Left="608.50433" Top="45.35436" Width="86.92919" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="002 IVA:"/>
+			<TfrxMemoView Name="Memo31" Left="695.43352" Top="45.35436" Width="90.70872" Height="18.89765" DataField="C_IVA" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_IVA&#34;]"/>
+			<TfrxPictureView Name="Picture1" Left="3.77953" Top="7.55906" Width="158.74026" Height="139.84261" Center="True" DataField="BBC" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" HightQuality="False" Transparent="False" TransparentColor="16777215"/>
+			<TfrxMemoView Name="HeaderMetodoDePago" Left="260.78757" Top="7.55906" Width="230.55133" Height="18.89765" DataField="C_MetodoPago" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_MetodoPago&#34;]"/>
+			<TfrxMemoView Name="HeaderFromaDePago" Left="249.44898" Top="30.23624" Width="128.50402" Height="18.89765" DataField="C_FormaPago" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_FormaPago&#34;]"/>
+			<TfrxMemoView Name="Memo22" Left="170.07885" Top="7.55906" Width="90.70872" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Metodo Pago: "/>
+			<TfrxMemoView Name="Memo23" Left="170.07885" Top="30.23624" Width="79.37013" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Forma Pago:"/>
+			<TfrxMemoView Name="Memo26" Left="453.5436" Top="30.23624" Width="109.60637" Height="18.89765" DataField="C_Moneda" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_Moneda&#34;]"/>
+			<TfrxMemoView Name="Memo27" Left="396.85065" Top="30.23624" Width="56.69295" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Moneda:"/>
+			<TfrxMemoView Name="Memo18" Left="170.07885" Top="52.91342" Width="241.88992" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="No de Serie del Certificado del SAT:"/>
+			<TfrxMemoView Name="HeaderNoCertificadoSAT" Left="411.96877" Top="52.91342" Width="185.19697" Height="18.89765" DataField="T_NoCertificadoSAT" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;T_NoCertificadoSAT&#34;]"/>
+			<TfrxMemoView Name="Memo19" Left="170.07885" Top="75.5906" Width="204.09462" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Fecha y hora de certificación:"/>
+			<TfrxMemoView Name="Memo20" Left="374.17347" Top="75.5906" Width="226.7718" Height="18.89765" DataField="C_Fecha" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_Fecha&#34;]"/>
+			<TfrxMemoView Name="Memo24" Left="170.07885" Top="98.26778" Width="102.04731" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="RfcProvCertif:"/>
+			<TfrxMemoView Name="Memo25" Left="272.12616" Top="98.26778" Width="215.43321" Height="18.89765" DataField="T_RfcProvCertif" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;T_RfcProvCertif&#34;]"/>
+			<TfrxMemoView Name="Memo15" Align="baWidth" Left="0" Top="196.53556" Width="808.441467" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Sello Digital del CFDI:"/>
+			<TfrxMemoView Name="HeaderSello" Align="baWidth" Left="0" Top="215.43321" Width="808.441467" Height="18.89765" StretchMode="smActualHeight" DataField="C_Sello" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_Sello&#34;]"/>
+			<TfrxMemoView Name="Memo16" Align="baWidth" Left="0" Top="238.11039" Width="808.441467" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Sello del SAT:"/>
+			<TfrxMemoView Name="HeaderSelloSAT" Align="baWidth" Left="0" Top="257.00804" Width="808.441467" Height="18.89765" StretchMode="smActualHeight" DataField="T_SelloSAT" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;T_SelloSAT&#34;]"/>
+			<TfrxMemoView Name="Memo17" Align="baWidth" Left="0" Top="279.68522" Width="808.441467" Height="26.45671" StretchMode="smActualHeight" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Cadena Original del complemento de certificación digital del SAT:"/>
+			<TfrxMemoView Name="HeaderCadenaOriginalSAT" Align="baWidth" Left="0" Top="306.14193" Width="808.441467" Height="18.89765" StretchMode="smActualHeight" DataField="T_CadenaOriginalSAT" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;T_CadenaOriginalSAT&#34;]"/>
+			<TfrxMemoView Name="Memo21" Align="baWidth" Left="0" Top="336.37817" Width="808.441467" Height="26.45671" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Este documento es una representación impresa de un CFDI 3.3"/>
+		</TfrxFooter>
+		<TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="26.45671" Left="0" Top="18.89765" Width="808.441467">
+			<TfrxMemoView Name="Memo1" Align="baWidth" Left="0" Top="3.77953" Width="808.441467" Height="15.11812" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Lucida Console" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="* Factura Electronica (CFDI)*"/>
+		</TfrxReportTitle>
+		<TfrxChild Name="Child1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="22.67718" Left="0" Top="880.63049" Visible="False" Width="808.441467"/>
+	</TfrxReportPage>
+	<SBX-Section>
+		<SBX-Report-Id/>
+		<SBX-Datasets>
+			<SBX-Dataset name="CFDiParseXMLHeader">
+				<SBX-SQL><![CDATA[CFDiParseXMLHeader.xml]]></SBX-SQL>
+				<SBX-Definition>
+					<DATAPACKET Version="2.0">
+						<METADATA>
+							<FIELDS>
+								<FIELD attrname="UUID" fieldtype="string" WIDTH="40"/>
+								<FIELD attrname="CreationDate" fieldtype="dateTime"/>
+								<FIELD attrname="C_Version" fieldtype="string" WIDTH="10"/>
+								<FIELD attrname="C_NoCertificado" fieldtype="string" WIDTH="20"/>
+								<FIELD attrname="C_Fecha" fieldtype="dateTime"/>
+								<FIELD attrname="C_LugarExpedicion" fieldtype="string" WIDTH="5"/>
+								<FIELD attrname="C_TipoDeComprobante" fieldtype="string" WIDTH="20"/>
+								<FIELD attrname="C_Serie" fieldtype="string" WIDTH="20"/>
+								<FIELD attrname="C_Folio" fieldtype="string" WIDTH="20"/>
+								<FIELD attrname="C_Moneda" fieldtype="string" WIDTH="20"/>
+								<FIELD attrname="C_FormaPago" fieldtype="string" WIDTH="100"/>
+								<FIELD attrname="C_MetodoPago" fieldtype="string" WIDTH="100"/>
+								<FIELD attrname="C_SubTotal" fieldtype="r8"/>
+								<FIELD attrname="C_Descuento" fieldtype="r8"/>
+								<FIELD attrname="C_IVA" fieldtype="r8"/>
+								<FIELD attrname="C_IEPS" fieldtype="r8"/>
+								<FIELD attrname="C_Total" fieldtype="r8"/>
+								<FIELD attrname="C_Sello" fieldtype="bin.hex" SUBTYPE="Text"/>
+								<FIELD attrname="E_RFC" fieldtype="string" WIDTH="13"/>
+								<FIELD attrname="E_Nombre" fieldtype="string" WIDTH="255"/>
+								<FIELD attrname="E_RegimenFiscal" fieldtype="string" WIDTH="200"/>
+								<FIELD attrname="R_RFC" fieldtype="string" WIDTH="13"/>
+								<FIELD attrname="R_Nombre" fieldtype="string" WIDTH="255"/>
+								<FIELD attrname="R_UsoCFDI" fieldtype="string" WIDTH="200"/>
+								<FIELD attrname="T_NoCertificadoSAT" fieldtype="string" WIDTH="20"/>
+								<FIELD attrname="T_FechaTimbrado" fieldtype="dateTime"/>
+								<FIELD attrname="T_RfcProvCertif" fieldtype="string" WIDTH="13"/>
+								<FIELD attrname="T_SelloSAT" fieldtype="bin.hex" SUBTYPE="Text"/>
+								<FIELD attrname="T_CadenaOriginalSAT" fieldtype="bin.hex" SUBTYPE="Text"/>
+								<FIELD attrname="BBC" fieldtype="bin.hex" SUBTYPE="Binary"/>
+							</FIELDS>
+							<PARAMS/>
+						</METADATA>
+						<ROWDATA/>
+					</DATAPACKET>
+				</SBX-Definition>
+			</SBX-Dataset>
+			<SBX-Dataset name="CFDiParseXMLDetail">
+				<SBX-SQL><![CDATA[CFDiParseXMLDetail.xml]]></SBX-SQL>
+				<SBX-Definition>
+					<DATAPACKET Version="2.0">
+						<METADATA>
+							<FIELDS>
+								<FIELD attrname="Line" fieldtype="i4"/>
+								<FIELD attrname="C_ClaveProdServ" fieldtype="string" WIDTH="100"/>
+								<FIELD attrname="C_NoIdentificacion" fieldtype="string" WIDTH="100"/>
+								<FIELD attrname="C_Cantidad" fieldtype="r8"/>
+								<FIELD attrname="C_ClaveUnidad" fieldtype="string" WIDTH="100"/>
+								<FIELD attrname="C_Unidad" fieldtype="string" WIDTH="15"/>
+								<FIELD attrname="C_Descripcion" fieldtype="string" WIDTH="255"/>
+								<FIELD attrname="C_ValorUnitario" fieldtype="r8"/>
+								<FIELD attrname="C_Importe" fieldtype="r8"/>
+								<FIELD attrname="C_Descuento" fieldtype="r8"/>
+								<FIELD attrname="I_Impuesto1" fieldtype="string" WIDTH="20"/>
+								<FIELD attrname="I_TipoFactor1" fieldtype="string" WIDTH="20"/>
+								<FIELD attrname="I_TasaOCuota1" fieldtype="r8"/>
+								<FIELD attrname="I_Importe1" fieldtype="r8"/>
+								<FIELD attrname="I_Impuesto2" fieldtype="string" WIDTH="20"/>
+								<FIELD attrname="I_TipoFactor2" fieldtype="string" WIDTH="20"/>
+								<FIELD attrname="I_TasaOCuota2" fieldtype="r8"/>
+								<FIELD attrname="I_Importe2" fieldtype="r8"/>
+								<FIELD attrname="IA_Numero" fieldtype="string" WIDTH="50"/>
+								<FIELD attrname="IA_Fecha" fieldtype="date"/>
+								<FIELD attrname="IA_Aduana" fieldtype="r4"/>
+							</FIELDS>
+							<PARAMS/>
+						</METADATA>
+						<ROWDATA/>
+					</DATAPACKET>
+				</SBX-Definition>
+			</SBX-Dataset>
+			<SBX-Dataset name="Store">
+				<SBX-SQL><![CDATA[SELECT 
+        s.name Tienda,
+        s.number,
+        cso1.val AS M_Calle,
+	cso2.val AS M_Colonia,
+	cso3.val AS M_Ciudad,
+	cso4.val AS M_Estado,
+	cso5.val AS M_Pais,
+	cso6.val AS M_CodigoPostal,
+	cso7.val AS IncluirSucursal,
+	cso8.val AS S_Calle,
+	cso9.val AS S_Colonia,
+	cso10.val AS S_Ciudad,
+	cso11.val AS S_Estado,
+	cso12.val AS S_Pais,
+	cso13.val AS s_CodigoPostal
+FROM store s
+INNER JOIN saledocument sd ON sd.storeid = s.id
+LEFT JOIN configurationstoreoption cso1 ON cso1.storeid = s.id AND cso1.configurationoptiondefinitionid = 511
+LEFT JOIN configurationstoreoption cso2 ON cso2.storeid = s.id AND cso2.configurationoptiondefinitionid = 512
+LEFT JOIN configurationstoreoption cso3 ON cso3.storeid = s.id AND cso3.configurationoptiondefinitionid = 513
+LEFT JOIN configurationstoreoption cso4 ON cso4.storeid = s.id AND cso4.configurationoptiondefinitionid = 514
+LEFT JOIN configurationstoreoption cso5 ON cso5.storeid = s.id AND cso5.configurationoptiondefinitionid = 515
+LEFT JOIN configurationstoreoption cso6 ON cso6.storeid = s.id AND cso6.configurationoptiondefinitionid = 516
+LEFT JOIN configurationstoreoption cso7 ON cso7.storeid = s.id AND cso7.configurationoptiondefinitionid = 521
+LEFT JOIN configurationstoreoption cso8 ON cso8.storeid = s.id AND cso8.configurationoptiondefinitionid = 522
+LEFT JOIN configurationstoreoption cso9 ON cso9.storeid = s.id AND cso9.configurationoptiondefinitionid = 523
+LEFT JOIN configurationstoreoption cso10 ON cso10.storeid = s.id AND cso10.configurationoptiondefinitionid = 524
+LEFT JOIN configurationstoreoption cso11 ON cso11.storeid = s.id AND cso11.configurationoptiondefinitionid = 525
+LEFT JOIN configurationstoreoption cso12 ON cso12.storeid = s.id AND cso12.configurationoptiondefinitionid = 526
+LEFT JOIN configurationstoreoption cso13 ON cso13.storeid = s.id AND cso13.configurationoptiondefinitionid = 527
+WHERE CFDiDocumentUUID='@CFDiDocument.UUID']]></SBX-SQL>
+				<SBX-Definition>
+					<DATAPACKET Version="2.0">
+						<METADATA>
+							<FIELDS>
+								<FIELD attrname="Tienda" fieldtype="string" WIDTH="80">
+									<PARAM Name="ORIGIN" Value="store.Name" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="number" fieldtype="string" WIDTH="25">
+									<PARAM Name="ORIGIN" Value="store.number" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="M_Calle" fieldtype="bin.hex" SUBTYPE="Text">
+									<PARAM Name="ORIGIN" Value="configurationstoreoption.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="M_Colonia" fieldtype="bin.hex" SUBTYPE="Text">
+									<PARAM Name="ORIGIN" Value="configurationstoreoption.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="M_Ciudad" fieldtype="bin.hex" SUBTYPE="Text">
+									<PARAM Name="ORIGIN" Value="configurationstoreoption.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="M_Estado" fieldtype="bin.hex" SUBTYPE="Text">
+									<PARAM Name="ORIGIN" Value="configurationstoreoption.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="M_Pais" fieldtype="bin.hex" SUBTYPE="Text">
+									<PARAM Name="ORIGIN" Value="configurationstoreoption.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="M_CodigoPostal" fieldtype="bin.hex" SUBTYPE="Text">
+									<PARAM Name="ORIGIN" Value="configurationstoreoption.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="IncluirSucursal" fieldtype="bin.hex" SUBTYPE="Text">
+									<PARAM Name="ORIGIN" Value="configurationstoreoption.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="S_Calle" fieldtype="bin.hex" SUBTYPE="Text">
+									<PARAM Name="ORIGIN" Value="configurationstoreoption.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="S_Colonia" fieldtype="bin.hex" SUBTYPE="Text">
+									<PARAM Name="ORIGIN" Value="configurationstoreoption.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="S_Ciudad" fieldtype="bin.hex" SUBTYPE="Text">
+									<PARAM Name="ORIGIN" Value="configurationstoreoption.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="S_Estado" fieldtype="bin.hex" SUBTYPE="Text">
+									<PARAM Name="ORIGIN" Value="configurationstoreoption.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="S_Pais" fieldtype="bin.hex" SUBTYPE="Text">
+									<PARAM Name="ORIGIN" Value="configurationstoreoption.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="s_CodigoPostal" fieldtype="bin.hex" SUBTYPE="Text">
+									<PARAM Name="ORIGIN" Value="configurationstoreoption.Val" Roundtrip="True"/>
+								</FIELD>
+							</FIELDS>
+							<PARAMS/>
+						</METADATA>
+						<ROWDATA/>
+					</DATAPACKET>
+				</SBX-Definition>
+			</SBX-Dataset>
+		</SBX-Datasets>
+	</SBX-Section>
+</TfrxReport>
+No se pudo descargar el archivo. Error: Thread was being aborted.
