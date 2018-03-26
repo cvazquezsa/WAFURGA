@@ -10,7 +10,7 @@ CREATE PROCEDURE spAsisteSugerirNomina
 			@Mov		char(20),
 			@MovID		varchar(20),
 			@Accion		char(20),
-
+			--@PeriodoTipo varchar OUTPUT(10),--WAFURGA
 			@Ok 		int		OUTPUT, 
 			@OkRef 		varchar(255)	OUTPUT
 --//WITH ENCRYPTION
@@ -28,6 +28,17 @@ AS BEGIN
     @Minutos		    int,
     @Horas		        char(5),
     @Concepto		    varchar(50),
+		--
+    @GenerarFestivoLaborado bit,
+    @GenerarDescansoLaborado bit,
+    @GenerarPrimaDominical bit,
+    @MovFestivoLaborado varchar(20),
+    @MovDescansoLaborado varchar(20),
+    @MovPrimaDominical Varchar(20),
+    @FechaIni datetime, 
+    @FechaFin datetime,
+    @FechaCorteA datetime,
+		--
 	@MovTipo            varchar(20),
 	@FechaD	            datetime,
     @FechaA	            datetime,	
@@ -67,14 +78,24 @@ AS BEGIN
            @GenerarFaltas      = AsisteGenerarFaltas,
            @GenerarRetardos    = AsisteGenerarRetardos,
            @GenerarHorasExtras = AsisteGenerarHorasExtras,
-		   @HerramHorasExtra   = HerramientaHorasExtra
+					 @HerramHorasExtra   = HerramientaHorasExtra,
+					 --I WAFURGA
+					 @GenerarFestivoLaborado  =AsistDiaFestivoLaborado,
+           @GenerarDescansoLaborado =AsistDescansoLaborado,
+           @GenerarPrimaDominical   =AsistDomingoLaborado 
+					 --F WAFURGA   
       FROM EmpresaCfg
      WHERE Empresa = @Empresa
     SELECT @TipoCambio = TipoCambio FROM Mon WHERE Moneda = @Moneda
   
     SELECT @MovFaltas      = NomFaltas,
            @MovRetardos    = NomRetardos,
-           @MovHorasExtras = NomHorasExtras
+           @MovHorasExtras = NomHorasExtras,
+					 --I WAFURGA
+					 @MovFestivoLaborado     ='Festivo Laborado',
+					 @MovDescansoLaborado    ='Descanso Laborado',
+					 @MovPrimaDominical      ='Prima Dominical'
+					 --F WAFURGA   
       FROM EmpresaCfgMov
      WHERE Empresa = @Empresa    
 
@@ -98,10 +119,10 @@ AS BEGIN
                 GROUP BY d.Personal, d.Fecha)
         BEGIN   
 		
-		 SELECT @FechaD = FechaD,
-		        @FechaA = FechaA
-		   FROM Asiste 
-		  WHERE ID = @ID 
+				 SELECT @FechaD = FechaD,
+								@FechaA = FechaA
+					 FROM Asiste 
+					WHERE ID = @ID 
 		        
           INSERT Nomina (UltimoCambio, Sucursal, SucursalOrigen, SucursalDestino, OrigenTipo, Origen, OrigenID, Empresa, Usuario, Estatus, Mov, FechaEmision, Proyecto, UEN, Moneda, TipoCambio, Concepto)
           SELECT GETDATE(), @Sucursal, @Sucursal, @Sucursal, 'ASIS', @Mov, @MovID, @Empresa, @Usuario, 'CONFIRMAR', @MovFaltas, FechaEmision, Proyecto, UEN, @Moneda, @TipoCambio,@Concepto
@@ -153,7 +174,60 @@ AS BEGIN
 				DELETE Nomina WHERE ID = @NominaID
 			   END
         END
+        END--GenerarFaltas
+				/***********INICIA: WAFURGA**********/
+				IF @GenerarDescansoLaborado = 1 
+          AND EXISTS(SELECT * FROM AsisteD d JOIN Personal p ON p.Personal = d.Personal AND p.Estatus <> 'BAJA' WHERE d.ID = @ID AND UPPER(d.Tipo) = 'Descanso Laborado') 
+        BEGIN  
+          INSERT Nomina (UltimoCambio, Sucursal, SucursalOrigen, SucursalDestino, OrigenTipo, Origen, OrigenID, Empresa, Usuario, Estatus, Mov, FechaEmision, Proyecto, UEN, Moneda, TipoCambio, Concepto)
+          SELECT GETDATE(), @Sucursal, @Sucursal, @Sucursal, 'ASIS', @Mov, @MovID, @Empresa, @Usuario, 'CONFIRMAR', @MovDescansoLaborado, FechaEmision, Proyecto, UEN, @Moneda, @TipoCambio,@Concepto
+            FROM Asiste WHERE ID = @ID 
+          SELECT @NominaID = @@IDENTITY
+    
+          INSERT NominaD (ID, Renglon, Personal, FechaD, Cantidad)
+          SELECT @NominaID, MIN(d.Renglon), d.Personal, d.Fecha, 1.0-- SUM(d.Cantidad)/60
+            FROM AsisteD d
+            JOIN Personal p ON p.Personal = d.Personal AND p.Estatus <> 'BAJA'
+           WHERE d.ID = @ID AND UPPER(d.Tipo) = 'Descanso Laborado' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto
+           --and p.PeriodoTipo=@PeriodoTipo
+           GROUP BY d.Personal, d.Fecha
         END
+              
+        
+        IF @GenerarFestivoLaborado = 1 
+          AND EXISTS(SELECT * FROM AsisteD d JOIN Personal p ON p.Personal = d.Personal AND p.Estatus <> 'BAJA' WHERE d.ID = @ID AND UPPER(d.Tipo) = 'Día Festivo laborado') 
+        BEGIN  
+          INSERT Nomina (UltimoCambio, Sucursal, SucursalOrigen, SucursalDestino, OrigenTipo, Origen, OrigenID, Empresa, Usuario, Estatus, Mov, FechaEmision, Proyecto, UEN, Moneda, TipoCambio, Concepto)
+          SELECT GETDATE(), @Sucursal, @Sucursal, @Sucursal, 'ASIS', @Mov, @MovID, @Empresa, @Usuario, 'CONFIRMAR', @MovFestivoLaborado, FechaEmision, Proyecto, UEN, @Moneda, @TipoCambio,@Concepto
+            FROM Asiste WHERE ID = @ID 
+          SELECT @NominaID = @@IDENTITY
+    
+          INSERT NominaD (ID, Renglon, Personal, FechaD, Cantidad)
+          SELECT @NominaID, MIN(d.Renglon), d.Personal, d.Fecha, 1.0 --SUM(d.Cantidad)/60
+            FROM AsisteD d
+            JOIN Personal p ON p.Personal = d.Personal AND p.Estatus <> 'BAJA'
+           WHERE d.ID = @ID AND UPPER(d.Tipo) = 'Día Festivo laborado' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto
+           --and p.PeriodoTipo=@PeriodoTipo
+           GROUP BY d.Personal, d.Fecha
+        END
+       
+         IF @GenerarPrimaDominical = 1
+         AND EXISTS(SELECT * FROM AsisteD d JOIN Personal p ON p.Personal = d.Personal AND p.Estatus <> 'BAJA' WHERE d.ID = @ID AND UPPER(d.Tipo) = 'Domingo Laborado') 
+        BEGIN  
+          INSERT Nomina (UltimoCambio, Sucursal, SucursalOrigen, SucursalDestino, OrigenTipo, Origen, OrigenID, Empresa, Usuario, Estatus, Mov, FechaEmision, Proyecto, UEN, Moneda, TipoCambio, Concepto)
+          SELECT GETDATE(), @Sucursal, @Sucursal, @Sucursal, 'ASIS', @Mov, @MovID, @Empresa, @Usuario, 'CONFIRMAR', @MovPrimaDominical, FechaEmision, Proyecto, UEN, @Moneda, @TipoCambio,@Concepto
+            FROM Asiste WHERE ID = @ID 
+          SELECT @NominaID = @@IDENTITY
+    
+          INSERT NominaD (ID, Renglon, Personal, FechaD, Cantidad)
+          SELECT @NominaID, MIN(d.Renglon), d.Personal, d.Fecha, 1.0--SUM(d.Cantidad)/60
+            FROM AsisteD d
+            JOIN Personal p ON p.Personal = d.Personal AND p.Estatus <> 'BAJA'
+           WHERE d.ID = @ID AND UPPER(d.Tipo) = 'Domingo Laborado' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto
+           --and p.PeriodoTipo=@PeriodoTipo
+           GROUP BY d.Personal, d.Fecha
+        END
+				/***********TERMINA: WAFURGA**********/
         IF @GenerarRetardos = 1
         BEGIN 
             IF EXISTS(SELECT @NominaID, MIN(d.Renglon), d.Personal, d.Fecha, 1.0
@@ -216,7 +290,7 @@ AS BEGIN
 				DELETE Nomina WHERE ID = @NominaID
 			 END
         END
-        END
+        END--GenerarRetardo
         IF @GenerarHorasExtras = 1 AND @HerramHorasExtra <> 1
         BEGIN            
          IF EXISTS(SELECT @NominaID, MIN(d.Renglon), d.Personal, d.Fecha, SUM(d.Cantidad)/60.0
