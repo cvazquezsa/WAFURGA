@@ -254,11 +254,11 @@ AS BEGIN
             IF @Concepto = ''
 			BEGIN
 					INSERT NominaD (ID, Renglon, Personal, FechaD, Cantidad)
-								SELECT @NominaID, MIN(d.Renglon), d.Personal, d.Fecha, 1.0
+								SELECT @NominaID, MIN(d.Renglon), d.Personal, d.Fecha, d.Cantidad
 								FROM AsisteD d
 								JOIN Personal p ON p.Personal = d.Personal AND p.Estatus <> 'BAJA'
 								WHERE d.ID = @ID AND UPPER(d.Tipo) = 'MINUTOS AUSENCIA' AND ISNULL(RTRIM(d.Concepto), '') = @Concepto
-								GROUP BY d.Personal, d.Fecha
+								GROUP BY d.Personal, d.Fecha, d.Cantidad
 			END
 
 			IF @Concepto <> ''
