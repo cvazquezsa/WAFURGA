@@ -7,7 +7,7 @@ ListaCarpetas=Lista
 CarpetaPrincipal=Lista
 PosicionInicialAltura=502
 PosicionInicialAncho=1292
-PosicionInicialIzquierda=0
+PosicionInicialIzquierda=37
 PosicionInicialArriba=0
 VentanaTipoMarco=Normal
 VentanaPosicionInicial=Centrado
@@ -17,10 +17,10 @@ AccionesDerecha=S
 ListaAcciones=(Lista)
 Menus=S
 PosicionSeccion1=77
-PosicionInicialAlturaCliente=962
+PosicionInicialAlturaCliente=750
 VentanaEstadoInicial=Normal
 
-ExpresionesAlMostrar=EjecutarSQL(<T>EXEC spWFGPlaneadorTraspaso :tfechad, :tfechaa, :temp, :ndias <T>, FechaFormatoServidor(Info.FechaD), FechaFormatoServidor(Info.FechaA), Empresa, 7 )
+ExpresionesAlMostrar=EjecutarSQL(<T>EXEC spWFGPlaneadorTraspaso :tfechad, :tfechaa, :temp, :ndias<T>, FechaFormatoServidor(Info.FechaD), FechaFormatoServidor(Info.FechaA), Empresa, Info.Dias )
 MenuPrincipal=(Lista)
 [Lista]
 Estilo=Hoja
@@ -600,16 +600,54 @@ Boton=6
 NombreEnBoton=S
 NombreDesplegar=RPT Calificaciones
 EnBarraHerramientas=S
-TipoAccion=Expresion
-Expresion=URL(<T>http://624761-intstar/ReportServer/Pages/ReportViewer.aspx?%2fWafurga%2fWfgCalificaciones&rs:Command=Render<T>)
+TipoAccion=Formas
+ClaveAccion=WFGEspecificarFechasRPT
 Activo=S
 Visible=S
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 EspacioPrevio=S
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ConCondicion=S
 EjecucionConError=S
 EjecucionCondicion=(SQL(<T>EXEC spWFGValidaStockMinimo<T>)=0)
 EjecucionMensaje=<T>Falta Configurar el Stock Mínimo Para Alguna(s) Sucursal(es)<T>
-
 [Acciones.Prioridad]
 Nombre=Prioridad
 Boton=45
@@ -620,8 +658,10 @@ TipoAccion=Formas
 ClaveAccion=WFGPrioridad
 Activo=S
 Visible=S
-EspacioPrevio=S
 
+
+
+EspacioPrevio=S
 [Acciones.Ponderacion]
 Nombre=Ponderacion
 Boton=61
@@ -632,6 +672,12 @@ TipoAccion=Formas
 ClaveAccion=WFGPonderacion
 Activo=S
 Visible=S
+
+
+
+
+
+
 
 [Acciones.Otros1]
 Nombre=Otros1
@@ -901,6 +947,42 @@ ColorFondo=Blanco
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[Acciones.RPTCalificaciones.Variables]
+Nombre=Variables
+Boton=0
+TipoAccion=Controles Captura
+ClaveAccion=Variables Asignar
+Activo=S
+Visible=S
 
 
 

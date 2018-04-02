@@ -5,24 +5,22 @@ Icono=5
 Modulos=(Todos)
 ListaCarpetas=(Variables)
 CarpetaPrincipal=(Variables)
-PosicionInicialIzquierda=517
-PosicionInicialArriba=403
+PosicionInicialIzquierda=560
+PosicionInicialArriba=280
 PosicionInicialAltura=131
 PosicionInicialAncho=246
 VentanaTipoMarco=Diálogo
 VentanaPosicionInicial=Centrado
-ExpresionesAlMostrar=
-ExpresionesAlCerrar=
 BarraAcciones=S
 AccionesTamanoBoton=15x5
 ListaAcciones=(Lista)
 AccionesDivision=S
-VentanaConIcono=
-VentanaSiempreAlFrente=
 VentanaExclusiva=S
 AccionesCentro=S
 PosicionInicialAlturaCliente=139
 
+VentanaEstadoInicial=Normal
+VentanaExclusivaOpcion=0
 [(Variables)]
 Estilo=Ficha
 Clave=(Variables)
@@ -98,13 +96,6 @@ ClaveAccion=Variables Asignar / Ventana Aceptar
 Activo=S
 Visible=S
 
-[Acciones.Aceptar.Expresion]
-Nombre=Expresion
-Boton=0
-TipoAccion=Expresion
-Activo=S
-Visible=S
-Expresion=URL(<T>http://624761-intstar/ReportServer/Pages/ReportViewer.aspx?%2fWafurga%2fWfgCalificaciones&rs:Command=Render<T>)
 
 [Acciones.Aceptar.Actualiza]
 Nombre=Actualiza
@@ -115,16 +106,16 @@ Visible=S
 
 
 
+
+
+
+
+
+
+
+
+
 Expresion=OtraForma(<T>WFGPlaneador<T>, Forma.ActualizarForma )
-
-
-
-
-
-
-
-
-
 [(Variables).ListaEnCaptura]
 (Inicio)=Info.FechaD
 Info.FechaD=Info.FechaA
@@ -146,17 +137,23 @@ ColorFondo=Blanco
 
 
 
+
+
+
+
+[Acciones.Aceptar.Reporte]
+Nombre=Reporte
+Boton=0
+TipoAccion=Reportes Pantalla
+ClaveAccion=WFGCalificaciones
+Activo=S
+Visible=S
+
 [Acciones.Aceptar.ListaAccionesMultiples]
 (Inicio)=VariablesAsigna
-VariablesAsigna=Expresion
-Expresion=Actualiza
+VariablesAsigna=Reporte
+Reporte=Actualiza
 Actualiza=(Fin)
-
-
-
-
-
-
 
 [Forma.ListaAcciones]
 (Inicio)=Aceptar

@@ -225,7 +225,13 @@ TipoCampo=Calculado
 TamanoValidacion=255
 Alineacion=por Omisión
 Nombre=Descripción Opción
+
+
+
+
+
 Formula=DescribirOpciones(WFGRPTPlaneadorTraspaso.Subcuenta)
+
 
 [Vista.ListaCampos]
 (Inicio)=WFGRPTPlaneadorTraspaso.Sucursal
