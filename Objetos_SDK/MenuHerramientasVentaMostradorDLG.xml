@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ASCII" ?>
+<IntelisisAddOn Nombre="MenuHerramientasVentaMostradorDLG.xml">
+<Configuracion>
+<![CDATA[
+[AddOn]
+Nombre=Wafurga
+Version=1.0
+Llave=alksjdklajsdlkjalksdjalksjdklajsl
+Compilacion=2921
+AceptaESPs=N
+
+
+]]>
+</Configuracion>
+<MenuHerramientasVentaMostrador.dlg>
+<![CDATA[
+[Dialogo]
+Clave=MenuHerramientasVentaMostrador
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={MS Sans Serif, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=(Lista)
+PosicionInicialIzquierda=547
+PosicionInicialArriba=269
+PosicionInicialAltura=141
+PosicionInicialAncho=271
+VentanaTipoMarco=Diálogo
+VentanaPosicionInicial=Centrado
+VentanaConIcono=S
+PosicionInicialAlturaCliente=162
+VentanaEstadoInicial=Normal
+
+[Acciones.VentaN]
+Nombre=VentaN
+Boton=0
+NombreDesplegar=Procesar &Notas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+Expresion=Si<BR>  Config.GenerarNCAlProcesar<BR>Entonces<BR>  Forma(<T>ProcesarVentaN2<T>)<BR>Sino<BR>  Forma(<T>ProcesarVentaN<T>)<BR>Fin
+
+[Acciones.VentaFM]
+Nombre=VentaFM
+Boton=0
+NombreDesplegar=Procesar &Facturas Mostrador
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ProcesarVentaFM
+Activo=S
+Visible=S
+
+[Acciones.MoverNotas]
+Nombre=MoverNotas
+Boton=0
+NombreDesplegar=&Mover Notas Anteriores
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Expresion=Asigna(Info.Cantidad, 1000)<BR>Si<BR>  Forma(<T>EspecificarCantidad<T>)<BR>Entonces<BR>   ProcesarSQL(<T>spMoverNotasAnteriores :tEmpresa, :nTope<T>, Empresa, Info.Cantidad)<BR>Fin
+VisibleCondicion=Config.MoverNotasAuto
+
+[Acciones.VentaRefacturarNotas]
+Nombre=VentaRefacturarNotas
+Boton=0
+NombreDesplegar=Refacturar Notas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=VentaRefacturarTemp
+Activo=S
+VisibleCondicion=Config.GenerarNCAlProcesar
+
+
+[Acciones.CaducidadSaldo]
+Nombre=CaducidadSaldo
+Boton=0
+NombreDesplegar=&Cancelar Saldo Tarjetas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=WFGFiltroCadSaldo
+Activo=S
+Visible=S
+
+[Dialogo.ListaAcciones]
+(Inicio)=VentaN
+VentaN=VentaFM
+VentaFM=MoverNotas
+MoverNotas=VentaRefacturarNotas
+VentaRefacturarNotas=CaducidadSaldo
+CaducidadSaldo=(Fin)
+]]>
+</MenuHerramientasVentaMostrador.dlg>
+<Indice>
+MenuHerramientasVentaMostrador.dlg
+
+</Indice>
+</IntelisisAddOn>

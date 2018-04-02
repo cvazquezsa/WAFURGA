@@ -1,0 +1,14 @@
+[Variables]
+ListaVariables=Info.TipoVale
+
+[Info.TipoVale]
+Grupo=Info
+Clave=TipoVale
+Tipo=Texto
+Nombre=Tipo Vale
+Tamano=50
+AyudaEnCaptura=Vista
+Forma=WFGTipoValeLista
+Vista=ValeTipo
+Campo=ValeTipo.Tipo
+OpcionesPredefinidas=Ninguna
