@@ -290,7 +290,7 @@ AS BEGIN
 				  AND ISNULL(a.WFGArtPlaneador,0)=1
 				  AND w.Sucursal IN (SELECT DISTINCT SucursalO FROM WFGPrioridad)
 				  GROUP BY w.Sucursal, w.Articulo, ISNULL(w.Subcuenta,'')
-  --select * from #PasoVVP where ARTICULO='FL900'
+  --select 2,* from #PasoVVP where ARTICULO='152MA'
 
   INSERT INTO #Minimos (Articulo, Subcuenta,  MinVvp,   MaxVvp,   MinVm,   MaxVm)
                  SELECT Articulo, Subcuenta, MIN(VVP), MAX(VVP),  MIN(VM), MAX(VM) 
@@ -312,7 +312,7 @@ AS BEGIN
 							 JOIN (SELECT Empresa, Sucursal, Cuenta, ISNULL(SubCuenta,'') SubCuenta, SUM(CASE WHEN Rama='INV' THEN SaldoU WHEN Rama='VMOS' THEN -SaldoU END) Existencias		
 							       FROM SaldoU
 		                           GROUP BY Empresa, Sucursal,  Cuenta, SubCuenta) disponible on w.Articulo=disponible.Cuenta AND ISNULL(w.Subcuenta,'')=ISNULL(disponible.SubCuenta,'') AND w.Sucursal=disponible.Sucursal
-  --SELECT * FROM #PasoCalificaciones WHERE ARTICULO='FL900'
+  --SELECT 3,* FROM #PasoCalificaciones WHERE ARTICULO='152MA'
 
   INSERT INTO #PasoCalPeV ( Sucursal, Articulo, Subcuenta, Existencia, 
                             PeV)
@@ -454,7 +454,7 @@ AS BEGIN
 					 JOIN #PasoInvXDia p on s.Sucursal=p.Sucursal AND s.Articulo=p.Articulo AND ISNULL(s.Subcuenta,'')=ISNULL(p.Subcuenta,'')
 					 JOIN #PasoCalificaciones pc on s.Sucursal=pc.Sucursal AND s.Articulo=pc.Articulo AND ISNULL(s.Subcuenta,'')=ISNULL(pc.Subcuenta,'')
 					 JOIN #StockMinimo st on s.Sucursal=st.Sucursal AND s.Articulo=st.Articulo AND ISNULL(s.Subcuenta,'')=ISNULL(st.Subcuenta,'')
-   --select * from #WFGCantidadTraspasar where articulo='DIADEPRIN'
+   --select 4, * from #WFGCantidadTraspasar where articulo='152MA'
 
    DECLARE crCantPos1 CURSOR FAST_FORWARD FOR     
     SELECT DISTINCT Articulo, Subcuenta
@@ -501,17 +501,19 @@ AS BEGIN
           FETCH NEXT FROM crCantTras INTO @SucursalC
           WHILE @@FETCH_STATUS = 0
           BEGIN	  
-			 --IF @Articulo='DIADEPRIN'   SELECT @CantidadT
+			 --IF @Articulo='152MA'   SELECT @CantidadT
 	         SELECT @CantidadT=SUM(ISNULL(CantidadTraspasar,0)) FROM #WFGCantidadTraspasar WHERE Articulo=@Articulo AND ISNULL(Subcuenta,'')=ISNULL(@Opcion,'') AND Ciclo=@CicloMax 
-			 --IF @Articulo='DIADEPRIN'   SELECT @CantidadR
+			 --IF @Articulo='152MA'   SELECT @CantidadT,@CantidadR
 			 SELECT @CantidadR=@TotalInvXDia-ISNULL(@CantidadTraspasar,0)
-			 
+			 --IF @Articulo='152MA'   SELECT @CantidadT,@CantidadR
 		     IF @CantidadT <= @TotalInvXDia
 		     BEGIN
-		       UPDATE #WFGCantidadTraspasar SET CantidadTraspasar=CASE WHEN @CantidadR >= @TotalInvXDia THEN CASE WHEN Stock > InvXDia THEN Stock ELSE InvXDia END ELSE ISNULL(@CantidadR,0) END
+					--If @Articulo='152MA' SELECT @CantidadR,@TotalInvXDia,CASE WHEN NOT (@CantidadR < Stock AND @CantidadR < InvXDia) THEN CASE WHEN Stock > InvXDia THEN Stock ELSE InvXDia END ELSE ISNULL(@CantidadR,0) END FROM #WFGCantidadTraspasar WHERE Articulo='152MA'
+		       UPDATE #WFGCantidadTraspasar SET CantidadTraspasar=CASE WHEN NOT (@CantidadR < Stock AND @CantidadR < InvXDia) THEN CASE WHEN Stock > InvXDia THEN Stock ELSE InvXDia END ELSE ISNULL(@CantidadR,0) END
 		       WHERE Sucursal=@SucursalC AND Articulo=@Articulo AND ISNULL(Subcuenta,'')=ISNULL(@Opcion,'') AND Ciclo=@CicloMax
 		       
-			   --if @articulo='diadeprin' select 'cantidad', @CantidadTraspasar
+			   --IF @Articulo='BAIK0531' SELECT * FROM #WFGCantidadTraspasar WHERE Articulo='BAIK0531'
+				 --if @articulo='diadeprin' select 'cantidad', @CantidadTraspasar
 		       SELECT @CantidadTraspasar=CantidadTraspasar FROM #WFGCantidadTraspasar WHERE Sucursal=@SucursalC AND Articulo=@Articulo AND ISNULL(Subcuenta,'')=ISNULL(@Opcion,'')
 		       AND Ciclo=@CicloMax		   
 		      --select @cantidadtraspasar, @Totalinvxdia
@@ -522,8 +524,8 @@ AS BEGIN
           DEALLOCATE crCantTras 
 
 	      UPDATE #WFGCantidadTraspasar SET TotalInvXDia=ISNULL(@TotalInvXDia,0) WHERE Ciclo=@CicloMax AND Articulo=@Articulo AND ISNULL(Subcuenta,'')=ISNULL(@Opcion,'')
-		  --IF @Articulo='diadeprin'
-		  --select * from #WFGCantidadTraspasar where Articulo='diadeprin'
+		  --IF @Articulo='152MA'
+		  --select * from #WFGCantidadTraspasar where Articulo='152MA'
 	      --Excluir items donde cantidadtraspasar es menor a STock o InvXDia
 	      UPDATE #WFGCantidadTraspasar SET Excluido=1 WHERE Ciclo=@CicloMax AND Articulo=@Articulo AND ISNULL(Subcuenta,'')=ISNULL(@Opcion,'')
 	      AND (CantidadTraspasar < CASE WHEN Stock > InvXDia THEN Stock ELSE InvXDia END) 
@@ -549,9 +551,15 @@ AS BEGIN
           FROM #WFGCantidadTraspasar w 
 	      WHERE w.Ciclo=1 AND w.Articulo=@Articulo AND ISNULL(w.Subcuenta,'')=ISNULL(@Opcion,'') 
 		  AND ISNULL(Excluido,0)=0
-
-		  SELECT @CantidadRestante=@TotalInvXDia - @CantTraspasar
-		  --select @CantidadRestante
+			--IF @Articulo='BAIK0531' SELECT @CantTraspasar
+		  IF EXISTS (SELECT *
+									FROM #WFGCantidadTraspasar w 
+									WHERE w.Ciclo=1 AND w.Articulo=@Articulo AND ISNULL(w.Subcuenta,'')=ISNULL(@Opcion,'') 
+										AND ISNULL(Excluido,0)=1)
+				SELECT @CantidadRestante=@TotalInvXDia - @CantTraspasar
+			ELSE
+				SELECT @CantidadRestante=0
+		  --IF @Articulo='BAIK0531' select @CantidadRestante
 
 		  UPDATE w SET Proporcion=w1.CantidadTraspasar/@CantTraspasar
 		  FROM #WFGCantidadTraspasar w 
@@ -560,21 +568,24 @@ AS BEGIN
 		  AND ISNULL(w.Excluido,0)=0 AND w.Ciclo=@CicloMax
 
 		  --Reparte Cantidad no excluidos
+			--
+			--IF @ARTICULO='BAIK0531'
+	  --  SELECT 'o', * FROM #WFGCantidadTraspasar WHERE ARTICULO='BAIK0531'   ORDER BY CICLO
 		  UPDATE w SET CantidadTraspasar=(ISNULL(w.Proporcion,0)*ISNULL(@CantidadRestante,0))+w1.CantidadTraspasar
 		  FROM #WFGCantidadTraspasar w 
 		  JOIN #WFGCantidadTraspasar w1 on w.Articulo=w1.Articulo AND ISNULL(w.Subcuenta,'')=ISNULL(w1.Subcuenta,'') AND w.Sucursal=w1.Sucursal
 	      WHERE w1.Ciclo=@CicloMax-1 AND w.Articulo=@Articulo AND ISNULL(w.Subcuenta,'')=ISNULL(@Opcion,'') 
 		  AND ISNULL(w.Excluido,0)=0 AND w.Ciclo=@CicloMax
 		END
-		--IF @ARTICULO='DIADEPRIN'
-	    --SELECT 'o', * FROM #WFGCantidadTraspasar WHERE ARTICULO='DIADEPRIN'   ORDER BY CICLO
+		--IF @ARTICULO='BAIK0531'
+	 --   SELECT 'o', * FROM #WFGCantidadTraspasar WHERE ARTICULO='BAIK0531'   ORDER BY CICLO
      END 
 	 ---FIN EXCLUIR ITEMS CON EXISTENCIA SUFICIENTE  
    FETCH NEXT FROM crCantPos1 INTO  @Articulo, @Opcion
    END    
    CLOSE crCantPos1
    DEALLOCATE crCantPos1  
-   --select 'm',* from #WFGCantidadTraspasar where articulo='DIADEPRIN'
+   --select 'm',* from #WFGCantidadTraspasar where articulo='152MA'
   
    INSERT #CicloMax (CicloMax,   Articulo, Subcuenta,            Sucursal)
               SELECT MAX(Ciclo), Articulo, ISNULL(Subcuenta,''), Sucursal 
@@ -637,7 +648,7 @@ AS BEGIN
    JOIN #WFGCantTraspasaCicloMax c ON w.Articulo=c.Articulo AND w.Sucursal=c.Sucursal AND  ISNULL(w.Subcuenta,'')=ISNULL(c.Subcuenta,'')
    WHERE w.Sucursal IN (SELECT DISTINCT SucursalO FROM WFGPrioridad) AND c.CantidadTraspasar>0 AND (Existencia < CantidadTraspasar)
 
-   --select * from WFGPlaneadorTraspaso where articulo='diadeprin'
+   --select 1,* from WFGPlaneadorTraspaso where articulo='152MA'
 
    --OBTIENE PARTE DECIMAL	
    INSERT INTO #SumaCantDec (CantidadTraspasaDec,                                 Articulo, Subcuenta)
@@ -786,8 +797,8 @@ RETURN
 END
 GO
 
---BEGIN TRANSACTION
---EXEC spWFGPlaneadorTraspaso '20180101', '20180107', 'E001', 7
+BEGIN TRANSACTION
+EXEC spWFGPlaneadorTraspaso '20180101', '20180107', 'E001', 7
 --EXEC xpWFGVisRPTCalif
---ROLLBACK
+ROLLBACK
 
