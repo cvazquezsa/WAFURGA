@@ -69,7 +69,7 @@ BEGIN
 		INSERT INTO @HistorialCreditoPaso
 			SELECT
 			c.ID,
-			2,
+			1,
 			c.Sucursal,
 			c.Cliente,
 			ISNULL('Nota a Credito'+' '+v.FolioSBX+' '+RIGHT(c.Referencia,LEN(c.Referencia)-CHARINDEX('(',c.Referencia)+1),RTRIM(LTRIM(v.Mov))+' '+v.MovID) Referencia,
@@ -85,21 +85,21 @@ BEGIN
 					AND c.Empresa=@Empresa AND c.LineaCredito=@LC
 			UNION ALL
 
-			SELECT 
-				c.ID,4,c.Sucursal,c.Cliente,ISNULL(c.Referencia,c.Mov),c.FechaEmision,c.Vencimiento, 
-				SUM(ISNULL(cd.Importe,0)+ISNULL(cd.InteresesOrdinarios,0)+ISNULL(cd.InteresesMoratorios,0)), 
-				SUM(ISNULL(cd.InteresesOrdinariosIVA,0)+ISNULL(cd.InteresesMoratoriosIVA,0)),1 
-				FROM Cxc c 
-					JOIN CxcD cd ON c.ID=cd.ID
-					JOIN Cxc c2 ON cd.Aplica=c2.Mov AND cd.AplicaID=c2.MovID
-				WHERE c.Mov IN ('Cobro Credito') AND c.Estatus IN ('CONCLUIDO') AND c.Cliente=@Cliente AND c.Empresa=@Empresa 
-					AND c2.LineaCredito=@LC
-				GROUP BY c.ID,c.Sucursal,c.Cliente,c.FechaEmision,c.Vencimiento,c.Referencia,c.Mov
-			UNION ALL
+			--SELECT 
+			--	c.ID,2,c.Sucursal,c.Cliente,ISNULL(c.Referencia,c.Mov),c.FechaEmision,c.Vencimiento, 
+			--	SUM(ISNULL(cd.Importe,0)+ISNULL(cd.InteresesOrdinarios,0)+ISNULL(cd.InteresesMoratorios,0)), 
+			--	SUM(ISNULL(cd.InteresesOrdinariosIVA,0)+ISNULL(cd.InteresesMoratoriosIVA,0)),1 
+			--	FROM Cxc c 
+			--		JOIN CxcD cd ON c.ID=cd.ID
+			--		JOIN Cxc c2 ON cd.Aplica=c2.Mov AND cd.AplicaID=c2.MovID
+			--	WHERE c.Mov IN ('Abono Credito') AND c.Estatus IN ('CONCLUIDO') AND c.Cliente=@Cliente AND c.Empresa=@Empresa 
+			--		AND c2.LineaCredito=@LC
+			--	GROUP BY c.ID,c.Sucursal,c.Cliente,c.FechaEmision,c.Vencimiento,c.Referencia,c.Mov
+			--UNION ALL
 
 			SELECT 
 				c.ID,
-				1,
+				4,
 				c.Sucursal,
 				c2.Cliente,
 				CONCAT('Intereses Nota a Credito ',RTRIM(LTRIM(c.Mov)),' ', c.MovID),
@@ -115,6 +115,15 @@ BEGIN
 				WHERE c.Mov='Intereses Vencidos' AND c.Estatus IN ('CONCLUIDO') AND c2.Cliente=@Cliente AND c.Empresa=@Empresa
 					AND c2.LineaCredito=@LC
 				--GROUP BY c.Sucursal,c2.Cliente,c2.Mov,c2.MovID
+			UNION ALL
+
+			SELECT 
+				c.ID,5,c.Sucursal,c.Cliente,CONCAT(c.Mov,' ',c.MovId),c.FechaEmision,c.Vencimiento, 
+				c.Importe, 
+				c.Impuestos,0 
+				FROM Cxc c 
+				WHERE c.Mov IN ('Cargo Moratorio') AND c.Estatus IN ('PENDIENTE','CONCLUIDO') AND c.Cliente=@Cliente AND c.Empresa=@Empresa 
+
 	
 			UNION ALL
 
@@ -137,6 +146,9 @@ BEGIN
 					AND NOT (cd.InteresesOrdinarios=0 AND cd.InteresesOrdinariosIVA=0) AND c.Empresa=@Empresa AND c2.LineaCredito=@LC
 				--GROUP BY c.Sucursal,c2.Cliente,c2.Mov,c2.MovID,c2.ID
 
+		
+		
+		
 		DECLARE crWFGEdoCuenta CURSOR FAST_FORWARD FOR
 			SELECT 
 				Sucursal,Referencia,FechaEmision,Vencimiento,
@@ -193,3 +205,5 @@ BEGIN
 	INSERT INTO WFGHistSpWebServiceHistCredito SELECT @Cliente,@Empresa,@LC,GETDATE(),@XMLTitulo
 	SELECT @XMLTitulo
 END
+GO
+EXEC spWFGWebServiceHistorialCredito 'C00007', 'E001', 'C00007'
