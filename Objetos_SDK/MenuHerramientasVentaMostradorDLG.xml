@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="ASCII" ?>
-<IntelisisAddOn Nombre="MenuHerramientasVentaMostradorDLG.xml">
+<IntelisisAddOn Nombre="MenuHerramientasVentaMostradorDLG.XML">
 <Configuracion>
 <![CDATA[
 [AddOn]
-Nombre=Wafurga
+Nombre=WAFURGA
 Version=1.0
 Llave=alksjdklajsdlkjalksdjalksjdklajsl
 Compilacion=2921
@@ -26,8 +26,8 @@ MenuColumnas=1
 AccionesTamanoBoton=15x5
 AccionesDerecha=S
 ListaAcciones=(Lista)
-PosicionInicialIzquierda=547
-PosicionInicialArriba=269
+PosicionInicialIzquierda=504
+PosicionInicialArriba=239
 PosicionInicialAltura=141
 PosicionInicialAncho=271
 VentanaTipoMarco=Diálogo
@@ -45,8 +45,8 @@ EnBarraAcciones=S
 TipoAccion=Expresion
 Activo=S
 Visible=S
-Expresion=Si<BR>  Config.GenerarNCAlProcesar<BR>Entonces<BR>  Forma(<T>ProcesarVentaN2<T>)<BR>Sino<BR>  Forma(<T>ProcesarVentaN<T>)<BR>Fin
 
+Expresion=Si<BR>  Config.GenerarNCAlProcesar<BR>Entonces<BR>  Forma(<T>ProcesarVentaN2<T>)<BR>Sino<BR>  Forma(<T>ProcesarVentaN<T>)<BR>Fin
 [Acciones.VentaFM]
 Nombre=VentaFM
 Boton=0
@@ -69,6 +69,13 @@ Activo=S
 Expresion=Asigna(Info.Cantidad, 1000)<BR>Si<BR>  Forma(<T>EspecificarCantidad<T>)<BR>Entonces<BR>   ProcesarSQL(<T>spMoverNotasAnteriores :tEmpresa, :nTope<T>, Empresa, Info.Cantidad)<BR>Fin
 VisibleCondicion=Config.MoverNotasAuto
 
+
+
+
+
+
+
+
 [Acciones.VentaRefacturarNotas]
 Nombre=VentaRefacturarNotas
 Boton=0
@@ -78,13 +85,69 @@ EnBarraAcciones=S
 TipoAccion=Formas
 ClaveAccion=VentaRefacturarTemp
 Activo=S
+
+
+
+
+
+
+
 VisibleCondicion=Config.GenerarNCAlProcesar
+
+
+
+
+
+[Acciones.ProcesarVentaW]
+Nombre=ProcesarVentaW
+Boton=0
+NombreDesplegar=Procesar - Venta Credito
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ProcesarVentaW
+Activo=S
+Visible=S
+
+
+Antes=S
+AntesExpresiones=asigna(info.Mov,Config.MovVTASFatGlobal)
+[Acciones.ProcesarCxcW]
+Nombre=ProcesarCxcW
+Boton=0
+NombreDesplegar=Procesar - Intereses en Cobros
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ProcesarCxcW
+Activo=S
+Visible=S
+
+
+
+
+
+
+
+
+
+
+
+Antes=S
+AntesExpresiones=asigna(info.Mov,Config.MovCXCFatGlobal)
+
+
+
+
+
+
+
 
 
 [Acciones.CaducidadSaldo]
 Nombre=CaducidadSaldo
 Boton=0
-NombreDesplegar=&Cancelar Saldo Tarjetas
+NombreDesplegar=Cancelar Saldo Tarjetas
 EnMenu=S
 EnBarraAcciones=S
 TipoAccion=Formas
@@ -97,7 +160,9 @@ Visible=S
 VentaN=VentaFM
 VentaFM=MoverNotas
 MoverNotas=VentaRefacturarNotas
-VentaRefacturarNotas=CaducidadSaldo
+VentaRefacturarNotas=ProcesarVentaW
+ProcesarVentaW=ProcesarCxcW
+ProcesarCxcW=CaducidadSaldo
 CaducidadSaldo=(Fin)
 ]]>
 </MenuHerramientasVentaMostrador.dlg>

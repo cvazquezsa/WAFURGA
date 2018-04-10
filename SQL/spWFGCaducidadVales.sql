@@ -60,7 +60,8 @@ AS BEGIN
 		   @GenerarPoliza      bit,
            @GenerarMov         varchar(20), 
 		   @IDGenerar          int, 
-		   @GenerarMovID       varchar(20)
+		   @GenerarMovID       varchar(20),
+			 @Contador int
           
 
 
@@ -92,6 +93,7 @@ AS BEGIN
    FETCH NEXT FROM crCadSaldo INTO @Serie
    WHILE @@FETCH_STATUS = 0 
    BEGIN
+			SELECT @Contador=ISNULL(@Contador,0) + 1
      SELECT @Saldo=NULL, @IDVale=NULL
      
      SELECT @Empresa=Empresa, @Saldo=Saldo, @Articulo=Articulo FROM #CaducidadSaldo WHERE Serie=@Serie
@@ -119,7 +121,7 @@ AS BEGIN
   IF EXISTS(SELECT * FROM MensajeLista WHERE Mensaje = @Ok AND Tipo = 'INFO') OR ISNULL(@OK,0) = 0
    BEGIN ---- O K		        
      COMMIT  
-     SELECT 'El Proceso se generó correctamente' 
+     SELECT CONCAt('Se generaron correctamente',' ', @Contador,' movimientos Caducidad Saldo') 
    END   ---- O K
 	ELSE
 	BEGIN
@@ -130,12 +132,12 @@ AS BEGIN
 
 END
 GO
-/*begin transaction
-EXEC spWFGCaducidadVales '20480226', 'Monedero Electronico', 'S2C1', 1
-				select * from vale where mov='caducidad saldo' and id > 1524627
-					 select * from valed where id in (select id from vale where mov='caducidad saldo' and id > 1524627)
-					 select * from AuxiliarValeSerie
-					 select dbo.fnVerSaldoVale('MON-C00009')
-					 select dbo.fnVerSaldoVale('MON-M00003')--
-rollback
-*/
+--begin transaction
+--EXEC spWFGCaducidadVales '20480226', 'Monedero Electronico', 'S2C1', 1
+--				select * from vale where mov='caducidad saldo' and id > 1526527
+--					 select * from valed where id in (select id from vale where mov='caducidad saldo' and id > 1526527)
+--					 select * from AuxiliarValeSerie
+--					 select dbo.fnVerSaldoVale('MON-C00009')
+--					 select dbo.fnVerSaldoVale('MON-M00003')--
+--rollback
+
