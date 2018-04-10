@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<TfrxReport Version="5.4.6" DotMatrixReport="False" IniFile="\Software\Fast Reports" PreviewOptions.Buttons="4095" PreviewOptions.Zoom="1" PrintOptions.Printer="Default" PrintOptions.PrintOnSheet="0" ReportOptions.CreateDate="41357.5684321875" ReportOptions.Description.Text="" ReportOptions.LastChange="41357.5684321875" ScriptLanguage="PascalScript" ScriptText.Text="begin&#13;&#10;end.          ">
+	<Datasets>
+		<item DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail"/>
+		<item DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader"/>
+		<item DataSet="FRX_Store" DataSetName="Store"/>
+	</Datasets>
+	<Variables>
+		<item Name=" Header"/>
+		<item Name="Emisor" Value="&#60;CFDiParseXMLHeader.&#34;E_Nombre&#34;&#62; + ' RFC:' + &#60;CFDiParseXMLHeader.&#34;E_RFC&#34;&#62; + ' Regimen Fiscal:' + &#60;CFDiParseXMLHeader.&#34;E_RegimenFiscal&#34;&#62;"/>
+		<item Name="CantidadConLetra" Value="AmountToText( &#60;CFDiParseXMLHeader.&#34;C_Total&#34;&#62; )"/>
+		<item Name="DireccionEmisor" Value="&#60;Store.&#34;M_Calle&#34;&#62; + ', Col. ' + &#60;Store.&#34;M_Colonia&#34;&#62; + ', ' + &#60;Store.&#34;M_Ciudad&#34;&#62; + ', ' + &#60;Store.&#34;M_Estado&#34;&#62; + ', ' + &#60;Store.&#34;M_Pais&#34;&#62; + ', C.P. ' + &#60;Store.&#34;M_CodigoPostal&#34;&#62;"/>
+		<item Name="UUID" Value="'UUID: ' + &#60;CFDiParseXMLDetail.&#34;UUID&#34;&#62;"/>
+		<item Name=" Detail"/>
+		<item Name="Code" Value="IIF((&#60;CFDiParseXMLDetail.&#34;I_Impuesto1&#34;&#62; = '' and &#60;CFDiParseXMLDetail.&#34;I_Impuesto2&#34;&#62; &#60;&#62; ''),&#60;CFDiParseXMLDetail.&#34;I_Impuesto2&#34;&#62;, IIF((&#60;CFDiParseXMLDetail.&#34;I_Impuesto1&#34;&#62; &#60;&#62; '' and &#60;CFDiParseXMLDetail.&#34;I_Impuesto2&#34;&#62; = ''),&#60;CFDiParseXMLDetail.&#34;I_Impuesto1&#34;&#62;,IIF((&#60;CFDiParseXMLDetail.&#34;I_Impuesto1&#34;&#62; &#60;&#62; '' and &#60;CFDiParseXMLDetail.&#34;I_Impuesto2&#34;&#62; &#60;&#62; ''),&#60;Tax&#62;,'003 ISR')))"/>
+		<item Name="Tax" Value="&#60;CFDiParseXMLDetail.&#34;I_Impuesto1&#34;&#62;+','+&#60;CFDiParseXMLDetail.&#34;I_Impuesto2&#34;&#62;"/>
+	</Variables>
+	<TfrxDataPage Name="Data" Height="1000" Left="0" Top="0" Width="1000"/>
+	<TfrxReportPage Name="Page1" Font.Charset="1" Font.Color="0" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" PaperWidth="72" PaperHeight="3003" PaperSize="120" LeftMargin="1" RightMargin="1" TopMargin="1" BottomMargin="1" ColumnWidth="0" ColumnPositions.Text="" HGuides.Text="" VGuides.Text="">
+		<TfrxPageHeader Name="PageHeader1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="226.7718" Left="0" Top="109.60637" Width="264.5671" Stretched="True">
+			<TfrxMemoView Name="Memo2" Align="baWidth" Left="0" Top="4.11812" Width="264.5671" Height="34.01577" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" Frame.Typ="8" ParentFont="False" VAlign="vaCenter" Text="Folio Fiscal:&#13;&#10; [CFDiParseXMLHeader.&#34;UUID&#34;]"/>
+			<TfrxMemoView Name="Memo3" Align="baWidth" Left="0" Top="45.69295" Width="264.5671" Height="34.01577" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" Frame.Typ="8" ParentFont="False" VAlign="vaCenter" Text="No de Serie del Certificado del CSD:&#13;&#10; [CFDiParseXMLHeader.&#34;C_NoCertificado&#34;]"/>
+			<TfrxMemoView Name="Memo5" Align="baWidth" Left="0" Top="82.48825" Width="264.5671" Height="60.47248" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" Frame.Typ="8" ParentFont="False" VAlign="vaCenter" Text="Lugar de expedicion&#13;&#10; [CFDiParseXMLHeader.&#34;C_LugarExpedicion&#34;]&#13;&#10;Fecha y hora de emisión:&#13;&#10; [CFDiParseXMLHeader.&#34;C_Fecha&#34;]">
+				<Formats>
+					<item/>
+					<item/>
+				</Formats>
+			</TfrxMemoView>
+			<TfrxMemoView Name="Memo7" Align="baWidth" Left="0" Top="143.96073" Width="264.5671" Height="45.35436" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" Frame.Typ="8" ParentFont="False" VAlign="vaCenter" Text="Receptor:&#13;&#10; [CFDiParseXMLHeader.&#34;R_RFC&#34;]&#13;&#10; [CFDiParseXMLHeader.&#34;R_Nombre&#34;]"/>
+			<TfrxMemoView Name="Memo4" Align="baWidth" Left="0" Top="192.75603" Width="264.5671" Height="30.23624" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="Uso CFDI&#13;&#10; [CFDiParseXMLHeader.&#34;R_UsoCFDI&#34;]"/>
+		</TfrxPageHeader>
+		<TfrxMasterData Name="MasterData1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="37.7953" Left="0" Top="449.76407" Width="264.5671" ColumnWidth="0" ColumnGap="0" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" RowCount="0" Stretched="True">
+			<TfrxMemoView Name="DetailCantidad" Left="0" Top="3.77953" Width="37.7953" Height="18.89765" StretchMode="smActualHeight" DataField="C_Cantidad" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLDetail.&#34;C_Cantidad&#34;]"/>
+			<TfrxMemoView Name="DetailDescripcion" Left="37.7953" Top="3.77953" Width="113.3859" Height="18.89765" StretchMode="smActualHeight" DataField="C_Descripcion" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLDetail.&#34;C_Descripcion&#34;]"/>
+			<TfrxMemoView Name="DetailValorUnitario" Left="151.1812" Top="3.77953" Width="52.91342" Height="18.89765" StretchMode="smActualHeight" DataField="C_ValorUnitario" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLDetail.&#34;C_ValorUnitario&#34;]"/>
+			<TfrxMemoView Name="DetailImporte" Left="204.09462" Top="3.77953" Width="60.47248" Height="18.89765" StretchMode="smActualHeight" DataField="C_Importe" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLDetail.&#34;C_Importe&#34;]"/>
+			<TfrxMemoView Name="Memo32" Left="37.7953" Top="22.67718" Width="113.3859" Height="15.11812" StretchMode="smActualHeight" DataField="C_ClaveProdServ" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLDetail.&#34;C_ClaveProdServ&#34;]"/>
+			<TfrxMemoView Name="Memo33" Left="0" Top="22.67718" Width="37.7953" Height="15.11812" StretchMode="smActualHeight" DataField="C_ClaveUnidad" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLDetail.&#34;C_ClaveUnidad&#34;]"/>
+			<TfrxMemoView Name="CFDiParseXMLDetailI_Impuesto2" Left="151.1812" Top="22.67718" Width="113.3859" Height="15.11812" DataSet="FRX_CFDiParseXMLDetail" DataSetName="CFDiParseXMLDetail" Font.Charset="1" Font.Color="-16777208" Font.Height="-9" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[TAX]"/>
+		</TfrxMasterData>
+		<TfrxHeader Name="Header1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="30.23624" Left="0" Top="396.85065" Width="264.5671">
+			<TfrxMemoView Name="Memo8" Left="0" Top="0" Width="34.01577" Height="30.23624" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" Frame.Typ="12" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Cant&#13;&#10;Uni"/>
+			<TfrxMemoView Name="Memo10" Left="34.01577" Top="0" Width="117.16543" Height="30.23624" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" Frame.Typ="12" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Descripción&#13;&#10;Codigo CFDI"/>
+			<TfrxMemoView Name="Memo9" Left="151.1812" Top="0" Width="52.91342" Height="30.23624" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" Frame.Typ="12" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="P.U.&#13;&#10;TAX"/>
+			<TfrxMemoView Name="Memo11" Left="204.09462" Top="0" Width="60.47248" Height="30.23624" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" Frame.Typ="12" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="Importe"/>
+		</TfrxHeader>
+		<TfrxFooter Name="Footer1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Font.Charset="1" Font.Color="0" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" Height="173.85838" Left="0" ParentFont="False" Top="510.23655" Width="264.5671" Child="Child1" Stretched="True">
+			<TfrxMemoView Name="Memo12" Left="75.5906" Top="7.55906" Width="86.92919" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="Subtotal:"/>
+			<TfrxMemoView Name="Memo13" Left="75.5906" Top="83.14966" Width="86.92919" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="TOTAL:"/>
+			<TfrxMemoView Name="IVA_Leyenda" Left="75.5906" Top="64.25201" Width="86.92919" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="IEPS:"/>
+			<TfrxMemoView Name="HeaderSubTotal" Left="162.51979" Top="7.55906" Width="90.70872" Height="18.89765" DataField="C_SubTotal" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_SubTotal&#34;]"/>
+			<TfrxMemoView Name="HeaderIVA" Left="162.51979" Top="64.25201" Width="90.70872" Height="18.89765" DataField="C_IEPS" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_IEPS&#34;]"/>
+			<TfrxMemoView Name="HeaderTotal" Left="162.51979" Top="83.14966" Width="90.70872" Height="18.89765" DataField="C_Total" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_Total&#34;]"/>
+			<TfrxLineView Name="Line1" Align="baWidth" Left="0" Top="0" Width="264.5671" Height="0" Color="0" Frame.Typ="4"/>
+			<TfrxMemoView Name="Memo14" Align="baWidth" Left="0" Top="120.94496" Width="264.5671" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="Total con letra: "/>
+			<TfrxMemoView Name="CantidadConLetra" Align="baWidth" Left="0" Top="139.84261" Width="264.5671" Height="18.89765" StretchMode="smActualHeight" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[CantidadConLetra]"/>
+			<TfrxMemoView Name="Memo28" Left="75.5906" Top="26.45671" Width="86.92919" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="Descuento:"/>
+			<TfrxMemoView Name="Memo29" Left="162.51979" Top="26.45671" Width="90.70872" Height="18.89765" DataField="C_Descuento" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_Descuento&#34;]"/>
+			<TfrxMemoView Name="Memo30" Left="75.5906" Top="45.35436" Width="86.92919" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="IVA:"/>
+			<TfrxMemoView Name="Memo31" Left="162.51979" Top="45.35436" Width="90.70872" Height="18.89765" DataField="C_IVA" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" DisplayFormat.FormatStr="%2.2n" DisplayFormat.Kind="fkNumeric" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haRight" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_IVA&#34;]"/>
+		</TfrxFooter>
+		<TfrxReportTitle Name="ReportTitle1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="68.03154" Left="0" Top="18.89765" Width="264.5671">
+			<TfrxMemoView Name="Memo1" Align="baWidth" Left="0" Top="3.77953" Width="264.5671" Height="15.11812" Font.Charset="1" Font.Color="-16777208" Font.Height="-13" Font.Name="Lucida Console" Font.Style="1" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="* Factura Electronica (CFDI)*"/>
+			<TfrxMemoView Name="Memo6" Align="baWidth" Left="0" Top="34.01577" Width="264.5671" Height="30.23624" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" Frame.Typ="8" ParentFont="False" Text="Emisor:&#13;&#10; [CFDiParseXMLHeader.&#34;E_RFC&#34;]   Serie-Folio: [&#60;CFDiParseXMLHeader.&#34;C_Serie&#34;&#62;+&#60;CFDiParseXMLHeader.&#34;C_Folio&#34;&#62;]"/>
+		</TfrxReportTitle>
+		<TfrxChild Name="Child1" FillType="ftBrush" FillGap.Top="0" FillGap.Left="0" FillGap.Bottom="0" FillGap.Right="0" Height="585.82715" Left="0" Top="706.77211" Width="264.5671">
+			<TfrxMemoView Name="HeaderMetodoDePago" Align="baWidth" Left="0" Top="30.23624" Width="264.5671" Height="18.89765" DataField="C_MetodoPago" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_MetodoPago&#34;]"/>
+			<TfrxMemoView Name="HeaderFromaDePago" Align="baWidth" Left="0" Top="71.81107" Width="264.5671" Height="18.89765" DataField="C_FormaPago" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_FormaPago&#34;]"/>
+			<TfrxMemoView Name="Memo15" Align="baWidth" Left="0" Top="136.06308" Width="264.5671" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Sello Digital del CFDI:"/>
+			<TfrxMemoView Name="HeaderSello" Align="baWidth" Left="0" Top="154.96073" Width="264.5671" Height="18.89765" StretchMode="smActualHeight" DataField="C_Sello" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_Sello&#34;]"/>
+			<TfrxMemoView Name="Memo16" Align="baWidth" Left="0" Top="177.63791" Width="264.5671" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Sello del SAT:"/>
+			<TfrxMemoView Name="HeaderSelloSAT" Align="baWidth" Left="0" Top="196.53556" Width="264.5671" Height="18.89765" StretchMode="smActualHeight" DataField="T_SelloSAT" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;T_SelloSAT&#34;]"/>
+			<TfrxMemoView Name="Memo17" Align="baWidth" Left="0" Top="219.21274" Width="264.5671" Height="26.45671" StretchMode="smActualHeight" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Cadena Original del complemento de certificación digital del SAT:"/>
+			<TfrxMemoView Name="HeaderCadenaOriginalSAT" Align="baWidth" Left="0" Top="245.66945" Width="264.5671" Height="18.89765" StretchMode="smActualHeight" DataField="T_CadenaOriginalSAT" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;T_CadenaOriginalSAT&#34;]"/>
+			<TfrxMemoView Name="Memo18" Align="baWidth" Left="0" Top="268.34663" Width="264.5671" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="No de Serie del Certificado del SAT:"/>
+			<TfrxMemoView Name="HeaderNoCertificadoSAT" Align="baWidth" Left="0" Top="287.24428" Width="264.5671" Height="18.89765" DataField="T_NoCertificadoSAT" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;T_NoCertificadoSAT&#34;]"/>
+			<TfrxMemoView Name="Memo19" Align="baWidth" Left="0" Top="309.92146" Width="264.5671" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Fecha y hora de certificación:"/>
+			<TfrxMemoView Name="Memo20" Align="baWidth" Left="0" Top="328.81911" Width="264.5671" Height="18.89765" DataField="C_Fecha" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_Fecha&#34;]"/>
+			<TfrxPictureView Name="Picture1" Align="baWidth" Left="0" Top="396.85065" Width="264.5671" Height="136.06308" Center="True" DataField="BBC" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" HightQuality="False" Transparent="False" TransparentColor="16777215"/>
+			<TfrxMemoView Name="Memo21" Align="baWidth" Left="0" Top="540.47279" Width="264.5671" Height="26.45671" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" HAlign="haCenter" ParentFont="False" Text="Este documento es una representación impresa de un CFDI 3.3"/>
+			<TfrxMemoView Name="Memo22" Align="baWidth" Left="0" Top="11.33859" Width="264.5671" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Metodo Pago: "/>
+			<TfrxMemoView Name="Memo23" Align="baWidth" Left="0" Top="52.91342" Width="264.5671" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Forma Pago:"/>
+			<TfrxMemoView Name="Memo24" Align="baWidth" Left="0" Top="351.49629" Width="264.5671" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="RfcProvCertif:"/>
+			<TfrxMemoView Name="Memo25" Align="baWidth" Left="0" Top="370.39394" Width="264.5671" Height="18.89765" DataField="T_RfcProvCertif" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;T_RfcProvCertif&#34;]"/>
+			<TfrxMemoView Name="Memo26" Align="baWidth" Left="0" Top="113.3859" Width="264.5671" Height="18.89765" DataField="C_Moneda" DataSet="FRX_CFDiParseXMLHeader" DataSetName="CFDiParseXMLHeader" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="0" HAlign="haCenter" ParentFont="False" VAlign="vaCenter" Text="[CFDiParseXMLHeader.&#34;C_Moneda&#34;]"/>
+			<TfrxMemoView Name="Memo27" Align="baWidth" Left="0" Top="94.48825" Width="264.5671" Height="18.89765" Font.Charset="1" Font.Color="-16777208" Font.Height="-11" Font.Name="Lucida Console" Font.Style="1" ParentFont="False" VAlign="vaCenter" Text="Moneda:"/>
+		</TfrxChild>
+	</TfrxReportPage>
+	<SBX-Section>
+		<SBX-Report-Id/>
+		<SBX-Datasets>
+			<SBX-Dataset name="CFDiParseXMLHeader">
+				<SBX-SQL><![CDATA[CFDiParseXMLHeader.xml]]></SBX-SQL>
+				<SBX-Definition>
+					<DATAPACKET Version="2.0">
+						<METADATA>
+							<FIELDS>
+								<FIELD attrname="UUID" fieldtype="string.uni" required="true" WIDTH="72">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#21806;&amp;#18773;D" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="CreationDate" fieldtype="dateTime">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#25970;&amp;#29793;&amp;#28521;&amp;#17518;&amp;#29793;e" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="CFDiDocumentUUID" fieldtype="string.uni" WIDTH="72">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#17478;&amp;#17513;&amp;#25455;&amp;#28021;&amp;#28261;&amp;#21876;&amp;#18773;D" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="CustomerUUID" fieldtype="string.uni" WIDTH="72">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#29557;&amp;#28532;&amp;#25965;&amp;#21874;&amp;#18773;D" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="Observaciones" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#20270;&amp;#29538;&amp;#29285;&amp;#24950;&amp;#26979;&amp;#28271;&amp;#29541;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_Version" fieldtype="string.uni" WIDTH="20">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#22111;&amp;#29285;&amp;#26995;&amp;#28271;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_NoCertificado" fieldtype="string.uni" WIDTH="40">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#20063;&amp;#17263;&amp;#29285;&amp;#26996;&amp;#26982;&amp;#24931;&amp;#28516;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_Fecha" fieldtype="dateTime">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#18015;&amp;#25445;&amp;#24936;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_LugarExpedicion" fieldtype="string.uni" WIDTH="10">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#19551;&amp;#26485;&amp;#29281;&amp;#30789;&amp;#25968;&amp;#26980;&amp;#26979;&amp;#28271;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_TipoDeComprobante" fieldtype="string.uni" WIDTH="40">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#21599;&amp;#28777;&amp;#17519;&amp;#17253;&amp;#28015;&amp;#29296;&amp;#25199;&amp;#28257;&amp;#25972;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_Serie" fieldtype="string.uni" WIDTH="40">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#21343;&amp;#29285;&amp;#25961;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_Folio" fieldtype="string.uni" WIDTH="40">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#18015;&amp;#27759;&amp;#28521;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_Moneda" fieldtype="string.uni" WIDTH="40">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#19807;&amp;#28271;&amp;#25701;a" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_FormaPago" fieldtype="string.uni" WIDTH="200">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#18015;&amp;#29295;&amp;#24941;&amp;#24912;&amp;#28519;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_MetodoPago" fieldtype="string.uni" WIDTH="200">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#19807;&amp;#29797;&amp;#25711;&amp;#20591;&amp;#26465;o" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_SubTotal" fieldtype="r8">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#21343;&amp;#25205;&amp;#28500;&amp;#24948;l" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_Descuento" fieldtype="r8">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#17503;&amp;#29541;&amp;#30051;&amp;#28261;&amp;#28532;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_IVA" fieldtype="r8">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#18783;&amp;#16726;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_IEPS" fieldtype="r8">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#18783;&amp;#20549;S" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_Total" fieldtype="r8">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#21599;&amp;#29807;&amp;#27745;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_Sello" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17198;&amp;#21343;&amp;#27749;&amp;#28524;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="E_RFC" fieldtype="string.uni" WIDTH="26">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17710;&amp;#21087;&amp;#17222;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="E_Nombre" fieldtype="string.uni" WIDTH="510">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17710;&amp;#20063;&amp;#28015;&amp;#29282;e" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="E_RegimenFiscal" fieldtype="string.uni" WIDTH="400">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#17710;&amp;#21087;&amp;#26469;&amp;#28009;&amp;#28261;&amp;#26950;&amp;#25459;&amp;#27745;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="R_RFC" fieldtype="string.uni" WIDTH="26">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#21038;&amp;#21087;&amp;#17222;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="R_Nombre" fieldtype="string.uni" WIDTH="510">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#21038;&amp;#20063;&amp;#28015;&amp;#29282;e" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="R_UsoCFDI" fieldtype="string.uni" WIDTH="400">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#21038;&amp;#21855;&amp;#28531;&amp;#17987;&amp;#18756;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="T_NoCertificadoSAT" fieldtype="string.uni" WIDTH="40">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#21550;&amp;#20063;&amp;#17263;&amp;#29285;&amp;#26996;&amp;#26982;&amp;#24931;&amp;#28516;&amp;#16723;T" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="T_FechaTimbrado" fieldtype="dateTime">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#21550;&amp;#18015;&amp;#25445;&amp;#24936;&amp;#26964;&amp;#25197;&amp;#24946;&amp;#28516;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="T_RfcProvCertif" fieldtype="string.uni" WIDTH="26">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#21550;&amp;#21087;&amp;#25446;&amp;#29264;&amp;#30319;&amp;#25923;&amp;#29810;&amp;#26217;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="T_SelloSAT" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#21550;&amp;#21343;&amp;#27749;&amp;#28524;&amp;#16723;T" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="T_CadenaOriginalSAT" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#21550;&amp;#17247;&amp;#25697;&amp;#28261;&amp;#20321;&amp;#26994;&amp;#26983;&amp;#24942;&amp;#21356;&amp;#21569;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="BBC" fieldtype="bin.hex" SUBTYPE="Binary">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#16942;&amp;#17218;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="RecordStatusID" fieldtype="i4">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25960;&amp;#25697;&amp;#29285;&amp;#21038;&amp;#25445;&amp;#29295;&amp;#21348;&amp;#24948;&amp;#30068;&amp;#18803;D" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+							</FIELDS>
+							<PARAMS/>
+						</METADATA>
+						<ROWDATA/>
+					</DATAPACKET>
+				</SBX-Definition>
+			</SBX-Dataset>
+			<SBX-Dataset name="CFDiParseXMLDetail">
+				<SBX-SQL><![CDATA[CFDiParseXMLDetail.xml]]></SBX-SQL>
+				<SBX-Definition>
+					<DATAPACKET Version="2.0">
+						<METADATA>
+							<FIELDS>
+								<FIELD attrname="UUID" fieldtype="string.uni" required="true" WIDTH="72">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#21806;&amp;#18773;D" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="CFDiParseXMLHeaderUUID" fieldtype="string.uni" WIDTH="72">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#17198;&amp;#17478;&amp;#20585;&amp;#29281;&amp;#25971;&amp;#19800;&amp;#18508;&amp;#24933;&amp;#25956;&amp;#21874;&amp;#18773;D" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="CreationDate" fieldtype="dateTime">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#17198;&amp;#25970;&amp;#29793;&amp;#28521;&amp;#17518;&amp;#29793;e" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="Line" fieldtype="i4">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#19502;&amp;#28265;e" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_ClaveProdServ" fieldtype="string.uni" WIDTH="200">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#17198;&amp;#17247;&amp;#24940;&amp;#25974;&amp;#29264;&amp;#25711;&amp;#25939;&amp;#30322;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_NoIdentificacion" fieldtype="string.uni" WIDTH="200">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#17198;&amp;#20063;&amp;#18799;&amp;#25956;&amp;#29806;&amp;#26217;&amp;#25449;&amp;#25441;&amp;#28521;n" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_Cantidad" fieldtype="r8">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#17198;&amp;#17247;&amp;#28257;&amp;#26996;&amp;#24932;d" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_ClaveUnidad" fieldtype="string.uni" WIDTH="200">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#17198;&amp;#17247;&amp;#24940;&amp;#25974;&amp;#28245;&amp;#25705;&amp;#25697;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_Unidad" fieldtype="string.uni" WIDTH="30">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#17198;&amp;#21855;&amp;#26990;&amp;#24932;d" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_Descripcion" fieldtype="string.uni" WIDTH="510">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#17198;&amp;#17503;&amp;#29541;&amp;#29283;&amp;#28777;&amp;#26979;&amp;#28271;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_ValorUnitario" fieldtype="r8">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#17198;&amp;#22111;&amp;#27745;&amp;#29295;&amp;#28245;&amp;#29801;&amp;#29281;&amp;#28521;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_Importe" fieldtype="r8">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#17198;&amp;#18783;&amp;#28781;&amp;#29295;&amp;#25972;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="C_Descuento" fieldtype="r8">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#17198;&amp;#17503;&amp;#29541;&amp;#30051;&amp;#28261;&amp;#28532;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="I_Impuesto1" fieldtype="string.uni" WIDTH="40">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#18734;&amp;#18783;&amp;#28781;&amp;#25973;&amp;#29811;&amp;#12655;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="I_TipoFactor1" fieldtype="string.uni" WIDTH="40">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#18734;&amp;#21599;&amp;#28777;&amp;#18031;&amp;#25441;&amp;#28532;&amp;#12658;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="I_TasaOCuota1" fieldtype="r8">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#18734;&amp;#21599;&amp;#29537;&amp;#20321;&amp;#30019;&amp;#29807;&amp;#12641;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="I_Importe1" fieldtype="r8">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#18734;&amp;#18783;&amp;#28781;&amp;#29295;&amp;#25972;1" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="I_Impuesto2" fieldtype="string.uni" WIDTH="40">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#18734;&amp;#18783;&amp;#28781;&amp;#25973;&amp;#29811;&amp;#12911;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="I_TipoFactor2" fieldtype="string.uni" WIDTH="40">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#18734;&amp;#21599;&amp;#28777;&amp;#18031;&amp;#25441;&amp;#28532;&amp;#12914;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="I_TasaOCuota2" fieldtype="r8">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#18734;&amp;#21599;&amp;#29537;&amp;#20321;&amp;#30019;&amp;#29807;&amp;#12897;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="I_Importe2" fieldtype="r8">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#18734;&amp;#18783;&amp;#28781;&amp;#29295;&amp;#25972;2" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="IA_Numero" fieldtype="string.uni" WIDTH="100">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#18734;&amp;#24385;&amp;#30030;&amp;#25965;&amp;#28530;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="IA_Fecha" fieldtype="date">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#18734;&amp;#24385;&amp;#25926;&amp;#26723;a" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="IA_Aduana" fieldtype="i4">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#18734;&amp;#24385;&amp;#25665;&amp;#24949;&amp;#24942;" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="RecordStatusID" fieldtype="i4">
+									<PARAM Name="ORIGIN" Value="&amp;#26211;&amp;#26980;&amp;#24944;&amp;#29554;&amp;#30821;&amp;#27757;&amp;#25956;&amp;#24948;&amp;#27753;&amp;#21038;&amp;#25445;&amp;#29295;&amp;#21348;&amp;#24948;&amp;#30068;&amp;#18803;D" Type="string.uni" Roundtrip="True"/>
+								</FIELD>
+							</FIELDS>
+							<PARAMS/>
+						</METADATA>
+						<ROWDATA/>
+					</DATAPACKET>
+				</SBX-Definition>
+			</SBX-Dataset>
+			<SBX-Dataset name="Store">
+				<SBX-SQL><![CDATA[SELECT 
+        s.name Tienda,
+        s.number,
+        cso1.val AS M_Calle,
+	cso2.val AS M_Colonia,
+	cso3.val AS M_Ciudad,
+	cso4.val AS M_Estado,
+	cso5.val AS M_Pais,
+	cso6.val AS M_CodigoPostal,
+	cso7.val AS IncluirSucursal,
+	cso8.val AS S_Calle,
+	cso9.val AS S_Colonia,
+	cso10.val AS S_Ciudad,
+	cso11.val AS S_Estado,
+	cso12.val AS S_Pais,
+	cso13.val AS s_CodigoPostal
+FROM store s
+INNER JOIN saledocument sd ON sd.storeid = s.id
+LEFT JOIN configurationstoreoption cso1 ON cso1.storeid = s.id AND cso1.configurationoptiondefinitionid = 511
+LEFT JOIN configurationstoreoption cso2 ON cso2.storeid = s.id AND cso2.configurationoptiondefinitionid = 512
+LEFT JOIN configurationstoreoption cso3 ON cso3.storeid = s.id AND cso3.configurationoptiondefinitionid = 513
+LEFT JOIN configurationstoreoption cso4 ON cso4.storeid = s.id AND cso4.configurationoptiondefinitionid = 514
+LEFT JOIN configurationstoreoption cso5 ON cso5.storeid = s.id AND cso5.configurationoptiondefinitionid = 515
+LEFT JOIN configurationstoreoption cso6 ON cso6.storeid = s.id AND cso6.configurationoptiondefinitionid = 516
+LEFT JOIN configurationstoreoption cso7 ON cso7.storeid = s.id AND cso7.configurationoptiondefinitionid = 521
+LEFT JOIN configurationstoreoption cso8 ON cso8.storeid = s.id AND cso8.configurationoptiondefinitionid = 522
+LEFT JOIN configurationstoreoption cso9 ON cso9.storeid = s.id AND cso9.configurationoptiondefinitionid = 523
+LEFT JOIN configurationstoreoption cso10 ON cso10.storeid = s.id AND cso10.configurationoptiondefinitionid = 524
+LEFT JOIN configurationstoreoption cso11 ON cso11.storeid = s.id AND cso11.configurationoptiondefinitionid = 525
+LEFT JOIN configurationstoreoption cso12 ON cso12.storeid = s.id AND cso12.configurationoptiondefinitionid = 526
+LEFT JOIN configurationstoreoption cso13 ON cso13.storeid = s.id AND cso13.configurationoptiondefinitionid = 527
+WHERE CFDiDocumentUUID='@CFDiDocument.UUID']]></SBX-SQL>
+				<SBX-Definition>
+					<DATAPACKET Version="2.0">
+						<METADATA>
+							<FIELDS>
+								<FIELD attrname="Tienda" fieldtype="string.uni" WIDTH="160">
+									<PARAM Name="ORIGIN" Value="s.Name" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="number" fieldtype="string.uni" WIDTH="50">
+									<PARAM Name="ORIGIN" Value="s.Number" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="M_Calle" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="cso1.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="M_Colonia" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="cso2.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="M_Ciudad" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="cso3.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="M_Estado" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="cso4.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="M_Pais" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="cso5.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="M_CodigoPostal" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="cso6.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="IncluirSucursal" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="cso7.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="S_Calle" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="cso8.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="S_Colonia" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="cso9.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="S_Ciudad" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="cso10.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="S_Estado" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="cso11.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="S_Pais" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="cso12.Val" Roundtrip="True"/>
+								</FIELD>
+								<FIELD attrname="s_CodigoPostal" fieldtype="bin.hex" SUBTYPE="WideText">
+									<PARAM Name="ORIGIN" Value="cso13.Val" Roundtrip="True"/>
+								</FIELD>
+							</FIELDS>
+							<PARAMS/>
+						</METADATA>
+						<ROWDATA/>
+					</DATAPACKET>
+				</SBX-Definition>
+			</SBX-Dataset>
+		</SBX-Datasets>
+	</SBX-Section>
+</TfrxReport>
+No se pudo descargar el archivo. Error: Thread was being aborted.No se pudo descargar el archivo. Error: Thread was being aborted.

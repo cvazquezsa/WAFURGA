@@ -59,7 +59,7 @@ AS BEGIN
   -- Dias
 	--SELECT * FROM PersonalAsisteDifDia
   DECLARE crDifDia CURSOR
-     FOR SELECT Personal, Fecha, SUM(Ausencia), SUM(Extra), SUM(Minutos)
+     FOR SELECT Personal, Fecha, SUM(ISNULL(Ausencia,0)), SUM(Extra), SUM(Minutos)
            FROM PersonalAsisteDifDia
           WHERE Empresa = @Empresa AND Fecha >= @FechaInicial AND Fecha < DATEADD(day, 1, @FechaFinal)-- AND Permiso IS NULL AND PermisoID IS NULL 
           GROUP BY Personal, Fecha
@@ -155,6 +155,7 @@ AS BEGIN
 
         IF @@DATEFIRST = 7
         BEGIN
+					--IF @Personal='0701' SELECT * FROM PersonalAsisteDifDia WHERE Personal=@Personal
             IF ((@Fecha IN (SELECT Fecha FROM DiaFestivo)) OR (@Fecha IN (SELECT Fecha FROM JornadaDiaFestivo WHERE Jornada = @Jornada))) AND @AsistDiaFestivolaborado = 1
             BEGIN
                 INSERT PersonalAsisteDif (Empresa,  Personal,  Fecha,  Cantidad, Tipo,             Concepto) 
@@ -215,11 +216,11 @@ AS BEGIN
 			BEGIN
 				SELECT @DiaSemanaAsist =  DATEPART (DW, @Fecha)  
 			--SELECT @@DATEFIRST,@DiaSemanaAsist,@AsistDomingoLaborado
-				IF @@DATEFIRST = 1 AND @DiaSemanaAsist = 7 AND @AsistDomingoLaborado = 1
+				IF @@DATEFIRST = 1 AND @DiaSemanaAsist = 7 AND @AsistDomingoLaborado = 1 AND @Ausencia<=0
 					INSERT PersonalAsisteDif (Empresa,  Personal,  Fecha,  Cantidad, Tipo,             Concepto) 
 														VALUES (@Empresa, @Personal, @Fecha, 1, 'Domingo Laborado', @Concepto)
 				
-				IF @@DATEFIRST = 7 AND @DiaSemanaAsist = 1 AND @AsistDomingoLaborado = 1
+				IF @@DATEFIRST = 7 AND @DiaSemanaAsist = 1 AND @AsistDomingoLaborado = 1 AND @Ausencia<=0
 							INSERT PersonalAsisteDif (Empresa,  Personal,  Fecha,  Cantidad, Tipo,             Concepto) 
 																VALUES (@Empresa, @Personal, @Fecha, 1, 'Domingo Laborado', @Concepto)
 			END
@@ -280,7 +281,7 @@ AS BEGIN
   IF @ID IS NULL
   BEGIN 
     INSERT Asiste (Sucursal, Empresa,  Mov,          FechaEmision,  Usuario,  Estatus,    FechaD,        FechaA) 
-           VALUES (@Sucursal, @Empresa, @CfgMovCorte, @FechaEmision, @Usuario, 'BORRADOR', @FechaInicial, @FechaFinal)
+           VALUES (@Sucursal, @Empresa, 'Corte', @FechaEmision, @Usuario, 'BORRADOR', @FechaInicial, @FechaFinal)
     SELECT @ID = SCOPE_IDENTITY()
   END ELSE
   BEGIN
@@ -320,7 +321,7 @@ AS BEGIN
   RETURN
 END
 GO
-exec spGenerarAsisteCorte 0, 'E003', 'INTELISIS', '20180212', '20180218'
+exec spGenerarAsisteCorte 0, 'E003', 'INTELISIS', '20180101', '20180107'
 
 
 		   
