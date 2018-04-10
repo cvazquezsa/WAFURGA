@@ -1,0 +1,29 @@
+C:\Users\ssantana\Desktop\WebService2\WebService2\bin\WebService2.dll.config
+C:\Users\ssantana\Desktop\WebService2\WebService2\bin\WebService2.dll
+C:\Users\ssantana\Desktop\WebService2\WebService2\bin\WebService2.pdb
+C:\Users\ssantana\Desktop\WebService2\WebService2\obj\Debug\WebService2.dll
+C:\Users\ssantana\Desktop\WebService2\WebService2\obj\Debug\WebService2.pdb
+C:\Users\ssantana\Desktop\WebService2\WebService2\obj\Debug\WFGWebService.csprojResolveAssemblyReference.cache
+C:\Users\Elite-DMG\Desktop\WebServices\Wafurga\WebService2\bin\WebService2.dll.config
+C:\Users\Elite-DMG\Desktop\WebServices\Wafurga\WebService2\bin\WebService2.dll
+C:\Users\Elite-DMG\Desktop\WebServices\Wafurga\WebService2\bin\WebService2.pdb
+C:\Users\Elite-DMG\Desktop\WebServices\Wafurga\WebService2\obj\Debug\WebService2.dll
+C:\Users\Elite-DMG\Desktop\WebServices\Wafurga\WebService2\obj\Debug\WebService2.pdb
+C:\Users\Carlos\OneDrive\Intelisis\Moda Aca\Moca Aca\Confirmación de alcance\Procesos Especiales\Interfaz SR Intelisis\WebServiceWafurga30-03-17\bin\WebService2.dll.config
+C:\Users\Carlos\OneDrive\Intelisis\Moda Aca\Moca Aca\Confirmación de alcance\Procesos Especiales\Interfaz SR Intelisis\WebServiceWafurga30-03-17\bin\WebService2.dll
+C:\Users\Carlos\OneDrive\Intelisis\Moda Aca\Moca Aca\Confirmación de alcance\Procesos Especiales\Interfaz SR Intelisis\WebServiceWafurga30-03-17\bin\WebService2.pdb
+C:\Users\Carlos\OneDrive\Intelisis\Moda Aca\Moca Aca\Confirmación de alcance\Procesos Especiales\Interfaz SR Intelisis\WebServiceWafurga30-03-17\obj\Debug\WFGWebService.csprojResolveAssemblyReference.cache
+C:\Users\Carlos\OneDrive\Intelisis\Moda Aca\Moca Aca\Confirmación de alcance\Procesos Especiales\Interfaz SR Intelisis\WebServiceWafurga30-03-17\obj\Debug\WebService2.dll
+C:\Users\Carlos\OneDrive\Intelisis\Moda Aca\Moca Aca\Confirmación de alcance\Procesos Especiales\Interfaz SR Intelisis\WebServiceWafurga30-03-17\obj\Debug\WebService2.pdb
+C:\Users\Elite-DMG\Desktop\WebServiceWafurga24-24-17\bin\WebService2.dll.config
+C:\Users\Elite-DMG\Desktop\WebServiceWafurga24-24-17\bin\WebService2.dll
+C:\Users\Elite-DMG\Desktop\WebServiceWafurga24-24-17\bin\WebService2.pdb
+C:\Users\Elite-DMG\Desktop\WebServiceWafurga24-24-17\obj\Debug\WFGWebService.csprojResolveAssemblyReference.cache
+C:\Users\Elite-DMG\Desktop\WebServiceWafurga24-24-17\obj\Debug\WebService2.dll
+C:\Users\Elite-DMG\Desktop\WebServiceWafurga24-24-17\obj\Debug\WebService2.pdb
+C:\Users\Carlos\OneDrive\Intelisis\Moda Aca\Moca Aca\Confirmación de alcance\Procesos Especiales\Interfaz SR Intelisis\WebServiceWafurga24-24-17\bin\WebService2.dll.config
+C:\Users\Carlos\OneDrive\Intelisis\Moda Aca\Moca Aca\Confirmación de alcance\Procesos Especiales\Interfaz SR Intelisis\WebServiceWafurga24-24-17\bin\WebService2.dll
+C:\Users\Carlos\OneDrive\Intelisis\Moda Aca\Moca Aca\Confirmación de alcance\Procesos Especiales\Interfaz SR Intelisis\WebServiceWafurga24-24-17\bin\WebService2.pdb
+C:\Users\Carlos\OneDrive\Intelisis\Moda Aca\Moca Aca\Confirmación de alcance\Procesos Especiales\Interfaz SR Intelisis\WebServiceWafurga24-24-17\obj\Debug\WFGWebService.csprojResolveAssemblyReference.cache
+C:\Users\Carlos\OneDrive\Intelisis\Moda Aca\Moca Aca\Confirmación de alcance\Procesos Especiales\Interfaz SR Intelisis\WebServiceWafurga24-24-17\obj\Debug\WebService2.dll
+C:\Users\Carlos\OneDrive\Intelisis\Moda Aca\Moca Aca\Confirmación de alcance\Procesos Especiales\Interfaz SR Intelisis\WebServiceWafurga24-24-17\obj\Debug\WebService2.pdb
