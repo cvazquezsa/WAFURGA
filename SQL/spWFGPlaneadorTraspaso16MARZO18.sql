@@ -155,6 +155,9 @@ AS BEGIN
   CREATE TABLE #TotalExistencia ( Sucursal          int         NULL,
                                   Articulo          varchar(20) NULL,
                                   Subcuenta         varchar(50) NULL,
+                                  TotalExistencia   float       NULL)
+	CREATE TABLE #TotalExistencia2 (Articulo          varchar(20) NULL,
+                                  Subcuenta         varchar(50) NULL,
                                   TotalExistencia   float       NULL) 
 								
   CREATE TABLE #PasoPe  ( Sucursal     int         NULL, 
@@ -335,6 +338,10 @@ AS BEGIN
   INSERT INTO #TotalExistencia (Sucursal, Articulo, Subcuenta, TotalExistencia)
                         SELECT Sucursal, Articulo, Subcuenta, SUM(Existencia) 
 						FROM #PasoCalPeV GROUP BY Sucursal, Articulo, Subcuenta
+	
+	INSERT INTO #TotalExistencia2 (Articulo, Subcuenta, TotalExistencia)
+                        SELECT Articulo, Subcuenta, SUM(Existencia) 
+						FROM #PasoCalPeV GROUP BY Articulo, Subcuenta
  --SELECT * FROM #TotalExistencia WHERE ARTICULO='FL900'						
 
   INSERT INTO #PasoInvXDia (Sucursal,  Articulo, Subcuenta, InvXDia)
@@ -346,9 +353,9 @@ AS BEGIN
                  SELECT pc.Sucursal, pc.Articulo, pc.Subcuenta, ISNULL((ps.Existencia/NULLIF(te.TotalExistencia,0)),0)
                  FROM #PasoCalificaciones pc
 				 JOIN #PasoCalPeV ps on pc.Sucursal=ps.Sucursal AND pc.Articulo=ps.Articulo AND ISNULL(pc.Subcuenta,'')=ISNULL(ps.Subcuenta,'')
-                 JOIN #TotalExistencia te ON pc.Articulo=te.Articulo AND pc.Sucursal=te.Sucursal AND ISNULL(pc.Subcuenta,'')=ISNULL(te.Subcuenta,'')
+                 JOIN #TotalExistencia2 te ON pc.Articulo=te.Articulo AND ISNULL(pc.Subcuenta,'')=ISNULL(te.Subcuenta,'')
 				--where pc.articulo='0606'
-  --select * from #PasoPe WHERE ARTICULO='FL900'	
+  --SELECT * FROM #PasoPe WHERE Articulo='016UP'
 
   UPDATE m SET m.MinPe=Minimo, MaxPe=Maximo
   FROM (SELECT Articulo, Subcuenta, MIN(Pe) Minimo, MAX(Pe) Maximo

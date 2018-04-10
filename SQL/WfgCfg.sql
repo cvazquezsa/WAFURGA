@@ -12,5 +12,8 @@ IF NOT EXISTS (SELECT * FROM sys.objects WHERE Name='WfgCfg' AND Type='U')
 GO
 
 EXEC spALTER_TABLE 'WfgCfg','DiaCorteCredito','int NULL'
+EXEC spALTER_TABLE 'WfgCfg','NomConceptoSiVale','varchar(50) NULL'
+EXEC spALTER_TABLE 'WfgCfg','NomPropiedadSiVale','varchar(50) NULL'
 GO
---SELECT * FROm WfgCfg
+
+--SELECT Propiedad FROM PersonalProp WHERe NivelPersonal=1
