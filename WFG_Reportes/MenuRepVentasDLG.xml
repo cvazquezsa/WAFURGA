@@ -231,6 +231,7 @@ Visible=S
 
 
 
+ClaveAccion=WFGCargaSistRosa
 [Acciones.DetalleDeProveedores]
 Nombre=DetalleDeProveedores
 Boton=0
@@ -242,6 +243,10 @@ Activo=S
 Visible=S
 
 Expresion=URL( <T>http://624761-intstar/ReportServer/Pages/ReportViewer.aspx?%2fWafurga%2fDetalleDeProveedores&rs:Command=Render&Empresa=<T>+Empresa)
+
+
+
+
 
 
 
