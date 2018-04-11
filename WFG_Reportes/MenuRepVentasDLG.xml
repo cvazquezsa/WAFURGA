@@ -4,7 +4,7 @@
 <![CDATA[
 [AddOn]
 Nombre=Wafurga
-Version=1.0
+Version=1.1
 Llave=alksjdklajsdlkjalksdjalksjdklajsl
 Compilacion=2921
 AceptaESPs=N
@@ -228,6 +228,24 @@ TipoAccion=Formas
 Activo=S
 Visible=S
 
+
+
+
+[Acciones.DetalleDeProveedores]
+Nombre=DetalleDeProveedores
+Boton=0
+NombreDesplegar=Detalle de proveedores
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+
+Expresion=URL( <T>http://624761-intstar/ReportServer/Pages/ReportViewer.aspx?%2fWafurga%2fDetalleDeProveedores&rs:Command=Render&Empresa=<T>+Empresa)
+
+
+
+
 [Dialogo.ListaAcciones]
 (Inicio)=Acum
 Acum=Mov
@@ -246,7 +264,8 @@ VentaCompra=AntiguedadPedidos
 AntiguedadPedidos=ObjetivoVentasIntelisisMES
 ObjetivoVentasIntelisisMES=ResultadoVendedores
 ResultadoVendedores=RPTCargaSistRosa
-RPTCargaSistRosa=(Fin)
+RPTCargaSistRosa=DetalleDeProveedores
+DetalleDeProveedores=(Fin)
 ]]>
 </MenuRepVentas.dlg>
 <Indice>

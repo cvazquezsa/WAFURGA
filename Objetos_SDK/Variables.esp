@@ -1,5 +1,16 @@
 [Variables]
-ListaVariables=Info.TipoVale
+ListaVariables=Info.WFGReporte<BR>Info.TipoVale<BR>Info.WfgNominaID<BR>Temp.Modulo<BR>Info.eDoc<BR>Temp.eDoc<BR>Info.RegistroPatronal<BR>Info.MovDetNomina<BR>Info.ReExpresar<BR>Info.ReExpresarMon<BR>Info.ReExpresarTipoCambio<BR>Info.DepartamentoA<BR>Info.DepartamentoD<BR>Info.MonTodo<BR>Info.NivelPrecio
+ListaGrupos=Info<BR>Temp
+
+[Info.WFGReporte]
+Grupo=Info
+Clave=WFGReporte
+Tipo=Texto
+Nombre=Reporte
+Tamano=20
+AyudaEnCaptura=Lista de Opciones
+ListaOpciones=Reporte ACC<BR>Reporte BL<BR>Reporte NP<BR>Reporte Ventas
+OpcionesPredefinidas=Ninguna
 
 [Info.TipoVale]
 Grupo=Info
@@ -12,3 +23,147 @@ Forma=WFGTipoValeLista
 Vista=ValeTipo
 Campo=ValeTipo.Tipo
 OpcionesPredefinidas=Ninguna
+
+[Info.WfgNominaID]
+Grupo=Info
+Clave=WfgNominaID
+Tipo=Numérico
+Nombre=ID Nomina
+Tamano=20
+AyudaEnCaptura=Vista
+OpcionesPredefinidas=Ninguna
+Forma=WfgNominaLista
+Vista=WfgNominaLista
+Campo=Nomina.ID
+
+[Temp.Modulo]
+Grupo=Temp
+Clave=Modulo
+Tipo=Texto
+Nombre=Modulo
+Tamano=20
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Módulos
+
+[Info.eDoc]
+Grupo=Info
+Clave=eDoc
+Tipo=Texto
+Nombre=eDoc
+Tamano=20
+AyudaEnCaptura=No
+OpcionesPredefinidas=Módulos
+
+[Temp.eDoc]
+Grupo=Temp
+Clave=eDoc
+Tipo=Texto
+Nombre=eDoc
+Tamano=20
+AyudaEnCaptura=No
+
+[Info.ReExpresar]
+Grupo=Info
+Clave=ReExpresar
+Tipo=Texto
+ValorInicial=<T>No<T>
+Nombre=Re-expresión de Estados Financieros
+Tamano=20
+AyudaEnCaptura=Lista de Opciones
+OpcionesPredefinidas=Si - No
+
+[Info.ReExpresarMon]
+Grupo=Info
+Clave=ReExpresarMon
+Tipo=Texto
+Nombre=ReExpresar a Moneda
+Tamano=20
+AyudaEnCaptura=No
+Forma=MonLista
+Vista=Mon
+Campo=Mon.Moneda
+OpcionesPredefinidas=Ninguna
+
+[Info.ReExpresarTipoCambio]
+Grupo=Info
+Clave=ReExpresarTipoCambio
+Tipo=Flotante
+Nombre=Re-expresión de Estados Financieros Tipo de Cambio
+Tamano=20
+AyudaEnCaptura=Vista
+OpcionesPredefinidas=Ninguna
+Forma=MonLista
+Vista=Mon
+Campo=Mon.TipoCambio
+OpcionesPredefinidas=Ninguna
+
+[Info.RegistroPatronal]
+Grupo=Info
+Clave=RegistroPatronal
+Tipo=Registro
+Nombre=Registro Patronal
+Tamano=20
+AyudaEnCaptura=No
+OpcionesPredefinidas=Ninguna
+
+[Info.MovDetNomina]
+Grupo=Info
+Clave=MovDetNomina
+Tipo=Texto
+Nombre=Movimiento
+Tamano=20
+AyudaEnCaptura=Lista de Opciones
+ListaOpciones=(Todos)<BR>Percepcion<BR>Deduccion<BR>Estadistica
+OpcionesPredefinidas=Ninguna
+OpcionesUnicamente=S
+
+[Info.DepartamentoA]
+Grupo=Info
+Clave=DepartamentoA
+Tipo=Texto
+Nombre=Al Departamento
+Tamano=20
+AyudaEnCaptura=Vista
+Forma=DepartamentoLista
+Vista=Departamento
+Campo=Departamento.Departamento
+OpcionesPredefinidas=Ninguna
+
+[Info.DepartamentoD]
+Grupo=Info
+Clave=DepartamentoD
+Tipo=Texto
+Nombre=Del Departamento
+Tamano=20
+AyudaEnCaptura=Vista
+Forma=DepartamentoLista
+Vista=Departamento
+Campo=Departamento.Departamento
+OpcionesPredefinidas=Ninguna
+
+[Info.MonTodo]
+Grupo=Info
+Clave=MonTodo
+Tipo=Texto
+Nombre=Moneda
+Tamano=20
+AyudaEnCaptura=Vista
+Forma=MonListaTodo
+Vista=MonTodo
+Campo=Moneda
+OpcionesPredefinidas=Ninguna
+
+[Info.NivelPrecio]
+Grupo=Info
+Clave=NivelPrecio
+Tipo=Monetario
+Nombre=Nivel Precio
+Tamano=20
+AyudaEnCaptura=Vista
+Forma=WFGArtNivelPrecio
+Vista=WFGArtNivelPrecio
+Campo=WFGArtNivelPrecio.WFGArtNivelPrecio
+OpcionesPredefinidas=Ninguna
+
+
+
