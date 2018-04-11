@@ -1,0 +1,24 @@
+[Variables]
+ListaVariables=Info.TipoVale<BR>Info.WFGReporte
+
+[Info.TipoVale]
+Grupo=Info
+Clave=TipoVale
+Tipo=Texto
+Nombre=Tipo Vale
+Tamano=50
+AyudaEnCaptura=Vista
+Forma=WFGTipoValeLista
+Vista=ValeTipo
+Campo=ValeTipo.Tipo
+OpcionesPredefinidas=Ninguna
+
+[Info.WFGReporte]
+Grupo=Info
+Clave=WFGReporte
+Tipo=Texto
+Nombre=Reporte
+Tamano=20
+AyudaEnCaptura=Lista de Opciones
+ListaOpciones=Reporte ACC<BR>Reporte BL<BR>Reporte NP<BR>Reporte Ventas
+OpcionesPredefinidas=Ninguna

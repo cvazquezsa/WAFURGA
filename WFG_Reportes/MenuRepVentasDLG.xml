@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="ASCII" ?>
+<IntelisisAddOn Nombre="MenuRepVentasDLG.xml">
+<Configuracion>
+<![CDATA[
+[AddOn]
+Nombre=Wafurga
+Version=1.0
+Llave=alksjdklajsdlkjalksdjalksjdklajsl
+Compilacion=2921
+AceptaESPs=N
+
+
+]]>
+</Configuracion>
+<MenuRepVentas.dlg>
+<![CDATA[
+[Dialogo]
+Clave=MenuRepVentas
+Nombre=Menú
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={MS Sans Serif, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=(Lista)
+VentanaTipoMarco=Diálogo
+VentanaPosicionInicial=Centrado
+VentanaConIcono=S
+ExpresionesAlMostrar=
+ExpresionesAlCerrar=
+PosicionInicialIzquierda=544
+PosicionInicialArriba=125
+PosicionInicialAltura=412
+PosicionInicialAncho=278
+PosicionInicialAlturaCliente=450
+
+[Acciones.Acum]
+Nombre=Acum
+Boton=0
+NombreDesplegar=&Acumulados
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RepVentaAcumU
+Activo=S
+EspacioPrevio=S
+VisibleCondicion=no CfgLista.Existe(<T>Reportes Inactivos<T>, <T>Ventas/Acum<T>)
+
+[Acciones.Mov]
+Nombre=Mov
+Boton=0
+NombreDesplegar=&Movimientos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RepVentaMov
+Activo=S
+VisibleCondicion=no CfgLista.Existe(<T>Reportes Inactivos<T>, <T>Ventas/Mov<T>)
+
+[Acciones.Gerenciales]
+Nombre=Gerenciales
+Boton=0
+NombreDesplegar=&Gerenciales
+EnMenu=S
+EnBarraAcciones=S
+EspacioPrevio=S
+TipoAccion=Dialogos
+ClaveAccion=MenuRepGerencialesVentas
+Activo=S
+VisibleCondicion=no CfgLista.Existe(<T>Reportes Inactivos<T>, <T>Ventas/Gerenciales<T>)
+
+[Acciones.General]
+Nombre=General
+Boton=0
+EnMenu=S
+EnBarraAcciones=S
+Activo=S
+NombreDesplegar=G&eneral de Movimientos
+EspacioPrevio=S
+TipoAccion=Formas
+ClaveAccion=mis_RepVentaAnalisisMov
+VisibleCondicion=no CfgLista.Existe(<T>Reportes Inactivos<T>, <T>Ventas/General<T>)
+
+[Acciones.Detalle]
+Nombre=Detalle
+Boton=0
+NombreDesplegar=General de M&ovimientos - Detalle
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=mis_RepVentaAnalisisMovDetalle
+Activo=S
+VisibleCondicion=no CfgLista.Existe(<T>Reportes Inactivos<T>, <T>Ventas/Detalle<T>)
+
+[Acciones.Diario]
+Nombre=Diario
+Boton=0
+NombreDesplegar=&Diario de Movimientos
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=mis_RepVentaAnalisisMovDiario
+Activo=S
+VisibleCondicion=no CfgLista.Existe(<T>Reportes Inactivos<T>, <T>Ventas/Diario<T>)
+
+[Acciones.Autorizacion]
+Nombre=Autorizacion
+Boton=0
+NombreDesplegar=A&utorización
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=mis_RepVentaAutorizacion
+Activo=S
+VisibleCondicion=no CfgLista.Existe(<T>Reportes Inactivos<T>, <T>Ventas/Autorizacion<T>)
+
+[Acciones.Pendientes]
+Nombre=Pendientes
+Boton=0
+NombreDesplegar=&Pendientes
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=mis_RepVentaBackOrder
+Activo=S
+VisibleCondicion=no CfgLista.Existe(<T>Reportes Inactivos<T>, <T>Ventas/Pendientes<T>)
+
+[Acciones.Matriz]
+Nombre=Matriz
+Boton=0
+NombreDesplegar=Matriz &Venta
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Dialogos
+Activo=S
+ClaveAccion=MenuRepVtaMatriz
+Visible=S
+
+[Acciones.Comparativo]
+Nombre=Comparativo
+Boton=0
+NombreDesplegar=&Comparativo Mes - Año
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Dialogos
+ClaveAccion=MenuRepVtaComparativo
+Activo=S
+Visible=S
+
+[Acciones.Participa]
+Nombre=Participa
+Boton=0
+NombreDesplegar=&Participación Ventas
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Dialogos
+ClaveAccion=MenuRepVtaParticipacion
+Activo=S
+Visible=S
+
+[Acciones.Cumplimiento]
+Nombre=Cumplimiento
+Boton=0
+NombreDesplegar=Cump&limiento
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=mis_RepVentaCumplimiento
+Activo=S
+VisibleCondicion=no CfgLista.Existe(<T>Reportes Inactivos<T>, <T>Ventas/Cumplimiento<T>)
+
+[Acciones.VentaCompra]
+Nombre=VentaCompra
+Boton=0
+NombreDesplegar=A&nálisis de Venta para Compradores
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=mis_RepVentaSemanalMensual
+Activo=S
+VisibleCondicion=no CfgLista.Existe(<T>Reportes Inactivos<T>, <T>Ventas/VentaCompra<T>)
+
+[Acciones.AntiguedadPedidos]
+Nombre=AntiguedadPedidos
+Boton=0
+NombreDesplegar=&Pedidos Venta - Antigüedad Saldos
+EnMenu=S
+EnBarraAcciones=S
+Activo=S
+TipoAccion=Formas
+ClaveAccion=RepAntSaldosPedidos
+VisibleCondicion=no CfgLista.Existe(<T>Reportes Inactivos<T>, <T>Ventas/AntiguedadPedidos<T>)
+
+[Acciones.ObjetivoVentasIntelisisMES]
+Nombre=ObjetivoVentasIntelisisMES
+Boton=0
+NombreDesplegar=Objetivo Ventas Intelisis/Factory
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Expresion=FormaModal(<T>EspecificarFechas<T>)<BR>EjecutarSQL(<T>EXEC spInforGenerarSolicitudObjetivoVentas :tfechad, :tfechaa, :tEmpresa, :tsucursal<T>, FechaFormatoServidor( Info.FechaD ) , FechaFormatoServidor(Info.FechaA )  ,Empresa,Sucursal )<BR>Informacion(<T>Proceso Terminado<T>)
+VisibleCondicion=General.ProdInterfazINFOR
+
+[Acciones.ResultadoVendedores]
+Nombre=ResultadoVendedores
+Boton=0
+NombreDesplegar=Resultado de Ve&ndedores
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+EspacioPrevio=S
+Expresion=Browser(General.RSReportASPX+<T>/ResultadoVendedores<T>, <T>Resultado de Vendedores<T>)
+
+
+[Acciones.RPTCargaSistRosa]
+Nombre=RPTCargaSistRosa
+Boton=0
+NombreDesplegar=&Carga Sistema Rosa
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+Activo=S
+Visible=S
+
+[Dialogo.ListaAcciones]
+(Inicio)=Acum
+Acum=Mov
+Mov=Gerenciales
+Gerenciales=General
+General=Detalle
+Detalle=Diario
+Diario=Autorizacion
+Autorizacion=Pendientes
+Pendientes=Matriz
+Matriz=Comparativo
+Comparativo=Participa
+Participa=Cumplimiento
+Cumplimiento=VentaCompra
+VentaCompra=AntiguedadPedidos
+AntiguedadPedidos=ObjetivoVentasIntelisisMES
+ObjetivoVentasIntelisisMES=ResultadoVendedores
+ResultadoVendedores=RPTCargaSistRosa
+RPTCargaSistRosa=(Fin)
+]]>
+</MenuRepVentas.dlg>
+<Indice>
+MenuRepVentas.dlg
+
+</Indice>
+</IntelisisAddOn>
