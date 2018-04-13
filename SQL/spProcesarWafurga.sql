@@ -99,7 +99,7 @@ AS BEGIN
         SELECT @Renglon = 0, @RenglonID = 0
         -- Devoluciones
         DECLARE crNotas CURSOR LOCAL
-            FOR SELECT v.Almacen, v.RenglonTipo, v.Unidad, v.Impuesto1, v.Mov + ' ' + v.MovID, sum(v.Cantidad), sum(PrecioTotal)
+            FOR SELECT v.Almacen, v.RenglonTipo,v.Articulo, v.Unidad, v.Impuesto1, v.Mov + ' ' + v.MovID, sum(v.Cantidad), sum(PrecioTotal)
                   FROM VentaTCalc v, ListaID l
                  WHERE v.ID = l.ID  --AND v.ESTATUS = 'CONCLUIDO'                   
                    AND l.Estacion = @Estacion
@@ -108,7 +108,7 @@ AS BEGIN
                  ORDER BY v.Almacen, v.Articulo, v.SubCuenta, v.RenglonTipo, v.Unidad, v.Impuesto1, v.Mov,  v.MovID
     
         OPEN crNotas
-        FETCH NEXT FROM crNotas INTO @Almacen, @RenglonTipo, @Unidad, @Impuesto1, @Mov, @Cantidad, @PrecioNeto
+        FETCH NEXT FROM crNotas INTO @Almacen, @RenglonTipo,@Articulo, @Unidad, @Impuesto1, @Mov, @Cantidad, @PrecioNeto
         WHILE @@FETCH_STATUS <> -1 
         BEGIN
           IF @@FETCH_STATUS <> -2 
@@ -116,11 +116,11 @@ AS BEGIN
 		                       
             SELECT @Renglon = @Renglon + 2048, @RenglonID = @RenglonID + 1
             INSERT VentaD (Sucursal,  SucursalOrigen, ID,         Renglon, RenglonSub, RenglonID,  RenglonTipo,  Almacen,  Posicion,  Articulo,  SubCuenta,  Unidad,  Impuesto1,  Impuesto2,  Impuesto3,  Cantidad,  CantidadInventario,  DescuentoTipo,  DescuentoLinea,  Precio,      Costo,  UEN,  Agente, PrecioMoneda, PrecioTipoCambio, CantidadObsequio, OfertaID, PrecioSugerido, DescuentoImporte, Puntos, Comision, DescripcionExtra)
-                   VALUES (@Sucursal, @Sucursal,      @FacturaID, @Renglon,         0, @RenglonID, @RenglonTipo, @AlmacenEncabezado, null, @CfgArtInteresMora, NULL, @Unidad, @Impuesto1, @Impuesto2, NULL, @Cantidad, @Cantidad, NULL, NULL, @PrecioNeto, @Costo, @UEN, @Agente, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, @Mov)           
+                   VALUES (@Sucursal, @Sucursal,      @FacturaID, @Renglon,         0, @RenglonID, @RenglonTipo, @AlmacenEncabezado, null, @Articulo, NULL, @Unidad, @Impuesto1, @Impuesto2, NULL, @Cantidad, @Cantidad, NULL, NULL, @PrecioNeto, @Costo, @UEN, @Agente, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, @Mov)           
 
 				   
           END
-          FETCH NEXT FROM crNotas INTO @Almacen, @RenglonTipo, @Unidad, @Impuesto1, @Mov, @Cantidad, @PrecioNeto
+          FETCH NEXT FROM crNotas INTO @Almacen, @RenglonTipo,@Articulo, @Unidad, @Impuesto1, @Mov, @Cantidad, @PrecioNeto
         END -- While
         CLOSE crNotas
         DEALLOCATE crNotas

@@ -44,9 +44,35 @@ BEGIN
 			Impuestos		money,
 			Acreedor		bit
 		)
+	DECLARE @InteresesVencidosPaso TABLE
+		(
+			ID			int,
+			Orden		int,
+			Sucursal	int,
+			Cliente		varchar(20),
+			Referencia	varchar(255),
+			FechaEmision	datetime,
+			Vencimiento		datetime,
+			Importe			money,
+			Impuestos		money,
+			Acreedor		bit
+		)
+	DECLARE @InteresesPaso TABLE
+		(
+			ID			int,
+			Orden		int,
+			Sucursal	int,
+			Cliente		varchar(20),
+			Referencia	varchar(255),
+			FechaEmision	datetime,
+			Vencimiento		datetime,
+			Importe			money,
+			Impuestos		money,
+			Acreedor		bit
+		)
 	DECLARE @HistorialCredito TABLE
 		(
-			--ID			int,
+			ID			int IDENTITY,
 			--Orden		int,
 			Sucursal	int,
 			--Cliente		varchar(20),
@@ -66,6 +92,45 @@ BEGIN
 	
 	IF ISNULL(@Ok,0)=0
 	BEGIN--@Ok=0
+
+		INSERT INTO @InteresesVencidosPaso
+			SELECT 
+					c.ID,
+					4,
+					c.Sucursal,
+					c2.Cliente,
+					'Intereses Nota a Credito',
+					DATEADD(MONTH,1,DATEADD(DAY,-(DATEPART(DAY,c.FechaEmision)-1),c.FechaEmision)),
+					DATEADD(MONTH,1,DATEADD(DAY,-(DATEPART(DAY,c.FechaEmision)-1),c.FechaEmision)),
+					ISNULL(cd.InteresesMoratorios,0),
+					ISNULL(cd.InteresesMoratoriosIVA,0),
+					0
+					FROM Cxc c
+						JOIN CxcD cd ON c.ID=cd.ID
+						JOIN Cxc c2 ON cd.Aplica=c2.Mov AND cd.AplicaID=c2.MovID 
+						JOIN Venta v ON c2.Origen=v.Mov AND c2.OrigenID=v.MovID
+					WHERE c.Mov='Intereses Vencidos' AND c.Estatus IN ('CONCLUIDO') AND c2.Cliente=@Cliente AND c.Empresa=@Empresa
+						AND c2.LineaCredito=@LC
+		--SELECT * FROM @InteresesPaso
+		INSERT INTO @InteresesPaso
+		SELECT 
+				c.ID,
+				3,
+				c.Sucursal,
+				c2.Cliente,
+				'Intereses',
+				DATEADD(MONTH,1,DATEADD(DAY,-(DATEPART(DAY,v.FechaEmision)-1),v.FechaEmision)),
+				DATEADD(MONTH,1,DATEADD(DAY,-(DATEPART(DAY,v.FechaEmision)-1),v.FechaEmision)),
+				ISNULL(cd.InteresesOrdinarios,0),
+				ISNULL(cd.InteresesOrdinariosIVA,0),
+				0
+				FROM Cxc c
+					JOIN CxcD cd ON c.ID=cd.ID
+					JOIN Cxc c2 ON cd.Aplica=c2.Mov AND cd.AplicaID=c2.MovID 
+					JOIN Venta v ON c2.Origen=v.Mov AND c2.OrigenID=v.MovID
+				WHERE c.Mov='Intereses' AND c.Estatus IN ('CONCLUIDO') AND c2.Cliente=@Cliente 
+					AND NOT (cd.InteresesOrdinarios=0 AND cd.InteresesOrdinariosIVA=0) AND c.Empresa=@Empresa AND c2.LineaCredito=@LC
+
 		INSERT INTO @HistorialCreditoPaso
 			SELECT
 			c.ID,
@@ -85,36 +150,50 @@ BEGIN
 					AND c.Empresa=@Empresa AND c.LineaCredito=@LC
 			UNION ALL
 
-			--SELECT 
-			--	c.ID,2,c.Sucursal,c.Cliente,ISNULL(c.Referencia,c.Mov),c.FechaEmision,c.Vencimiento, 
-			--	SUM(ISNULL(cd.Importe,0)+ISNULL(cd.InteresesOrdinarios,0)+ISNULL(cd.InteresesMoratorios,0)), 
-			--	SUM(ISNULL(cd.InteresesOrdinariosIVA,0)+ISNULL(cd.InteresesMoratoriosIVA,0)),1 
-			--	FROM Cxc c 
-			--		JOIN CxcD cd ON c.ID=cd.ID
-			--		JOIN Cxc c2 ON cd.Aplica=c2.Mov AND cd.AplicaID=c2.MovID
-			--	WHERE c.Mov IN ('Abono Credito') AND c.Estatus IN ('CONCLUIDO') AND c.Cliente=@Cliente AND c.Empresa=@Empresa 
-			--		AND c2.LineaCredito=@LC
-			--	GROUP BY c.ID,c.Sucursal,c.Cliente,c.FechaEmision,c.Vencimiento,c.Referencia,c.Mov
-			--UNION ALL
-
 			SELECT 
-				c.ID,
-				4,
-				c.Sucursal,
-				c2.Cliente,
-				CONCAT('Intereses Nota a Credito ',RTRIM(LTRIM(c.Mov)),' ', c.MovID),
-				c.FechaEmision,
-				c.Vencimiento,
-				ISNULL(cd.InteresesMoratorios,0),
-				ISNULL(cd.InteresesMoratoriosIVA,0),
-				0
-				FROM Cxc c
+				c.ID,2,c.Sucursal,c.Cliente,ISNULL(c.Referencia,c.Mov),c.FechaEmision,c.Vencimiento, 
+				SUM(ISNULL(cd.Importe,0)+ISNULL(cd.InteresesOrdinarios,0)+ISNULL(cd.InteresesMoratorios,0)), 
+				SUM(ISNULL(cd.InteresesOrdinariosIVA,0)+ISNULL(cd.InteresesMoratoriosIVA,0)),1 
+				FROM Cxc c 
 					JOIN CxcD cd ON c.ID=cd.ID
-					JOIN Cxc c2 ON cd.Aplica=c2.Mov AND cd.AplicaID=c2.MovID 
-					JOIN Venta v ON c2.Origen=v.Mov AND c2.OrigenID=v.MovID
-				WHERE c.Mov='Intereses Vencidos' AND c.Estatus IN ('CONCLUIDO') AND c2.Cliente=@Cliente AND c.Empresa=@Empresa
+					JOIN Cxc c2 ON cd.Aplica=c2.Mov AND cd.AplicaID=c2.MovID
+				WHERE c.Mov IN ('Abono Credito') AND c.Estatus IN ('CONCLUIDO') AND c.Cliente=@Cliente AND c.Empresa=@Empresa 
 					AND c2.LineaCredito=@LC
+				GROUP BY c.ID,c.Sucursal,c.Cliente,c.FechaEmision,c.Vencimiento,c.Referencia,c.Mov
+			UNION ALL
+
+			--SELECT 
+			--	c.ID,
+			--	4,
+			--	c.Sucursal,
+			--	c2.Cliente,
+			--	CONCAT('Intereses Nota a Credito ',RTRIM(LTRIM(c.Mov)),' ', c.MovID),
+			--	c.FechaEmision,
+			--	c.Vencimiento,
+			--	ISNULL(cd.InteresesMoratorios,0),
+			--	ISNULL(cd.InteresesMoratoriosIVA,0),
+			--	0
+			--	FROM Cxc c
+			--		JOIN CxcD cd ON c.ID=cd.ID
+			--		JOIN Cxc c2 ON cd.Aplica=c2.Mov AND cd.AplicaID=c2.MovID 
+			--		JOIN Venta v ON c2.Origen=v.Mov AND c2.OrigenID=v.MovID
+			--	WHERE c.Mov='Intereses Vencidos' AND c.Estatus IN ('CONCLUIDO') AND c2.Cliente=@Cliente AND c.Empresa=@Empresa
+			--		AND c2.LineaCredito=@LC
 				--GROUP BY c.Sucursal,c2.Cliente,c2.Mov,c2.MovID
+			SELECT 
+			MAX(ID),
+			Orden,
+			Sucursal,
+			Cliente,
+			Referencia,
+			FechaEmision,
+			Vencimiento,
+			SUM(Importe),
+			SUM(Impuestos),
+			Acreedor 
+			FROM @InteresesVencidosPaso
+			GROUP BY Orden, Sucursal,Cliente,Referencia,FechaEmision,Vencimiento,Acreedor
+
 			UNION ALL
 
 			SELECT 
@@ -127,27 +206,51 @@ BEGIN
 	
 			UNION ALL
 
-			SELECT 
-				c2.ID,
-				3,
-				c.Sucursal,
-				c2.Cliente,
-				CONCAT('Intereses ',v.FolioSBX),
-				v.FechaEmision,
-				c.Vencimiento,
-				cd.InteresesOrdinarios,
-				cd.InteresesOrdinariosIVA,
-				0
-				FROM Cxc c
-					JOIN CxcD cd ON c.ID=cd.ID
-					JOIN Cxc c2 ON cd.Aplica=c2.Mov AND cd.AplicaID=c2.MovID 
-					JOIN Venta v ON c2.Origen=v.Mov AND c2.OrigenID=v.MovID
-				WHERE c.Mov='Intereses' AND c.Estatus IN ('CONCLUIDO') AND c2.Cliente=@Cliente 
-					AND NOT (cd.InteresesOrdinarios=0 AND cd.InteresesOrdinariosIVA=0) AND c.Empresa=@Empresa AND c2.LineaCredito=@LC
+			--SELECT 
+			--	c2.ID,
+			--	3,
+			--	c.Sucursal,
+			--	c2.Cliente,
+			--	CONCAT('Intereses ',v.FolioSBX),
+			--	v.FechaEmision,
+			--	c.Vencimiento,
+			--	cd.InteresesOrdinarios,
+			--	cd.InteresesOrdinariosIVA,
+			--	0
+			--	FROM Cxc c
+			--		JOIN CxcD cd ON c.ID=cd.ID
+			--		JOIN Cxc c2 ON cd.Aplica=c2.Mov AND cd.AplicaID=c2.MovID 
+			--		JOIN Venta v ON c2.Origen=v.Mov AND c2.OrigenID=v.MovID
+			--	WHERE c.Mov='Intereses' AND c.Estatus IN ('CONCLUIDO') AND c2.Cliente=@Cliente 
+			--		AND NOT (cd.InteresesOrdinarios=0 AND cd.InteresesOrdinariosIVA=0) AND c.Empresa=@Empresa AND c2.LineaCredito=@LC
 				--GROUP BY c.Sucursal,c2.Cliente,c2.Mov,c2.MovID,c2.ID
-
+			SELECT 
+			MAX(ID),
+			Orden,
+			Sucursal,
+			Cliente,
+			Referencia,
+			FechaEmision,
+			Vencimiento,
+			SUM(Importe),
+			SUM(Impuestos),
+			Acreedor 
+			FROM @InteresesPaso
+			GROUP BY Orden, Sucursal,Cliente,Referencia,FechaEmision,Vencimiento,Acreedor
 		
 		
+		--SELECT 
+		--		ID,Sucursal,Referencia,FechaEmision,Vencimiento,
+		--		CASE 
+		--			WHEN Acreedor=0 THEN Importe
+		--			WHEN Acreedor=1 THEN -Importe
+		--		END,
+		--		CASE 
+		--			WHEN Acreedor=0 THEN  Impuestos
+		--			WHEN Acreedor=1 THEN -Impuestos
+		--		END
+		--		FROM @HistorialCreditoPaso 
+		--		ORDER BY ID,FechaEmision, Orden
 		
 		DECLARE crWFGEdoCuenta CURSOR FAST_FORWARD FOR
 			SELECT 
@@ -161,7 +264,7 @@ BEGIN
 					WHEN Acreedor=1 THEN -Impuestos
 				END
 				FROM @HistorialCreditoPaso 
-				ORDER BY ID,FechaEmision, Orden
+				ORDER BY FechaEmision,ID, Orden
 
 		OPEN crWFGEdoCuenta
 		FETCH NEXT FROM crWFGEdoCuenta INTO
@@ -172,20 +275,20 @@ BEGIN
 			SET @Saldo=@Impuestos+@Importe+ISNULL(@Saldo,0)
 			INSERT INTO @HistorialCredito
 				SELECT @Sucursal,@Referencia,@FechaEmision,@Vencimiento,@Importe,@Impuestos,@Saldo
-
+--SELECT * FROM @HistorialCredito
 			FETCH NEXT FROM crWFGEdoCuenta INTO
 			@Sucursal,@Referencia,@FechaEmision,@Vencimiento,@Importe,@Impuestos
 		END
 		CLOSE crWFGEdoCuenta
 		DEALLOCATE crWFGEdoCuenta
-		--SELECT * fROM @HistorialCreditoPaso
+		--SELECT * fROM @HistorialCredito--Paso
 		SELECT @CteNombre=Nombre FROM Cte WHERE Cliente=@Cliente
 		SELECT @ImporteLC=Importe FROm LC WHERE LineaCredito=@LC AND Acreditado=@Cliente
 		SELECT @Disponible=@ImporteLC-@Saldo
 		--SELECT @Cliente,@CteNombre, @ImporteLC,@Saldo,@Disponible
 	
 		SELECT @XMLDetalle=(
-			SELECT * FROM @HistorialCredito FOR XML RAW('Detalle'))
+			SELECT top 100 * FROM @HistorialCredito ORDER BY ID DESC FOR XML RAW('Detalle'))
 		SELECT @XMLEncabezado=(
 			SELECT @Cliente Cliente,@CteNombre Nombre,@ImporteLC LineaCredito,@Saldo Saldo,@Disponible Disponible,@XMLDetalle
 				FOR XML RAW('Cliente'))
