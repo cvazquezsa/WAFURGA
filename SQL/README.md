@@ -8,6 +8,8 @@
 7. spReporteEdoCuenta
 8. spWfgCorteCredito
 9. xpAcCerrardía
+10. spWFGUpdateArtSubLinea
+11. xpMovFinal
 
 # Descripción #
 ## 1. spWFGPlaneadorTraspaso.sql ##
@@ -33,3 +35,7 @@ Se corrigió sp para que tome en cuenta los movimientos *Amortización, Factura 
 ## 8. spWfgCorteCredito ##
 sp a utilizarse en job para el proceso de corte de crédito
 ## 9. xpAcCerrardía ##
+## 10. spWFGUpdateArtSubLinea ##
+Portal de Compras: Código Alterno a representar en factura y formato de verificación.
+## 11. xpMovFinal ##
+Portal de Compras: Código Alterno a representar en factura y formato de verificación.
