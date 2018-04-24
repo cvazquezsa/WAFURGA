@@ -1,0 +1,58 @@
+
+[Vista]
+Icono=0
+Clave=ProcesarTransferenciasFP
+Nombre=ProcesarTransferenciasFP
+Modulos=(Todos)
+Singular=ProcesarTransferenciasFP
+ListaTablas=ProcesarTransferenciasFP
+TablaPrincipal=ProcesarTransferenciasFP
+UsoCapturas=S
+UsoReportes=S
+UsarJOIN=S
+
+ListaCampos=(Lista)
+SQL=(Lista)
+[ProcesarTransferenciasFP.FormaPago]
+Clave=ProcesarTransferenciasFP.FormaPago
+Nombre=Forma Pago
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+AyudaEnCaptura=Expresion
+Formula=SqlEnLista(<T>SELECT FormaPago FROM FormaPago<T>)
+LigaTabla=ProcesarTransferenciasFP
+LigaCampo=FormaPago
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=FormaPago
+
+[ProcesarTransferenciasFP.CuentaDinero]
+Clave=ProcesarTransferenciasFP.CuentaDinero
+Nombre=Cuenta Dinero
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=CuentaDineroBancoLista
+AyudaVista=CtaDinero
+AyudaCampo=CtaDinero.CtaDinero
+LigaTabla=ProcesarTransferenciasFP
+LigaCampo=CuentaDinero
+Ligado=S
+TipoCampo=Tabla
+ClaveBDE=CuentaDinero
+
+[Vista.ListaCampos]
+(Inicio)=ProcesarTransferenciasFP.FormaPago
+ProcesarTransferenciasFP.FormaPago=ProcesarTransferenciasFP.CuentaDinero
+ProcesarTransferenciasFP.CuentaDinero=(Fin)
+
+[Vista.SQL]
+(Inicio)=SELECT
+SELECT=ProcesarTransferenciasFP.FormaPago,
+ProcesarTransferenciasFP.FormaPago,=ProcesarTransferenciasFP.CuentaDinero
+ProcesarTransferenciasFP.CuentaDinero=FROM ProcesarTransferenciasFP
+FROM ProcesarTransferenciasFP=(Fin)

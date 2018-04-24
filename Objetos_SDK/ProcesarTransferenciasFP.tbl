@@ -1,0 +1,49 @@
+
+[Tabla]
+Icono=0
+Clave=ProcesarTransferenciasFP
+Nombre=ProcesarTransferenciasFP
+Archivo=ProcesarTransferenciasFP
+Modulos=(Todos)
+Singular=ProcesarTransferenciasFP
+
+TipoTabla=General
+ListaCampos=(Lista)
+
+LlavePrimaria=FormaPago
+SQL=(Lista)
+[FormaPago]
+Clave=FormaPago
+Nombre=Forma Pago
+Visible=S
+TamanoValidacion=50
+TipoDatos=Texto
+Tamano=50
+
+AyudaEnCaptura=Expresion
+Formula=SqlEnLista(<T>SELECT FormaPago FROM FormaPago<T>)
+[CuentaDinero]
+Clave=CuentaDinero
+Nombre=Cuenta Dinero
+Visible=S
+TamanoValidacion=20
+TipoDatos=Texto
+Tamano=20
+AyudaEnCaptura=Vista
+AyudaForma=CuentaDineroBancoLista
+AyudaVista=CtaDinero
+AyudaCampo=CtaDinero.CtaDinero
+
+
+
+[Tabla.ListaCampos]
+(Inicio)=FormaPago
+FormaPago=CuentaDinero
+CuentaDinero=(Fin)
+
+[Tabla.SQL]
+(Inicio)=SELECT
+SELECT=FormaPago,
+FormaPago,=CuentaDinero
+CuentaDinero=FROM ProcesarTransferenciasFP
+FROM ProcesarTransferenciasFP=(Fin)

@@ -1,0 +1,935 @@
+[Reporte]
+Clave=DIN
+Nombre=Movimientos Dinero
+Icono=6
+Vista=DineroT2
+TamanoPagina=2
+MargenArriba=1
+MargenAbajo=1
+MargenIzquierdo=1
+MargenDerecho=1
+AnchoPagina=21.6
+LargoPagina=27.9
+FuentePorOmision={Arial, 10, Negro, []}
+Parametros1=Dinero.ID
+Parametros2==
+Parametros3=N
+Parametros=S
+Columnas=1
+OtroOrden=S
+ListaOrden=Dinero.ID<TAB>(Acendente)
+PosicionInicialAltura=449
+PosicionInicialAncho=1382
+PosicionInicialIzquierda=45
+PosicionInicialArriba=75
+BarraHerramientas=S
+ListaAcciones=(Lista)
+Menus=S
+Orientacion=por Omision
+Ascii=S
+Impresora=S
+ImpresoraMatriz=
+ImpresoraFactor=(Auto)
+ImpresoraAlto=(Auto)
+ImpresoraEspecifica=(por Omisión)
+PosicionSeparador=100
+Tipo=Reporte
+PosicionInicialAlturaCliente=706
+
+[Formato]
+ListaLineas=Encabezado<BR>Inicio: Dinero.ID<BR>Inicio: Dinero.ID<BR>Inicio: Dinero.ID<BR>Cuenta<BR>Cajero<BR>Beneficiario<BR>Inicio: Dinero.ID<BR>Inicio: Dinero.ID<BR>Inicio: Dinero.ID<BR>Detalle<BR>Pie
+VentanaIzquierda=42
+VentanaArriba=0
+VentanaAltura=744
+VentanaAncho=1296
+PanelArriba=200
+PanelBotones=113
+
+[Linea1]
+Clave=Encabezado
+Seccion=Encabezado Página
+AltoEnCm=0.4
+AVertical=Arriba
+Fuente={Arial, 8, Negro, []}
+Objetos=2
+Grupo=
+Marco=N
+EstiloMarco=0
+BordeAbajo=S
+EstiloAbajo=3
+Renglones=1
+FondoColor=Blanco
+
+[Linea2]
+Clave=Inicio: Dinero.ID
+Seccion=Inicio Grupo
+AltoEnCm=0.4
+AVertical=Centrado
+Fuente={Arial, 10, Negro, []}
+Objetos=0
+Grupo=Dinero.ID
+Marco=N
+BordeArriba=N
+BorqueIzquierdo=N
+EstiloMarco=0
+Renglones=1
+FondoColor=Blanco
+
+[Linea3]
+Clave=Inicio: Dinero.ID
+Seccion=Inicio Grupo
+Marco=S
+EstiloMarco=1
+AltoEnCm=0.61
+AVertical=Centrado
+Fuente={Arial, 10, Negro, [Cursiva]}
+Objetos=5
+Grupo=Dinero.ID
+BordeArriba=N
+BorqueIzquierdo=N
+FondoEstilo=0
+Renglones=1
+FondoColor=Blanco
+
+[Linea4]
+Clave=Inicio: Dinero.ID
+Objetos=0
+Seccion=Inicio Grupo
+AltoEnCm=0.21
+AVertical=Centrado
+Fuente={Arial, 10, Negro, []}
+Grupo=Dinero.ID
+Marco=N
+EstiloMarco=0
+FondoEstilo=0
+BordeAbajo=N
+Visible=
+Renglones=1
+FondoColor=Blanco
+
+[Linea5]
+Clave=Cuenta
+Objetos=4
+Seccion=Inicio Grupo
+Marco=N
+EstiloMarco=0
+AltoEnCm=0.45
+AVertical=Abajo
+Fuente={Arial, 10, Negro, []}
+Grupo=Dinero.ID
+BordeAbajo=N
+FondoEstilo=0
+Visible=
+BordeArriba=N
+EstiloAbajo=0
+EstiloArriba=0
+Renglones=1
+FondoColor=Blanco
+
+[A1]
+Celda=A1
+Alineacion=Izquierda
+AnchoEnCm=9
+AVertical=Arriba
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, []}
+Expresion=<T>Tesoreria<T>
+Marco=N
+BordeArriba=N
+BordeAbajo=S
+BordeIzquierdo=N
+BordeDerecho=N
+EstiloMarco=0
+EstiloAbajo=3
+AnchoTexto=15
+FondoColor=Blanco
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[B1]
+Celda=B1
+Alineacion=Derecha
+AnchoEnCm=10.61
+AVertical=Arriba
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, []}
+Expresion=Empresa.Nombre
+Marco=N
+BordeArriba=N
+BordeAbajo=S
+BordeDerecho=N
+FormatoValidacion=
+EstiloMarco=0
+EstiloAbajo=3
+AnchoTexto=15
+FondoColor=Blanco
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[Acciones.Imprimir]
+Nombre=Imprimir
+Boton=4
+NombreDesplegar=&Imprimir
+EnBarraHerramientas=S
+TipoAccion=Reportes Impresora
+ClaveAccion=DIN
+ListaParametros1=Dinero.ID
+ListaParametros=S
+Visible=S
+Activo=S
+UsaTeclaRapida=S
+TeclaRapida=Ctrl+P
+EnMenu=S
+EspacioPrevio=S
+
+[Acciones.Excel]
+Nombre=Excel
+Boton=67
+NombreDesplegar=Enviar a E&xcel
+EnBarraHerramientas=S
+EnMenu=S
+TipoAccion=Reportes Excel
+ClaveAccion=DIN
+ListaParametros1=Dinero.ID
+ListaParametros=S
+ActivoCondicion=Usuario.EnviarExcel
+Visible=S
+
+[Acciones.Cerrar]
+Nombre=Cerrar
+Boton=23
+NombreDesplegar=&Cerrar
+TipoAccion=Ventana
+ClaveAccion=Cerrar
+Visible=S
+Activo=S
+EnMenu=S
+UsaTeclaRapida=S
+TeclaRapida=Alt+F4
+EspacioPrevio=
+NombreEnBoton=S
+EnBarraHerramientas=S
+
+[Linea6]
+Clave=Cajero
+Objetos=2
+Seccion=Inicio Grupo
+Marco=N
+EstiloMarco=0
+AltoEnCm=0.4
+AVertical=Centrado
+Fuente={Arial, 8, Negro, []}
+BordeAbajo=N
+EstiloAbajo=0
+Visible=MovTipoEn(<T>DIN<T>, Dinero.Mov, (DIN.I, DIN.E, DIN.TC, DIN.CP, DIN.C, DIN.A, DIN.AP, DIN.F))
+Grupo=Dinero.ID
+BordeArriba=N
+EstiloArriba=0
+Renglones=1
+FondoColor=Blanco
+
+[Linea7]
+Clave=Beneficiario
+Seccion=Inicio Grupo
+Grupo=Dinero.ID
+AltoEnCm=0.4
+AVertical=Centrado
+Fuente={Arial, 8, Negro, []}
+Objetos=2
+Visible=MovTipoEn(<T>DIN<T>, Dinero.Mov, (DIN.E, DIN.F, DIN.SCH, DIN.CH, DIN.CHE))
+BordeAbajo=N
+EstiloMarco=0
+EstiloAbajo=0
+Marco=N
+EstiloArriba=0
+Renglones=1
+FondoColor=Blanco
+
+[A5]
+Celda=A5
+Alineacion=Derecha
+AnchoEnCm=2.71
+Marco=N
+EstiloMarco=0
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, []}
+Expresion=CampoNombre(Dinero.CtaDinero)+<T>:<T>
+BordeAbajo=N
+BordeArriba=N
+EstiloArriba=0
+ExpresionMultiple=N
+AnchoTexto=15
+FondoColor=Blanco
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[A6]
+Celda=A6
+Alineacion=Derecha
+AnchoEnCm=2.71
+Marco=N
+EstiloMarco=0
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, []}
+Expresion=CampoNombre(Dinero.Cajero)+<T>:<T>
+BordeAbajo=N
+EstiloAbajo=0
+BordeArriba=N
+EstiloArriba=0
+ExpresionMultiple=N
+AnchoTexto=15
+FondoColor=Blanco
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+
+CBAncho=12
+[Linea9]
+Clave=Inicio: Dinero.ID
+Seccion=Inicio Grupo
+Grupo=Dinero.ID
+AltoEnCm=0.39
+AVertical=Centrado
+Fuente={Arial, 8, Negro, []}
+Objetos=1
+BordeArriba=N
+EstiloArriba=3
+BordeAbajo=N
+EstiloMarco=0
+EstiloAbajo=0
+Visible=
+Renglones=1
+FondoColor=Blanco
+
+[A8]
+Celda=A8
+Alineacion=Derecha
+AnchoEnCm=2.71
+BordeAbajo=N
+EstiloMarco=3
+EstiloAbajo=0
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, []}
+Expresion=CampoNombre(Dinero.Referencia)  & <T>:<T><BR>CampoNombre(Dinero.FormaPago)  & <T>:<T><BR>CampoNombre(Dinero.Concepto)  & <T>:<T><BR>CampoNombre(Dinero.Observaciones)  & <T>:<T>
+AnchoTexto=15
+FondoColor=Blanco
+EstiloArriba=0
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+ExpresionMultiple=S
+
+CBAncho=12
+[A3]
+Celda=A3
+Alineacion=Izquierda
+AnchoEnCm=5.5
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 11, Negro, [Negritas + Cursiva]}
+Expresion=Dinero.Mov & <T>  <T> & Dinero.MovID
+Marco=S
+EstiloMarco=1
+AnchoTexto=15
+FondoColor=Blanco
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[B3]
+Celda=B3
+Alineacion=Centrado
+AnchoEnCm=2.5
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 10, Negro, [Cursiva]}
+Expresion=EstatusNombreSingular(Dinero.Estatus)
+Marco=S
+EstiloMarco=1
+AnchoTexto=15
+FondoColor=Blanco
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[D5]
+Celda=D5
+Alineacion=Izquierda
+AnchoEnCm=6.71
+EstiloMarco=0
+FormatoValidacion=
+ExpresionMultiple=S
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, [Negritas]}
+Expresion=Si(MovTipoEn(<T>DIN<T>,Dinero.Mov, (DIN.T,DIN.TI,DIN.INV,DIN.RET,DIN.TC,DIN.A,DIN.AP,DIN.CP,DIN.C)), CtaDineroDestino.Descripcion+<T> (<T>+CtaDineroDestino.CtaDinero+<T>)<T>)
+AnchoTexto=15
+FondoColor=Blanco
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[C3]
+Celda=C3
+Alineacion=Centrado
+AnchoEnCm=5
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 10, Negro, [Cursiva]}
+Expresion=Dinero.Proyecto
+Marco=S
+EstiloMarco=1
+AnchoTexto=15
+FondoColor=Blanco
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[D3]
+Celda=D3
+Alineacion=Centrado
+AnchoEnCm=3
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 10, Negro, [Cursiva]}
+Expresion=Dinero.Moneda
+Marco=S
+EstiloMarco=1
+AnchoTexto=15
+FondoColor=Blanco
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[Linea8]
+Clave=Inicio: Dinero.ID
+Seccion=Inicio Grupo
+Grupo=Dinero.ID
+AltoEnCm=1.52
+AVertical=Centrado
+Fuente={Arial, 10, Negro, []}
+Objetos=4
+BordeAbajo=N
+EstiloMarco=3
+EstiloAbajo=0
+Visible=
+Renglones=4
+FondoColor=Blanco
+EstiloArriba=0
+
+[A7]
+Celda=A7
+Alineacion=Derecha
+AnchoEnCm=2.71
+EstiloMarco=0
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, []}
+Expresion=CampoNombre(Dinero.BeneficiarioNombre)+<T>:<T>
+BordeAbajo=N
+EstiloAbajo=0
+EstiloArriba=0
+AnchoTexto=15
+FondoColor=Blanco
+ExpresionMultiple=N
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[E4]
+Celda=E4
+Alineacion=Derecha
+AnchoEnCm=4.21
+EstiloMarco=3
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 10, Negro, []}
+Expresion=FechaEnTexto( Dinero.FechaEmision, <T>dd dddd mmmm aaaa<T>,<T>Español<T> )
+
+[E3]
+Celda=E3
+Alineacion=Centrado
+AnchoEnCm=3.61
+Marco=S
+EstiloMarco=1
+FormatoValidacion=d mmmmm aaaa
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 10, Negro, [Cursiva]}
+Expresion=Dinero.FechaEmision
+AnchoTexto=15
+FondoColor=Blanco
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[B5]
+Celda=B5
+Alineacion=Izquierda
+AnchoEnCm=8
+EstiloMarco=0
+ExpresionMultiple=N
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, [Negritas]}
+Expresion=CtaDinero.Descripcion+Si(ConDatos(Dinero.CtaDinero),<T> (<T>+Dinero.CtaDinero+<T>)<T>)
+AnchoTexto=15
+FondoColor=Blanco
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[C5]
+Celda=C5
+Alineacion=Derecha
+AnchoEnCm=2.21
+EstiloMarco=0
+ExpresionMultiple=N
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, []}
+Expresion=Si(MovTipoEn(<T>DIN<T>,Dinero.Mov, (DIN.T,DIN.TI,DIN.INV,DIN.RET,DIN.TC,DIN.A,DIN.AP,DIN.CP,DIN.C)),<T>Cuenta Destino:<T>)
+AnchoTexto=15
+FondoColor=Blanco
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[A9]
+Celda=A9
+Alineacion=Izquierda
+AnchoEnCm=19.5
+BordeArriba=N
+EstiloArriba=3
+FormatoValidacion=
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, []}
+Expresion=<T>(<T>SQL(<T>SELECT dbo.fnNumeroEnEspanol(:nNumero,<BR>:tMoneda)<T>,Dinero.Importe, Dinero.Moneda)+<T>)<T>
+BordeAbajo=N
+EstiloMarco=0
+EstiloAbajo=0
+AnchoTexto=15
+FondoColor=Blanco
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[Linea10]
+Clave=Inicio: Dinero.ID
+Objetos=3
+Seccion=Inicio Grupo
+BordeArriba=N
+EstiloArriba=0
+AltoEnCm=0.45
+AVertical=Abajo
+Fuente={Arial, 8, Negro, [Negritas + Cursiva]}
+Renglones=1
+FondoColor=Blanco
+Visible=(MovTipoEn(<T>DIN<T>,Dinero.Mov,(DIN.D,DIN.DE,DIN.I,DIN.SD,DIN.CH,DIN.CHE,DIN.CP,DIN.C))) y (Dinero.ConDesglose o (no Dinero.Directo))
+BordeAbajo=S
+EstiloMarco=0
+EstiloAbajo=1
+Grupo=Dinero.ID
+
+[B6]
+Celda=B6
+Alineacion=Izquierda
+AnchoEnCm=8
+EstiloMarco=0
+ExpresionMultiple=N
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, [Negritas]}
+Expresion=Dinero.Cajero
+AnchoTexto=43
+FondoColor=Blanco
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+CBMostrarCodigo=S
+CBDigitoVerificador=S
+
+CBAncho=12
+[A10]
+Celda=A10
+Alineacion=Centrado
+AnchoEnCm=3.21
+BordeArriba=N
+EstiloArriba=0
+FormatoValidacion=
+AVertical=Abajo
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, [Negritas + Cursiva]}
+Expresion=CampoNombre(DineroD.Importe)
+AnchoTexto=17
+FondoColor=Blanco
+BordeAbajo=S
+EstiloMarco=0
+EstiloAbajo=1
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[B10]
+Celda=B10
+Alineacion=Centrado
+AnchoEnCm=3.3
+BordeArriba=N
+EstiloArriba=0
+AVertical=Abajo
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, [Negritas + Cursiva]}
+Expresion=CampoNombre( DineroD.FormaPago)
+AnchoTexto=18
+FondoColor=Blanco
+FormatoValidacion=
+BordeAbajo=S
+EstiloMarco=0
+EstiloAbajo=1
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[Linea11]
+Clave=Detalle
+Objetos=4
+Seccion=Detalle
+AltoEnCm=0.4
+Renglones=1
+BordeArriba=N
+EstiloArriba=0
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+Visible=(MovTipoEn(<T>DIN<T>,Dinero.Mov,(DIN.D,DIN.DE,DIN.I,DIN.SD,DIN.CH,DIN.CHE,DIN.CP,DIN.C))) y (Dinero.ConDesglose o (no Dinero.Directo))
+BordeAbajo=S
+EstiloMarco=3
+EstiloAbajo=3
+
+[B7]
+Celda=B7
+Alineacion=Izquierda
+AnchoEnCm=12.82
+ExpresionMultiple=N
+AnchoTexto=69
+EstiloMarco=0
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, [Negritas]}
+Expresion=Dinero.BeneficiarioNombre
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[C10]
+Celda=C10
+Alineacion=Centrado
+AnchoEnCm=7.21
+AnchoTexto=39
+BordeAbajo=S
+EstiloMarco=0
+EstiloAbajo=1
+FondoColor=Blanco
+AVertical=Abajo
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, [Negritas + Cursiva]}
+Expresion=CampoNombre(DineroD.Referencia)
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+
+CBAncho=12
+[A11]
+Celda=A11
+Alineacion=Derecha
+FormatoValidacion=(Monetario)
+AnchoEnCm=3.21
+AnchoTexto=17
+BordeArriba=N
+EstiloArriba=0
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, []}
+Expresion=DineroD.Importe
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+BordeAbajo=S
+EstiloMarco=3
+EstiloAbajo=3
+
+CBAncho=12
+[B11]
+Celda=B11
+Alineacion=Izquierda
+AnchoEnCm=3.29
+AnchoTexto=18
+BordeArriba=N
+EstiloArriba=0
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+Fuente={Arial, 8, Negro, []}
+Expresion=DineroD.FormaPago
+CBTipo=UPC A
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+FormatoValidacion=
+BordeAbajo=S
+EstiloMarco=3
+EstiloAbajo=3
+
+CBAncho=12
+[Linea12]
+Clave=Pie
+Objetos=2
+Seccion=Pie Página
+AltoEnCm=0.4
+Renglones=1
+BordeArriba=S
+EstiloArriba=3
+FondoColor=Blanco
+Fuente={Arial, 8, Negro, []}
+AVertical=Centrado
+
+[B8]
+Celda=B8
+Alineacion=Izquierda
+AnchoEnCm=8
+ExpresionMultiple=S
+AnchoTexto=15
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Dinero.Referencia<BR>Dinero.FormaPago<BR>Dinero.Concepto<BR>Dinero.Observaciones
+
+CBAncho=12
+[C8]
+Celda=C8
+Alineacion=Derecha
+AnchoEnCm=2.21
+ExpresionMultiple=S
+AnchoTexto=15
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=CampoNombre(DineroD.Importe)  & <T>:<T><BR>Si(Dinero.Comisiones>0,CampoNombre(Dinero.Comisiones)  & <T>:<T>)<BR>Si(Dinero.Impuestos>0,CampoNombre(Dinero.Impuestos)  & <T>:<T>)<BR>Si((Dinero.Impuestos>0) o (Dinero.Comisiones>0),<T>Importe Total:<T>)
+
+CBAncho=12
+[D8]
+Celda=D8
+Alineacion=Derecha
+FormatoValidacion=(Monetario)
+AnchoEnCm=2.61
+ExpresionMultiple=S
+AnchoTexto=14
+EstiloMarco=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, [Negritas]}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Dinero.Importe<BR>Si(Dinero.Comisiones>0.0, Dinero.Comisiones)<BR>Si(Dinero.Impuestos>0.0, Dinero.Impuestos)<BR>Si((Dinero.Comisiones>0) o (Dinero.Impuestos>0),Dinero.Importe+Dinero.Comisiones+Dinero.Impuestos)
+
+CBAncho=12
+[C11]
+Celda=C11
+Alineacion=Izquierda
+AnchoEnCm=4.5
+AnchoTexto=24
+BordeAbajo=S
+EstiloMarco=3
+EstiloAbajo=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=DineroD.Referencia
+
+CBAncho=12
+[D11]
+Celda=D11
+Alineacion=Izquierda
+AnchoEnCm=2.7
+AnchoTexto=15
+BordeAbajo=S
+EstiloMarco=3
+EstiloAbajo=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=DineroD.Aplica+<T> <T>+DineroD.AplicaID
+
+CBAncho=12
+[A12]
+Celda=A12
+Alineacion=Izquierda
+FormatoValidacion=dddddd (hh:nn am/pm)
+AnchoEnCm=9
+AnchoTexto=15
+BordeArriba=S
+EstiloArriba=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=Ahora
+
+CBAncho=12
+[B12]
+Celda=B12
+Alineacion=Derecha
+AnchoEnCm=10.61
+AnchoTexto=15
+BordeArriba=S
+EstiloArriba=3
+FondoColor=Blanco
+AVertical=Centrado
+TipoImagen=Estirada
+CBTipo=UPC A
+Fuente={Arial, 8, Negro, []}
+TablaAncho=(Auto)
+TablaAnchoCeldas=(Auto)
+TablaAnchoTituloRenglon=(Auto)
+TablaAnchoTotales=(Auto)
+Expresion=<T>Página <T>+ReportePaginaNumero
+
+
+
+CBAncho=12
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[Reporte.ListaAcciones]
+(Inicio)=Cerrar
+Cerrar=Imprimir
+Imprimir=Excel
+Excel=(Fin)

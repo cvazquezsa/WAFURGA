@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="ASCII" ?>
+<IntelisisAddOn Nombre="MenuHerramientaDineroDLG.xml">
+<Configuracion>
+<![CDATA[
+[AddOn]
+Nombre=Wafurga
+Version=1.1
+Llave=alksjdklajsdlkjalksdjalksjdklajsl
+Compilacion=2921
+AceptaESPs=N
+
+
+]]>
+</Configuracion>
+<MenuHerramientaDinero.dlg>
+<![CDATA[
+[Dialogo]
+Clave=MenuHerramientaDinero
+Nombre=Tesorería
+Icono=14
+TipoDialogo=Menú
+Modulos=(Todos)
+Fuente={Tahoma, 8, Negro, []}
+MenuEstilo=Lista Opciones
+MenuColumnas=1
+AccionesTamanoBoton=15x5
+AccionesDerecha=S
+ListaAcciones=(Lista)
+PosicionInicialIzquierda=793
+PosicionInicialArriba=347
+PosicionInicialAltura=141
+PosicionInicialAncho=334
+VentanaTipoMarco=Diálogo
+VentanaPosicionInicial=Centrado
+VentanaConIcono=S
+PosicionInicialAlturaCliente=306
+
+[Acciones.Banamex]
+Nombre=Banamex
+Boton=0
+NombreDesplegar=Conciliación Automática (&Banamex)
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Otros
+ClaveAccion=Procesar Lista
+ListaParametros1=<T>Conciliación Automática Banamex<T><BR><T>ListaSt<T><BR><T>Estacion<T><BR><T>ID<T><BR><T>spConcliarBanamex<T><BR>Sucursal&<T>, <T>&EstacionTrabajo&<T>, <T>&Comillas(Usuario)<BR>Verdadero
+ListaParametros=S
+Activo=S
+Visible=S
+
+[Acciones.Bitacora]
+Nombre=Bitacora
+Boton=0
+NombreDesplegar=&Bitácora Conciliación Automática
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ConciliacionLog
+EspacioPrevio=S
+
+[Acciones.DineroLiberarCH]
+Nombre=DineroLiberarCH
+Boton=0
+NombreDesplegar=&Liberar Solicitudes de Cheques
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DineroLiberarCH
+Activo=S
+Visible=S
+Antes=S
+AntesExpresiones=Forma(<T>EspecificarCtaDinero<T>)
+
+[Acciones.SituacionLote]
+Nombre=SituacionLote
+Boton=0
+NombreDesplegar=Modificar &Situación en Lote
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=DineroSituacionLote
+Activo=S
+Visible=S
+
+[Acciones.Bital]
+Nombre=Bital
+Boton=0
+NombreDesplegar=Conciliación Automática (&HSBC)
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Otros
+ClaveAccion=Procesar Lista
+ListaParametros=S
+Activo=S
+Visible=S
+ListaParametros1=<T>Conciliación Automática HSBC<T><BR><T>ListaSt<T><BR><T>Estacion<T><BR><T>ID<T><BR><T>spConcliarBital<T><BR>Sucursal&<T>, <T>&EstacionTrabajo&<T>, <T>&Comillas(Usuario)<BR>Verdadero
+
+[Acciones.Conciliar]
+Nombre=Conciliar
+Boton=0
+NombreDesplegar=&Conciliación Manual
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Expresion
+Activo=S
+Visible=S
+EspacioPrevio=S
+Expresion=Si <BR>  Forma(<T>EspecificarCtaDinero<T>)<BR>Entonces<BR>  Asigna(Info.Rama, <T>DIN<T>)<BR>  Asigna(Info.Cuenta, Info.CtaDinero)<BR>  Asigna(Info.TituloDialogo, <T>Cuenta de Dinero<T>)<BR>  Asigna(Info.Descripcion, Info.CtaDinero)<BR>  Forma(<T>Conciliar<T>)<BR>Fin
+
+[Acciones.Reevaluacion]
+Nombre=Reevaluacion
+Boton=0
+NombreDesplegar=Reeval&uar Tesoreria
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=Reevaluacion
+Activo=S
+Antes=S
+Visible=S
+EspacioPrevio=S
+AntesExpresiones=Asigna(Info.Modulo, <T>DIN<T>)<BR>Asigna(Info.Descripcion, <T>Tesoreria<T>)
+
+[Acciones.Bancomer]
+Nombre=Bancomer
+Boton=0
+NombreDesplegar=Conciliación Automática (Bancomer)
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=otros
+Activo=S
+Visible=S
+ClaveAccion=Procesar Lista
+ListaParametros=S
+ListaParametros1=<T>Conciliación Automática (Bancomer)<T><BR><T>ListaSt<T><BR><T>Estacion<T><BR><T>ID<T><BR><T>spConciliarBancomer<T><BR>Sucursal&<T>, <T>&EstacionTrabajo&<T>, <T>&Comillas(Usuario)<BR>Verdadero
+
+[Acciones.Santander]
+Nombre=Santander
+Boton=0
+NombreDesplegar=Conciliación Automática (San&tander - Serfin)
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Otros
+Activo=S
+Visible=S
+ClaveAccion=Procesar Lista
+ListaParametros=S
+ListaParametros1=<T>Conciliación Automática (Santander - Serfin)<T><BR><T>ListaSt<T><BR><T>Estacion<T><BR><T>ID<T><BR><T>SpConciliarSerfin<T><BR>Sucursal&<T>, <T>&EstacionTrabajo&<T>, <T>&Comillas(Usuario)<BR>Verdadero
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+[Acciones.ProcesarTransferencias]
+Nombre=ProcesarTransferencias
+Boton=0
+NombreDesplegar=Procesar Transferencias
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=ProcesarTransferencias
+Activo=S
+Visible=S
+
+
+
+
+[Acciones.PagosParciales]
+Nombre=PagosParciales
+Boton=0
+NombreDesplegar=Timbrado de Recepción de pagos
+EnMenu=S
+EnBarraAcciones=S
+EspacioPrevio=S
+TipoAccion=Formas
+ClaveAccion=CFDICobroParcialFiltros
+Activo=S
+Antes=S
+AntesExpresiones=Asigna(Info.ID, 0)<BR>Asigna(Info.Modulo, <T>DIN<T>)
+Visible=S
+
+
+
+[Dialogo.ListaAcciones]
+(Inicio)=DineroLiberarCH
+DineroLiberarCH=SituacionLote
+SituacionLote=Conciliar
+Conciliar=Banamex
+Banamex=Bital
+Bital=Bancomer
+Bancomer=Santander
+Santander=Bitacora
+Bitacora=Reevaluacion
+Reevaluacion=ProcesarTransferencias
+ProcesarTransferencias=PagosParciales
+PagosParciales=(Fin)
+]]>
+</MenuHerramientaDinero.dlg>
+<Indice>
+MenuHerramientaDinero.dlg
+
+</Indice>
+</IntelisisAddOn>
