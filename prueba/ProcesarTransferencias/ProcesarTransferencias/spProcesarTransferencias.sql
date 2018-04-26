@@ -56,10 +56,10 @@ BEGIN
 		
 			SELECT @ImporteDiferencia = @ImporteTransferencia - @ImporteAcumulado
 			SELECT @MonedaFormaPago = Moneda FROM FormaPago WHERE FormaPago = @FormaPago
-			SELECT @CtaDinero = CuentaDinero FROM ProcesarTransferenciasSucCta WHERE Sucursal = @Sucursal AND Moneda = @MonedaFormaPago
-			SELECT @CtaDineroDestino = CuentaDinero 
+			SELECT @CtaDinero = CuentaDinero, @CtaDineroDestino = CuentaDineroDestino 
 				FROM ProcesarTransferenciasFP 
-				WHERE FormaPago = @FormaPago
+				WHERE Sucursal = @Sucursal AND Moneda = @MonedaFormaPago AND FormaPago = @FormaPago
+			
 			SELECT @IDDin = NULL
 		
 			--Insertar Cargo o Abono Bancario

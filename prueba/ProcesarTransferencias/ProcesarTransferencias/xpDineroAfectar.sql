@@ -86,6 +86,7 @@ AS BEGIN
 	/* Este sp sirve para alimentar la tabla ProcesarTrasnferencias cuadno se concluye un deposito*/
 	IF @MovTipo IN ('DIN.D') AND @Accion IN ('AFECTAR', 'CANCELAR')
 	BEGIN
+	--SELECT @MovTipo
 			EXEC spProcesarTransferenciasLlenado @ID,@Accion,@Empresa,@Usuario,@Modulo,@Mov,@MovID,@MovTipo,@MovMoneda,@MovTipoCambio,@Estatus,@EstatusNuevo,  
 				CtaDinero,@CtaDineroTipo,@CtaDineroDestino,@CtaDineroFactor,@CtaDineroTipoCambio,@CtaDineroMoneda,@Cajero,  
 				@Importe,@Impuestos,@Saldo,@Directo,@CfgContX,@CfgContXGenerar,@Conexion,@SincroFinal,@Sucursal,@Ok OUTPUT,@OkRef OUTPUT      

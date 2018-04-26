@@ -27,7 +27,7 @@ AS BEGIN
      FROM Compra c
      JOIN CompraD cd on c.ID=cd.ID
 	 JOIN Art a on cd.Articulo=a.Articulo
-     WHERE c.ID=@ID AND a.Categoria=@Categoria
+     WHERE c.ID=@ID AND a.WfgArtForma=@Categoria
    OPEN crArtSubLinea
    FETCH NEXT FROM crArtSubLinea INTO @Articulo, @Renglon
    WHILE @@FETCH_STATUS = 0 

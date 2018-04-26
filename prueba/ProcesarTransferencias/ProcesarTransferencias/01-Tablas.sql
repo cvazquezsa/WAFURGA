@@ -15,8 +15,12 @@ IF NOT EXISTS (SELECT * FROM SysObjects WHERE Name='ProcesarTransferencias' AND 
 GO
 IF NOT EXISTS (SELECT * FROM SysObjects WHERE Name='ProcesarTransferenciasFP' AND Type='U')
 	CREATE TABLE ProcesarTransferenciasFP (
-		FormaPago varchar(50) NOT NULL PRIMARY KEY,
-		CuentaDinero	varchar(20) NOT NULL
+		Sucursal	int,
+		FormaPago varchar(50) NOT NULL,
+		Moneda varchar(10) NOT NULL,
+		CuentaDinero	varchar(20) NOT NULL,
+		CuentaDineroDestino	varchar(20) NOT NULL
+		CONSTRAINT PK_ProcesarTransferenciasFP PRIMARY KEY (Sucursal, FormaPago, Moneda)
 		)
 GO
 IF NOT EXISTS (SELECT * FROM SysObjects WHERE Name='ProcesarTransferenciasSucCta' AND Type='U')

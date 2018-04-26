@@ -32,7 +32,6 @@ AS BEGIN
     EXEC spReconstruirMovImpuesto @Modulo,@ID
 
 
-
   IF @Modulo IN ('DIN') AND (@Ok IS NULL OR @Ok BETWEEN 80030 AND 81000)
   BEGIN
     EXEC xpActualizarContSATComprobante @Modulo, @ID
@@ -47,11 +46,12 @@ AS BEGIN
   IF @Modulo IN('GAS','CXP','DIN')
     EXEC spAsociacionRetroactiva @Modulo, @ID, @Empresa
   EXEC spContSATMovFlujo @Empresa, @Sucursal, @Modulo, @ID, @Mov, @MovID, @Estatus
-
+	
   IF @Modulo IN ('VTAS','DIN')
     EXEC xpAsociarNotasCorte @ID, @Mov, @Modulo, @Empresa, @Sucursal, @Estatus
-  IF @Modulo = 'DIN' AND (SELECT dbo.fnMovTipo(@Modulo, @Mov)) IN ('DIN.D','DIN.DE')
+  --IF @Modulo = 'DIN' AND (SELECT dbo.fnMovTipo(@Modulo, @Mov)) IN ('DIN.D','DIN.DE')
 
+	--SELECT @Modulo
 	IF @Modulo='COMS'  
 	BEGIN
 
@@ -67,6 +67,7 @@ AS BEGIN
 				EXEC spWFGDisminuyePresupuesto @ID
 			END
 		END
+		--SELECT @MovTipo
 		IF @MovTipo='COMS.O' AND @EstatusNuevo='PENDIENTE'
 		BEGIN
 			EXEC spWFGUpdateArtSubLinea @ID

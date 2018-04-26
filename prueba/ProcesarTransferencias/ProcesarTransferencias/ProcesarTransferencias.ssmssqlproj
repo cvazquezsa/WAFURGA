@@ -32,16 +32,34 @@
     <LogicalFolder Name="Queries" Type="0" Sorted="true">
       <Items>
         <FileNode Name="01-Tablas.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:CVAZQUEZ:False:sa</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>CVAZQUEZ</AssociatedConnSrvName>
-          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:erp02.intelisiscloud.com:False:ConsultoriaWafurga</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>erp02.intelisiscloud.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>ConsultoriaWafurga</AssociatedConnUserName>
           <FullPath>01-Tablas.sql</FullPath>
         </FileNode>
         <FileNode Name="spProcesarTransferencias.sql">
-          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:CVAZQUEZ:False:sa</AssociatedConnectionMoniker>
-          <AssociatedConnSrvName>CVAZQUEZ</AssociatedConnSrvName>
-          <AssociatedConnUserName>sa</AssociatedConnUserName>
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:erp02.intelisiscloud.com:False:ConsultoriaWafurga</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>erp02.intelisiscloud.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>ConsultoriaWafurga</AssociatedConnUserName>
           <FullPath>spProcesarTransferencias.sql</FullPath>
+        </FileNode>
+        <FileNode Name="spProcesarTransferenciasLlenado.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:erp02.intelisiscloud.com:False:ConsultoriaWafurga</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>erp02.intelisiscloud.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>ConsultoriaWafurga</AssociatedConnUserName>
+          <FullPath>spProcesarTransferenciasLlenado.sql</FullPath>
+        </FileNode>
+        <FileNode Name="xpDineroAfectar.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:erp02.intelisiscloud.com:False:ConsultoriaWafurga</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>erp02.intelisiscloud.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>ConsultoriaWafurga</AssociatedConnUserName>
+          <FullPath>xpDineroAfectar.sql</FullPath>
+        </FileNode>
+        <FileNode Name="xpWfgCorteCaja.sql">
+          <AssociatedConnectionMoniker>8c91a03d-f9b4-46c0-a305-b5dcc79ff907:erp02.intelisiscloud.com:False:ConsultoriaWafurga</AssociatedConnectionMoniker>
+          <AssociatedConnSrvName>erp02.intelisiscloud.com</AssociatedConnSrvName>
+          <AssociatedConnUserName>ConsultoriaWafurga</AssociatedConnUserName>
+          <FullPath>xpWfgCorteCaja.sql</FullPath>
         </FileNode>
       </Items>
     </LogicalFolder>

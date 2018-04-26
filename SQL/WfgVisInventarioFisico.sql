@@ -5,8 +5,9 @@ AS
 SELECT i.ID,i.Empresa,e.Nombre AS 'EmpresaNombre',id.Articulo,Art.Categoria,Art.Fabricante,art.Descripcion1,id.Renglon,id.RenglonID, id.SubCuenta,a.Almacen, 
 	a.Nombre AS 'AlmacenNombre', 
 	a.Sucursal,s.Nombre AS 'SucursalNombre', ISNULL(wi.Cantidad,0) AS 'CantidadCapturada',ISNULL(su.SaldoU,0) AS 'CantidadReservada', 
-	ISNULL(id.Cantidad,0) AS 'CantidadTotal', (ISNULL(su2.SaldoU,0)-ISNULL(su3.SaldoU,0))-ISNULL(su.SaldoU,0) AS 'Existencias',
-	ISNULL(wi.Cantidad,0)-ISNULL(su2.SaldoU,0) AS 'Diferencias',ac.CostoPromedio, ac.CostoPromedio*id.Cantidad AS 'CostoTotal'--,id2.CostoTotalInv,
+	ISNULL(id.Cantidad,0) AS 'CantidadTotal', (ISNULL(su2.SaldoU,0)-ISNULL(su3.SaldoU,0)) AS 'Existencias',
+	ISNULL(id.Cantidad,0)-(ISNULL(su2.SaldoU,0)-ISNULL(su3.SaldoU,0)) AS 'Diferencias',ROUND(ac.CostoPromedio,2) AS 'CostoPromedio', 
+	ROUND(ac.CostoPromedio,2)*id.Cantidad AS 'CostoTotal'--,id2.CostoTotalInv,
 	--id3.CostoTotalDiferencias*ac.CostoPromedio AS 'CostoTotalDiferencias'  
 	FROM Inv i 
 		JOIN InvD id ON i.ID=id.ID
