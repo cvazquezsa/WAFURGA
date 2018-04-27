@@ -37,8 +37,8 @@ BEGIN
 	
 	SELECT @Observaciones = 'Herramienta Transferencias'
 	SELECT @Estatus = 'SINAFECTAR'
-	SELECT @MovTransferencia = BancoTransferencia FROM EmpresaCfgMov WHERE Empresa = @Empresa
-	
+	SELECT @MovTransferencia = 'Trans cta propias'--BancoTransferencia FROM EmpresaCfgMov WHERE Empresa = @Empresa
+	--SELECT * FROM MovTipo WHERE Modulo = 'DIN' aND Clave = 'DIN.T'
 	BEGIN TRANSACTION
 		
 		DECLARE crProcesar CURSOR FAST_FORWARD FOR
