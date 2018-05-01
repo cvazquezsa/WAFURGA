@@ -1,0 +1,324 @@
+[Tabla]
+Icono=0
+Clave=CtaCont
+Archivo=CtaCont
+Modulos=CONT
+TipoTabla=Cuentas
+ListaCampos=Cuenta<BR>Rama<BR>Descripcion<BR>Tipo<BR>Categoria<BR>Familia<BR>Grupo<BR>EsAcreedora<BR>EsAcumulativa<BR>TieneMovimientos<BR>Conciliar<BR>Directa<BR>CentrosCostos<BR>CentroCostosRequerido<BR>CentroCostosOmision<BR>Estatus<BR>UltimoCambio<BR>Alta<BR>Mensaje<BR>NivelAcceso<BR>AjusteInflacionario<BR>Bucket<BR>BucketSt<BR>CuadreContable<BR>PresupuestoNivelUEN<BR>CuentaDistribucion
+Nombre=CtaCont
+Singular=Cuenta
+LlavePrimaria=Cuenta
+ControlEstatus=S
+ControlCambios=S
+CampoEstatus=Estatus
+CampoUltimoCambio=UltimoCambio
+ControlCuenta=S
+CampoCuenta=Cuenta
+ControlGrupo=S
+CampoGrupo=Grupo
+EstatusDefault=ALTA
+ListaRelaciones=CtaLista<BR>CtaSaldo<BR>Acum
+CampoSugerido=Cuenta
+Niveles=S
+CampoAcumulativa=EsAcumulativa
+ControlNivelAcceso=S
+CampoNivelAcceso=NivelAcceso
+SQL=SELECT<BR>  Cuenta,<BR>  Rama,<BR>  Descripcion,<BR>  Tipo,<BR>  Categoria,<BR>  Familia,<BR>  Grupo,<BR>  EsAcreedora,<BR>  EsAcumulativa,<BR>  TieneMovimientos,<BR>  Conciliar,<BR>  Directa,<BR>  CentrosCostos,<BR>  CentroCostosRequerido,<BR>  CentroCostosOmision,<BR>  Estatus,<BR>  UltimoCambio,<BR>  Alta,<BR>  Mensaje,<BR>  NivelAcceso,<BR>  AjusteInflacionario,<BR>  Bucket,<BR>  BucketSt,<BR>  CuadreContable,<BR>  PresupuestoNivelUEN,<BR>  CuentaDistribucion<BR><BR>FROM<BR>  Cta
+
+[Cuenta]
+Clave=Cuenta
+Nombre=Clave
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+Requerido=S
+MascaraEdicion=Config.CtaFormato
+CondicionEdicion=no TieneMovimientos
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Posición Incorrecta<T>
+ValidacionCondicion=(Rama<>Cuenta) y <BR>(Cta:CtaLista.EsAcumulativa) y <BR>((Cta:CtaLista.Tipo=TipoEstructura) o (Si(Config.ContVerificarPosicion,CuentaVerificarPosicion(Cuenta,Rama),Verdadero)))
+
+[Descripcion]
+Clave=Descripcion
+Nombre=Descripción
+TamanoValidacion=50
+Tamano=100
+Requerido=S
+TipoDatos=Texto
+
+[Categoria]
+Clave=Categoria
+Nombre=Categoría
+AyudaEnCaptura=Validaciones Memoria
+TamanoValidacion=50
+Tamano=50
+AyudaMemTabla=CtaCat
+AyudaMemRenglones=8
+AyudaMemEnBlanco=S
+AyudaMemOpc=Unicamente opciones listadas
+TipoDatos=Texto
+
+[Familia]
+Clave=Familia
+Nombre=Familia
+AyudaEnCaptura=Validaciones Memoria
+TamanoValidacion=50
+Tamano=50
+AyudaMemTabla=CtaFam
+AyudaMemRenglones=8
+AyudaMemEnBlanco=S
+AyudaMemOpc=Unicamente opciones listadas
+TipoDatos=Texto
+
+[Grupo]
+Clave=Grupo
+Nombre=Grupo
+AyudaEnCaptura=Validaciones Memoria
+TamanoValidacion=50
+Tamano=50
+AyudaMemTabla=CtaGrupo
+AyudaMemRenglones=8
+AyudaMemEnBlanco=S
+AyudaMemOpc=Unicamente opciones listadas
+TipoDatos=Texto
+
+[Estatus]
+Clave=Estatus
+Nombre=Estatus
+TamanoValidacion=15
+Tamano=15
+AyudaEnCaptura=Lista de Opciones
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Ninguna
+OpcionesRenglones=8
+ListaOpciones=ALTA<BR>BLOQUEADO<BR>BAJA
+TipoDatos=Texto
+
+[EsAcreedora]
+Clave=EsAcreedora
+Nombre=Es Ac&reedora
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Def.EsAcreedora
+ValorRefrescar=Si(ConDatos(CtaLista.EsAcreedora),CtaLista.EsAcreedora,Falso)
+CondicionEdicion=
+
+[EsAcumulativa]
+Clave=EsAcumulativa
+Nombre=Es Ac&umulativa
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+CondicionEdicion=no TieneMovimientos
+
+[Conciliar]
+Clave=Conciliar
+Nombre=Conciliar Movimientos
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+
+[UltimoCambio]
+Clave=UltimoCambio
+Nombre=Ultimo Cambio
+TamanoValidacion=15
+TipoDatos=FechaHora
+
+[Alta]
+Clave=Alta
+Nombre=Alta
+TamanoValidacion=15
+TipoDatos=FechaHora
+ValorPorOmision=Ahora
+
+[Mensaje]
+Clave=Mensaje
+Nombre=Mensaje
+TamanoValidacion=255
+Tamano=50
+TipoDatos=Texto
+
+[Rama]
+Clave=Rama
+Nombre=Subcuenta de
+AyudaEnCaptura=Vista
+TamanoValidacion=20
+Tamano=20
+Mayusculas=S
+AyudaForma=CtaLista
+AyudaVista=CtaLista
+AyudaCampo=CtaLista.Cuenta
+ValidacionUsaTabla=S
+ValidacionTablas=CtaLista
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Posición Incorrecta<T>
+ConRefrescar=S
+ListaRefrescar=Tipo<BR>EsAcreedora
+AyudaIgnoraChequeos=S
+ConRefrescarCondiciones=S
+ListaRefrescarCondiciones=Tipo<BR>EsAcreedora
+ValorPorOmision=Def.Rama
+CondicionEdicion=no TieneMovimientos
+Requerido=S
+ValidacionCondicion=(Rama<>Cuenta) y <BR>(Cta:CtaLista.EsAcumulativa) y <BR><BR>((Cta:CtaLista.Tipo=TipoEstructura) o <BR>(Si(Config.ContVerificarPosicion,CuentaVerificarPosicion(Cuenta,Rama),Verdadero)))
+TipoDatos=Texto
+
+[Relaciones.CtaLista]
+TipoRelacion=Opcional
+LlaveLocal=Rama
+Clave=CtaLista
+TablaRemota=CtaLista
+LlaveRemota=Cuenta
+
+[CentrosCostos]
+Clave=CentrosCostos
+Nombre=Centros de Costos
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+CondicionDespliege=Config.ContCentrosCostos
+
+[TieneMovimientos]
+Clave=TieneMovimientos
+Nombre=Tiene Movimientos
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+
+[Relaciones.CtaSaldo]
+TipoRelacion=Opcional
+LlaveLocal={Comillas(Empresa)}<BR>Cuenta
+Clave=CtaSaldo
+TablaRemota=CtaSaldo
+LlaveRemota=Empresa<BR>Cuenta
+
+[Directa]
+Clave=Directa
+Nombre=Directa
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+
+[CentroCostosOmision]
+Clave=CentroCostosOmision
+Nombre=por Omisión
+AyudaEnCaptura=Expresion
+TamanoValidacion=20
+Tamano=20
+AyudaMemRenglones=12
+AyudaMemEnBlanco=S
+AyudaMemOpc=Validar captura en la lista
+CondicionDespliege=CentrosCostos
+AyudaRefrescar=S
+MascaraEdicion=Config.CentrosCostosFormato
+Formula=SQLEnLista(<T>SELECT SubCuenta FROM CtaSub WHERE Cuenta = :tCuenta<T>, Cta:Cta.Cuenta)
+TipoDatos=Texto
+
+[Tipo]
+Clave=Tipo
+Nombre=Tipo
+AyudaEnCaptura=Lista de Opciones
+TamanoValidacion=15
+Tamano=15
+OpcionesUnicamente=S
+OpcionesColumnas=1
+OpcionesPredefinidas=Tipos Cuentas
+OpcionesRenglones=8
+ValorPorOmision=Ult.CtaTipo
+ConRefrescar=S
+ListaRefrescar=Tipo
+ValorRefrescar=Asigna(Ult.CtaTipo, Tipo)
+Requerido=S
+TipoDatos=Texto
+
+[CentroCostosRequerido]
+Clave=CentroCostosRequerido
+Nombre=Requerido
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+CondicionDespliege=Config.ContCentrosCostos y CentrosCostos
+
+[Relaciones.Acum]
+TipoRelacion=Forzosa
+LlaveLocal={<T>CONT<T>}<BR>Cuenta
+Clave=Acum
+TablaRemota=Acum
+LlaveRemota=Rama<BR>Cuenta
+
+[NivelAcceso]
+Clave=NivelAcceso
+Nombre=Acceso
+Visible=S
+TamanoValidacion=50
+Tamano=50
+AyudaEnCaptura=Validaciones Memoria
+AyudaMemTabla=NivelAcceso
+AyudaMemRenglones=12
+AyudaMemOpc=Unicamente opciones listadas
+CondicionDespliege=General.NivelAcceso
+TipoDatos=Texto
+
+[AjusteInflacionario]
+Clave=AjusteInflacionario
+Nombre=Ajuste In&flacionario
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+
+[Bucket]
+Clave=Bucket
+Nombre=Buc&ket
+Visible=S
+TamanoValidacion=10
+TipoDatos=Numérico
+CondicionDespliege=General.Ford
+ValorMinimo=0
+ValorMaximo=9999
+
+[BucketSt]
+Clave=BucketSt
+Nombre=Bucket
+Visible=S
+TamanoValidacion=10
+Tamano=10
+Mayusculas=S
+TipoDatos=Texto
+[CuadreContable]
+Clave=CuadreContable
+Nombre=Cuadre Contable
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+ValorPorOmision=Falso
+ConRefrescarCondiciones=S
+RefrescarTodoCondiciones=S
+[PresupuestoNivelUEN]
+Clave=PresupuestoNivelUEN
+Nombre=Presupuesto Nivel UEN
+Visible=S
+TamanoValidacion=10
+TipoDatos=Lógico
+CondicionDespliege=Config.ContMovPresupuesto
+ValorPorOmision=Falso
+[CuentaDistribucion]
+Clave=CuentaDistribucion
+Nombre=Cuenta Distribución
+Visible=S
+TamanoValidacion=20
+Tamano=20
+CondicionDespliege=General.GRP
+AyudaEnCaptura=Vista
+AyudaForma=CtaLista
+AyudaVista=CtaLista
+AyudaCampo=CtaLista.Cuenta
+ValidacionConCondiciones=S
+ValidacionMensajeError=<T>Cuenta Incorrecta<T>
+ValidacionCondicion=Vacio(CuentaDistribucion) o (CuentaDistribucion<>Cuenta) y (SQL(<T>SELECT Cuenta FROM Cta WHERE Cuenta=:tCuenta AND Estatus=:tEstatus AND EsAcumulativa=0<T>, CuentaDistribucion, EstatusAlta)=CuentaDistribucion))

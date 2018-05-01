@@ -1,0 +1,13 @@
+[MenuHerramientaCont.dlg/Dialogo]
+ListaAcciones.Cambios=Insertar<TAB>Revaluacion<TAB>0
+
+[MenuHerramientaCont.dlg/Acciones.Revaluacion]
+Nombre=Revaluacion
+Boton=0
+NombreDesplegar=Revaluación
+EnMenu=S
+EnBarraAcciones=S
+TipoAccion=Formas
+ClaveAccion=RevaluacionDolares
+Activo=S
+Visible=S

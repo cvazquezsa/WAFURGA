@@ -34,12 +34,12 @@ BEGIN
 		@nAbonos	int = 0,
 		@nTransferencias	int = 0,
 		@Mensaje varchar(max)
-	
+	--'Trans cta propias'
 	SELECT @Observaciones = 'Herramienta Transferencias'
 	SELECT @Estatus = 'SINAFECTAR'
 	SELECT @MovTransferencia = 'Trans cta propias'--BancoTransferencia FROM EmpresaCfgMov WHERE Empresa = @Empresa
 	--SELECT * FROM MovTipo WHERE Modulo = 'DIN' aND Clave = 'DIN.T'
-	BEGIN TRANSACTION
+	BEGIN TRANSACTION Transferencia
 		
 		DECLARE crProcesar CURSOR FAST_FORWARD FOR
 			SELECT ID,Sucursal, FormaPago, ImporteAcumulado, ImporteTransferencia, FechaTrasnferencia, Concepto, TipoCambio 
@@ -164,6 +164,7 @@ BEGIN
 
 		RETURN
 	END
+	
 	ELSE IF @@TRANCOUNT > 0
 		ROLLBACK
 END
@@ -209,8 +210,9 @@ BEGIN
 	DELETE ProcesarTransferencias WHERE ID=@ID AND Concepto <> 'Operación'
 END
 GO
---BEGIN TRANSACTION
---EXEC spProcesarTransferenciasAjuste 14, 'Sobrante'
-----SELECT * fROM ProcesarTransferencias
---ROLLBACK
+BEGIN TRANSACTION
+EXEC spProcesarTransferencias 'E001', 'INTELISIS'
+--SELECT * fROM ProcesarTransferencias
+IF @@TRANCOUNT > 0
+	ROLLBACK
 --DELETE  FROM ProcesarTransferencias wHERE Concepto='Sobrante'
